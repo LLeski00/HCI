@@ -10,32 +10,21 @@ type Page = {
 
 const pages: Page[] = [
     {
-        title: "HOME",
-        path: "/",
+        title: "TRAVEL PACKAGES",
+        path: "/planner/travel-packages",
     },
     {
-        title: "DESTINATIONS",
-        path: "/destinations",
+        title: "TRIP GENERATOR",
+        path: "/planner/trip-generator",
     },
     {
-        title: "PLANNER",
-        path: "/planner",
-    },
-    {
-        title: "INFO",
-        path: "/info",
-    },
-    {
-        title: "CONTACT US",
-        path: "/contact",
+        title: "SOLO PLANNING",
+        path: "/planner/solo-planning",
     },
 ];
 
 function processPage(page: Page, index: number, pathname: string) {
-    const isActive =
-        page.path === "/"
-            ? pathname === page.path
-            : pathname.startsWith(page.path);
+    const isActive = pathname === page.path;
 
     return (
         <li key={index}>
@@ -57,20 +46,14 @@ function processPage(page: Page, index: number, pathname: string) {
         </li>
     );
 }
-export function Navbar() {
+export function PlannerNavbar() {
     const pathname = usePathname();
 
     return (
         <div className="flex flex-grow justify-between pt-8">
-            <h3 className="pl-8 text-2xl font-bold mr-auto">SNOWFLOW</h3>
             <ul className="flex flex-1 justify-center space-x-5 drop-shadow-lg text-0">
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
-            <Link href="/login">
-                <button className="mr-10 w-[8vw] bg-orange-400 rounded-xl h-[5vh]">
-                    LOGIN
-                </button>
-            </Link>
         </div>
     );
 }
