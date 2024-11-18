@@ -1,5 +1,4 @@
 import { Navbar } from "@/app/components/navbar";
-import Image from "next/image";
 import { InfoNavbar } from "../components/infoNavbar";
 
 export default function BeginnerGuide() {

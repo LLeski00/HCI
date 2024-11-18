@@ -1,5 +1,4 @@
 import { Navbar } from "@/app/components/navbar";
-import Image from "next/image";
 import { PlannerNavbar } from "../components/plannerNavbar";
 
 export default function TravelPackages() {
