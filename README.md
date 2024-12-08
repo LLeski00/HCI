@@ -24,9 +24,11 @@
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1**](./assignments/Figma-web.mkv) <!-- Replace with actual URL -->
-- Link to Assignment 2: [**Assignment 2**](./assignments/assignment-2) <!-- Replace with actual URL -->
-- Link to Assignment 3: [**Assignment 3**](https://snowflow-one.vercel.app) <!-- Replace with actual URL -->
+- Link to Assignment 1: [**Assignment 1**](./assignments/assignment-1/Figma-web.mkv) 
+- Link to Assignment 2: [**Assignment 2**](./assignments/assignment-2) 
+- Link to Assignment 3: [**Assignment 3**](https://snowflow-one.vercel.app) 
+- Link to Assignment 4: [**Assignment 4**](./assignments/assignment-4/SnowflowHome.png) 
+
 <!-- Add more assignments as necessary -->
 
 ## Project Requirements

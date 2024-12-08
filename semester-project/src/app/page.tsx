@@ -20,13 +20,17 @@ export default function Home() {
                 </div>
             </section>
 
-            <div className="px-8 py-16">
-                <h2 className="text-4xl font-bold">More Content Below</h2>
-                <p className="mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vivamus viverra orci vel mauris iaculis, non laoreet lorem
-                    egestas.
-                </p>
+            <div className="grid-cols-2 gap-3">
+                <div>
+                    <h2 className="text-4xl font-bold m-0">Everything you need to know in one place</h2>
+                    <p className="mt-4">
+                    Embark on your next snowy adventure with ease! Discover Europe's top ski resorts, compare features, and plan your dream trip—all in one place. From family-friendly slopes to thrilling alpine runs, we've got everything you need to make your ski vacation unforgettable. Start exploring today!"
+                    </p>
+                </div>
+                <div>
+                    <img src="" />
+                </div>
+                
             </div>
         </div>
     );
