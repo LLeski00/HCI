@@ -2,9 +2,9 @@ import { Navbar } from "@/app/components/navbar/navbar";
 
 export default function Home() {
     return (
-        <div className="text-center">
+        <div>
             <Navbar />
-            <h1 className="text-8xl font-extrabold py-[100px]">Contacts</h1>
+            <h1>Contacts</h1>
         </div>
     );
 }

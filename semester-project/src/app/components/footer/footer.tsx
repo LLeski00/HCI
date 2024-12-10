@@ -8,7 +8,7 @@ export function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.socials}>
-                <h2>SNOWFLOW</h2>
+                <h3>SNOWFLOW</h3>
                 <div className={styles.icons}>
                     <FaInstagram />
                     <FaFacebookF />
@@ -17,7 +17,7 @@ export function Footer() {
             </div>
 
             <div className={styles.informations}>
-                <h2>Informations</h2>
+                <h3>Informations</h3>
                 <ul>
                     <li>
                         <Link href="/" >Home</Link>
@@ -39,7 +39,7 @@ export function Footer() {
             </div>
 
             <div className={styles.contact}>
-                <h2>Contact Info</h2>
+                <h3>Contact Info</h3>
                 <ul>
                     <li>Ruđera Boškovića 32</li>
                     <li>21000, Split, Croatia</li>

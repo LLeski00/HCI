@@ -18,7 +18,6 @@
     /*--background: #0a0a0a;
     --foreground: #ededed;*/
 
-
   }
 }
 
@@ -27,6 +26,11 @@ p, h1, h2, h3, h4, a{
   font-family: "Jost", sans-serif;
   margin: 0;
 }
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
 
 a{
   text-decoration: none;
@@ -48,6 +52,8 @@ body, html {
 img{
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  height: auto;
 }
 
 /*@layer utilities {
@@ -56,27 +62,17 @@ img{
   }
 }*/
 
-.bg-opacity-custom {
-  background-image: url('/images/background.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.8 ; /* Adjust opacity */
-}
-
 .hero-section{
-  background-image: url('/images/4.jpg');
+  position: relative;
+  background: url('/images/4.jpg') center/cover no-repeat;
   height: 600px;
-  background-size: cover;
-  background-position: center;
   margin: 0;
-  overflow: hidden;
 }
 
 .hero-overlay{
   position: absolute;
   inset: 0;
-  background-color: black;
-  opacity: 0.2;
+  background: rgba(0, 0, 0, 0.2);
   height: 600px;
 }
 
@@ -95,7 +91,10 @@ img{
   font-size: 5rem;
   font-weight: bold;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  margin: 0;
+}
+
+.hero-text p{
+  color: var(--background);
 }
 
 .bottom{
@@ -103,12 +102,7 @@ img{
   width: 65%;
 }
 
-
-.hero-text p{
-  color: var(--background);
-  margin-top: 0;
-}
-
+/*first section*/
 .home-section{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -129,16 +123,16 @@ img{
   justify-self: end;
 }
 
-/*section two*/
+/*second section*/
 
 .destination-section{
-  height: 100vh;
+  height: 110vh;
   background-color: var(--blue-background);
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .destinations{
@@ -148,20 +142,69 @@ img{
   width: 60%;
 }
 
-.destination-section h1{
-  margin-bottom: 5vh;
-}
-
 .destinations img{
   height: 55vh;
   width: 18vw;
 
 }
 
-.planner-section{
-  height: 100vh;
+/*third section*/
 
+.planner-section{
+  height: 90vh;
+  display: grid;
+  grid-template-areas: 
+      "title title"
+      "steps image";
+
+  padding: 10vh 20vw;
+  align-items: center;
 }
+
+.title-content{
+  grid-area: title;
+}
+
+.steps-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.step-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  height: 15vh;
+  margin-bottom: 10px;
+}
+
+.step-number{
+  width: 4vw;
+  height: 4vh;
+  border-radius: 10px;
+  background-color: var(--blue-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--background);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.image-container {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-container img{
+  width: 23vw;
+  height: 60vh;
+  /*height: 55vh;
+  width: 18vw;*/
+}
+
 
 .review-section{
   height: 100vh;

@@ -3,10 +3,10 @@ import { PlannerNavbar } from "../components/plannerNavbar";
 
 export default function TripGenerator() {
     return (
-        <div className="text-center">
+        <div>
             <Navbar />
             <PlannerNavbar />
-            <h1 className="text-8xl font-extrabold py-[100px]">
+            <h1>
                 Generate a trip
             </h1>
         </div>

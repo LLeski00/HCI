@@ -6,7 +6,7 @@ export default function SkiEvents() {
         <div className="text-center">
             <Navbar />
             <InfoNavbar />
-            <h1 className="text-8xl font-extrabold py-[100px]">Ski events</h1>
+            <h1>Ski events</h1>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 .customButton{
     background-color: var(--orange);
     width: 15vw;
-    height: 6vh;
+    height: 7vh;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
@@ -13,5 +13,6 @@
 
 .customButton a{
     color: var(--background);
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 900;
 }

@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./customButton.module.css"
+import styles from "./button.module.css"
 
 interface CustomButtonProps {
     text: string;
     href: string;
 }
 
-export function CustomButton({ text, href} : CustomButtonProps) {
+export function Button({ text, href } : CustomButtonProps) {
 
     return (
         <div>

@@ -3,10 +3,10 @@ import { PlannerNavbar } from "../components/plannerNavbar";
 
 export default function SoloPlanning() {
     return (
-        <div className="text-center">
+        <div>
             <Navbar />
             <PlannerNavbar />
-            <h1 className="text-8xl font-extrabold py-[100px]">
+            <h1>
                 Solo planning
             </h1>
         </div>

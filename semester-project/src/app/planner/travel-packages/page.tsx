@@ -3,10 +3,10 @@ import { PlannerNavbar } from "../components/plannerNavbar";
 
 export default function TravelPackages() {
     return (
-        <div className="text-center">
+        <div>
             <Navbar />
             <PlannerNavbar />
-            <h1 className="text-8xl font-extrabold py-[100px]">
+            <h1>
                 Travel packages
             </h1>
         </div>

@@ -3,10 +3,10 @@ import { InfoNavbar } from "./components/infoNavbar";
 
 export default function Home() {
     return (
-        <div className="text-center">
+        <div>
             <Navbar />
             <InfoNavbar />
-            <h1 className="text-8xl font-extrabold py-[100px]">Planner</h1>
+            <h1>Info</h1>
         </div>
     );
 }
