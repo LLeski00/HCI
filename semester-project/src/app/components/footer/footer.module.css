@@ -1,0 +1,25 @@
+.footer{
+    height: 50vh;
+    background-color: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "social-media informations contact-info";
+    
+    align-items: center;
+}
+
+.socials, .informations, .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.icons{
+    display: flex;
+    gap: 1rem;
+    font-size: 30px;
+}
+
+.icons svg{
+}

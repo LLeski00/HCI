@@ -1,37 +1,62 @@
-import { Navbar } from "./components/navbar";
+import { CustomButton } from "./components/customButton/customButton";
+import { Footer } from "./components/footer/footer";
+import { Navbar } from "./components/navbar/navbar";
 
 export default function Home() {
     return (
-        <div className="min-h-screen bg-white">
-            <section className="bg-custom-bg bg-cover bg-center  h-[600px]">
-                <div className="absolute inset-0 bg-black opacity-20 h-[600px]"></div>
-                <div className="relative z-10 text-center text-white">
-                    <Navbar />
-                    <h1 className="text-left text-4xl md:text-8xl font-bold py-12 drop-shadow-lg whitespace-pre-line mt-48 md:mt-28 ml-10 pb-0">
-                        Your ski{"\n"}adventure awaits!
-                    </h1>
-                    <div className="absolute bottom-6 left-12 h-[2px] bg-white w-[60%]"></div>
-
-                    <div className="text-white pt-6 flex">
-                        <p className="pl-12">
-                            PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET
-                        </p>
-                    </div>
+        <div className="">
+            <section className="hero-section">
+                <div className="hero-overlay"></div>
+                <Navbar />
+                <div className="hero-text">
+                    <h1 className="hero-heading top"> YOUR SKI</h1>
+                    <h1 className="hero-heading bottom">ADVENTURE AWAITS! </h1>
+                    <p> PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET </p>    
                 </div>
             </section>
 
-            <div className="grid-cols-2 gap-3">
-                <div>
-                    <h2 className="text-4xl font-bold m-0">Everything you need to know in one place</h2>
-                    <p className="mt-4">
-                    Embark on your next snowy adventure with ease! Discover Europe's top ski resorts, compare features, and plan your dream trip—all in one place. From family-friendly slopes to thrilling alpine runs, we've got everything you need to make your ski vacation unforgettable. Start exploring today!"
+            <div className="home-section">
+                <div className="text-content">
+                    <h1>Everything you need to know in one place</h1>
+                    <p>
+                        Embark on your next snowy adventure with ease! Discover Europe's top ski resorts, compare features, and plan your dream trip—all in one place. From family-friendly slopes to thrilling alpine runs, we've got everything you need to make your ski vacation unforgettable. Start exploring today!"
                     </p>
+                   <CustomButton text="EXPLORE" href="/" />
                 </div>
                 <div>
-                    <img src="" />
+                   <img src="/images/skiing.jpeg"/>
                 </div>
-                
             </div>
+            <div className="destination-section">
+                <h1>Explore popular destinations</h1>
+                {/*slideshow */}
+                <div className="destinations">
+                    <div>
+                        <h3>Les 2 alpes, France</h3>
+                        <img src="/images/austria.jpg" />
+                    </div>
+                    <div >
+                        <h3>Alta Badia, Italy</h3>
+                        <img src="/images/altaBadia.jpg" />
+                    </div>
+                    <div>
+                        <h3>Val Torens, Italy</h3>
+                        <img src="/images/valtores.jpg" />
+                    </div>
+                </div>
+                <CustomButton text="VIEW MORE" href="/" />
+                
+
+            </div>
+
+            <div className="planner-section">
+
+            </div>
+
+            <div className="review-section">
+
+            </div>
+            <Footer />
         </div>
     );
 }

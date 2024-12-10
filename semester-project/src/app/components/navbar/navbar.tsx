@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import styles from "@/app/components/navbar/navbar.module.css"
 
 type Page = {
     title: string;
@@ -38,39 +39,29 @@ function processPage(page: Page, index: number, pathname: string) {
             : pathname.startsWith(page.path);
 
     return (
-        <li key={index}>
+        <li key={index} className={styles.navItem}>
             <Link
                 href={page.path}
-                className={`relative py-2 px-4 transition-all duration-300 ${
-                    isActive ? "text-orange-400 font-extrabold" : "text-cyan-50"
-                }`}
+                className={`${styles.navLink} ${isActive ? styles.active : ""}`}
             >
                 {page.title}
 
-                {/* Underline effect */}
-                <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-orange-400 transition-transform duration-300 ease-in-out transform ${
-                        isActive ? "w-full" : "w-0"
-                    }`}
-                />
+                <span className={`${styles.underline} ${isActive ? styles.underlineActive : ""}`} />
             </Link>
         </li>
     );
 }
 export function Navbar() {
     const pathname = usePathname();
+    const navClass = pathname === "/" ? styles.navbar : `${styles.navbar} ${styles.navBackground}`;
 
     return (
-        <div className="flex flex-grow justify-between pt-8">
-            <h3 className="pl-8 text-2xl font-bold mr-auto">SNOWFLOW</h3>
-            <ul className="flex flex-1 justify-center space-x-5 drop-shadow-lg text-0">
+        <div className={navClass}>
+            <h3 className={styles.logo}>SNOWFLOW</h3>
+            <ul className={styles.navList}>
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
-            <Link href="/login">
-                <button className="mr-10 w-[8vw] bg-orange-400 rounded-xl h-[5vh]">
-                    LOGIN
-                </button>
-            </Link>
+            <button className={styles.loginButton}>LOGIN</button>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import { Navbar } from "@/app/components/navbar";
+import { Navbar } from "@/app/components/navbar/navbar";
 import { InfoNavbar } from "../components/infoNavbar";
 
 export default function BeginnerGuide() {

@@ -1,0 +1,17 @@
+.customButton{
+    background-color: var(--orange);
+    width: 15vw;
+    height: 6vh;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vh;
+    border: none;
+    text-decoration: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.customButton a{
+    color: var(--background);
+    font-size: 15px;
+}
