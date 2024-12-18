@@ -1,0 +1,139 @@
+.hero-section {
+    position: relative;
+    background: url("/images/4.jpg") center/cover no-repeat;
+    height: 600px;
+    margin: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    height: 600px;
+}
+
+.hero-text {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    height: 90%;
+    margin-left: 1.5rem;
+}
+
+.hero-heading {
+    color: var(--background);
+    font-size: 5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text p {
+    color: var(--background);
+}
+
+.bottom {
+    border-bottom: 5px solid var(--background);
+    width: 65%;
+}
+
+.home-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    height: 80vh;
+}
+
+.home-section img {
+    height: 45vh;
+}
+
+.text-content {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    justify-self: end;
+}
+
+.home-destination-section {
+    height: 110vh;
+    background-color: var(--blue-background);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.home-destinations {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 60%;
+}
+
+.home-destinations img {
+    height: 55vh;
+    width: 18vw;
+}
+
+.planner-section {
+    height: 90vh;
+    display: grid;
+    grid-template-areas:
+        "title title"
+        "steps image";
+
+    padding: 10vh 20vw;
+    align-items: center;
+}
+
+.title-content {
+    grid-area: title;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 15vh;
+    margin-bottom: 10px;
+}
+
+.step-number {
+    width: 4vw;
+    height: 4vh;
+    border-radius: 10px;
+    background-color: var(--blue-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.image-container {
+    grid-area: image;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-container img {
+    width: 23vw;
+    height: 60vh;
+}
+
+.review-section {
+    height: 100vh;
+    background-color: var(--blue-background);
+}

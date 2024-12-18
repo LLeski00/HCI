@@ -1,0 +1,15 @@
+.destinations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.destination {
+    padding: 50px;
+    box-sizing: border-box;
+    height: 200px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+}
