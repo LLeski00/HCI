@@ -1,22 +1,35 @@
-.footer{
-    height: 50vh;
+.footer {
     background-color: var(--dark);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-        "social-media informations contact-info";
-    
+    grid-template-areas: "social-media informations contact-info";
+    padding-top: 100px;
+    padding-bottom: 100px;
     align-items: center;
 }
 
-.socials, .informations, .contact {
+.socials,
+.informations,
+.contact {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.icons{
+.icons {
     display: flex;
     gap: 1rem;
     font-size: 30px;
+}
+
+@media (max-width: 414px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .informations {
+        display: none;
+    }
 }
