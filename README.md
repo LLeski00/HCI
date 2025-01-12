@@ -28,7 +28,7 @@
 - Link to Assignment 2: [**Assignment 2**](./assignments/assignment-2) 
 - Link to Assignment 3: [**Assignment 3**](https://snowflow-one.vercel.app) 
 - Link to Assignment 4: [**Assignment 4**](./assignments/assignment-4/SnowflowHome.png) 
-
+- Link to Assignment 6: [**Assignment 6**](https://snowflow-one.vercel.app) 
 <!-- Add more assignments as necessary -->
 
 ## Project Requirements
