@@ -10,6 +10,7 @@ export type ResortInfo = {
     id:string,
     name:string,
     country:string,
+    description:string | null,
     elevation:string | null,
     easySlopes:string | null,
     intermediateSlopes:string | null,
