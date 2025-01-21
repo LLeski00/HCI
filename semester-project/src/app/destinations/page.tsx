@@ -9,7 +9,6 @@ type DestinationPageProps = {
     searchParams: { page: string };
 };
 
-
 const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 6;
 
 export const metadata: Metadata = {
@@ -51,7 +50,7 @@ export default async function DestinationPage({searchParams}: DestinationPagePro
     const _start = (currentPage - 1) * PAGE_SIZE;
     const _limit = PAGE_SIZE;
 
-    const destinations = await getResorts({ _start, _limit });
+    const destinations : ResortInfo[] = await getResorts({ _start, _limit });
 
     return (
         <main className="flex flex-col flex-1 max-w-3xl m-auto items-center p-10">
@@ -61,7 +60,7 @@ export default async function DestinationPage({searchParams}: DestinationPagePro
             </h1>
             <Pagination currentPage={currentPage} pagesCount={pagesCount} />
             <ul className="w-full space-y-4">
-                {destinations.map(processSkiResort)}
+                {destinations && destinations.map((destination:ResortInfo)=>processSkiResort(destination))}
             </ul>
         </main>
     );
