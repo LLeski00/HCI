@@ -16,6 +16,9 @@ export const metadata: Metadata = {
 };
 
 function processSkiResort(resort: ResortInfo) {
+    if(!resort)
+        return null;
+
     return (
             <div key={resort.id} className="resort-container">
                 <div className="resort-location">
