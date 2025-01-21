@@ -53,7 +53,7 @@ section {
 
 .home-section .image-container img {
     height: 400px;
-    width: auto;
+    width: 350px;
 }
 
 .home-destinations-section {
@@ -76,14 +76,14 @@ section {
 }
 
 .home-destination img {
-    width: 400px;
-    height: 500px;
+    width: 300px;
+    height: 450px;
     object-fit: cover; /* Ensures the image fills the container without stretching */
 }
 
 .home-destination:nth-child(2n) img {
-    width: 400px;
-    height: 600px;
+    width: 300px;
+    height: 500px;
     object-fit: cover; /* Ensures the image fills the container without stretching */
 }
 
@@ -120,8 +120,9 @@ section {
     background-color: var(--blue-background);
     width: 3vw;
     text-align: center;
-    border-radius: 20%;
+    border-radius: 10px;
     color: var(--background);
+    font-weight: 600;
 }
 
 .review-section {
@@ -136,6 +137,7 @@ section {
 
 .review-section h3 {
     margin: 40px;
+    margin-bottom: 0;
     font-size: 3rem;
 }
 
@@ -143,6 +145,7 @@ section {
     max-width: 500px;
     text-align: start;
     margin: 20px;
+    margin-bottom: 40px;
 }
 
 .review-section button {
@@ -175,9 +178,10 @@ section {
 
 .review img {
     border-radius: 100%;
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     margin: auto;
+    object-fit: cover;
 }
 
 .rating {

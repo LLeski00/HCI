@@ -1,0 +1,110 @@
+{
+  "id": "28338458-e8c0-4c08-881c-bc044e5a1dc8",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.resorts": {
+      "name": "resorts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "country": {
+          "name": "country",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "elevation": {
+          "name": "elevation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "easy-slopes": {
+          "name": "easy-slopes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "intermediate-slopes": {
+          "name": "intermediate-slopes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "difficult-slopes": {
+          "name": "difficult-slopes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ski-lift": {
+          "name": "ski-lift",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adult-price": {
+          "name": "adult-price",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "youth-price": {
+          "name": "youth-price",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "review": {
+          "name": "review",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "images": {
+          "name": "images",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

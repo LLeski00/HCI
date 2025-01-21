@@ -1,12 +1,8 @@
-.buttonContainer {
-    display: flex;
-    justify-content: center;
-}
-
 .customButton {
     background-color: var(--orange);
     width: auto;
     height: 7vh;
+    width: 200px;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
