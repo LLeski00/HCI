@@ -1,4 +1,4 @@
-import styles from "@/app/components/footer/footer.module.css"
+import styles from "@/components/footer/footer.module.css"
 import Link from "next/link";
 import { FaInstagram, FaFacebookF, FaTwitter, FaPhone, } from "react-icons/fa6";
 import { FiMail } from "react-icons/fi";

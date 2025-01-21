@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "@/app/components/navbar/navbar.module.css";
+import styles from "@/components/navbar/navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 type Page = {

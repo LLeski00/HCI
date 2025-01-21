@@ -1,4 +1,4 @@
-import { Navbar } from "@/app/components/navbar/navbar";
+import { Navbar } from "@/components/navbar/navbar";
 import { PlannerNavbar } from "../components/plannerNavbar";
 
 export default function TripGenerator() {

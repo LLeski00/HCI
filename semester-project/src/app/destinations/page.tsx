@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { getDestinations, getDestinationsCount } from "./_lib/api";
-import type { Destination } from "./_lib/api.tsx";
+import { getResorts } from "./_lib/api";
 import Pagination from "./_components/pagination";
-import { Navbar } from "../components/navbar/navbar";
+import { Navbar } from "../../components/navbar/navbar";
+import "./destinations.css";
 
 type DestinationPageProps = {
     searchParams: { page: string };
@@ -15,31 +14,34 @@ export const metadata: Metadata = {
     title: "Destination",
 };
 
-function processDestination(destination: Destination) {
-    const { id, title } = destination;
+function processSkiResort(resort:any) {
     return (
-        <li key={id} className="mb-4">
-            <Link
-                href={`/destinations/${id}`}
-                className="block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 transition-colors duration-200"
-            >
-                <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                    Destination {id}: {title}
-                </h2>
-                <p className="font-normal text-gray-700">
-                    Click to read more about this fascinating topic...
-                </p>
-            </Link>
-        </li>
+            <div key={resort.id} className="resort-container">
+                <div className="resort-location">
+                    <h3>{resort.name}</h3>
+                    <p>{resort.country}</p>
+                </div>
+                <div className="resort-info">
+                    <div className="image-container">
+                        <img src="/images/1.jpg" />
+                    </div>
+                    <div className="resort-details">
+                        <p><strong>Elevation Range:</strong> {resort.elevation}</p>
+                        <p><strong>Beginner:</strong> {resort.easySlopes}</p>
+                        <p><strong>Intermediate:</strong> {resort.intermediateSlopes}</p>
+                        <p><strong>Advanced:</strong> {resort.difficultSlopes}</p>
+                        <p><strong>Adult Price:</strong> {resort.adultPrice ? `${resort.adultPrice} $` : "Not available"}</p>
+                        <p><strong>Rating:</strong> {resort.review}</p>
+                    </div>
+                </div>
+            </div>
     );
-}
+};
 
-export default async function DestinationPage({
-    searchParams,
-}: DestinationPageProps) {
-    const destinationsCount = await getDestinationsCount();
-    const pagesCount = Math.ceil(destinationsCount / PAGE_SIZE);
-    // Ensure the page number is a positive integer.
+
+export default async function DestinationPage({searchParams}: DestinationPageProps) {
+    const pagesCount = Math.ceil(620 / PAGE_SIZE);
+
     const currentPage = Math.min(
         /^[1-9][0-9]*$/.test(searchParams.page) ? Number(searchParams.page) : 1,
         pagesCount
@@ -47,16 +49,17 @@ export default async function DestinationPage({
     const _start = (currentPage - 1) * PAGE_SIZE;
     const _limit = PAGE_SIZE;
 
-    const destinations = await getDestinations({ _start, _limit });
+    const destinations = await getResorts({ _start, _limit });
+
     return (
         <main className="flex flex-col flex-1 max-w-3xl m-auto items-center p-10">
             <Navbar />
             <h1 className="text-6xl font-extrabold tracking-tight mb-10">
-                Destination
+                Ski resorts
             </h1>
             <Pagination currentPage={currentPage} pagesCount={pagesCount} />
             <ul className="w-full space-y-4">
-                {destinations.map(processDestination)}
+                {destinations.map(processSkiResort)}
             </ul>
         </main>
     );

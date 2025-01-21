@@ -13,3 +13,24 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px gray;
 }
+
+.resort-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+.resort-info{
+    display: flex;
+    padding-top: 25px;
+}
+.image-container img{
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.resort-details{
+    padding: 0 50px;
+}

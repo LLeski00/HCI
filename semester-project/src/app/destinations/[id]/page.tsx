@@ -3,7 +3,7 @@ import type { Destination } from "../_lib/api";
 import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Navbar } from "@/app/components/navbar/navbar";
+import { Navbar } from "@/components/navbar/navbar";
 
 export const metadata: Metadata = {
     title: "Destination",

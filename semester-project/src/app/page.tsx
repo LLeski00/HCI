@@ -1,7 +1,7 @@
-import { Button } from "./components/button/button";
-import { Footer } from "./components/footer/footer";
-import { Navbar } from "./components/navbar/navbar";
-import { Rating } from "./components/rating/rating";
+import { Button } from "../components/button/button";
+import { Footer } from "../components/footer/footer";
+import { Navbar } from "../components/navbar/navbar";
+import { Rating } from "../components/rating/rating";
 import "./home.css";
 
 export default function Home() {
