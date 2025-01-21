@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { getResorts } from "./_lib/api";
 import Pagination from "./_components/pagination";
 import { Navbar } from "../../components/navbar/navbar";
+import type { ResortInfo } from "./_lib/api";
 import "./destinations.css";
 
 type DestinationPageProps = {
     searchParams: { page: string };
 };
+
 
 const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 6;
 
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
     title: "Destination",
 };
 
-function processSkiResort(resort:any) {
+function processSkiResort(resort: ResortInfo) {
     return (
             <div key={resort.id} className="resort-container">
                 <div className="resort-location">
