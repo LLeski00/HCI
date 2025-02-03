@@ -43,7 +43,7 @@ function processSkiResort(resort: ResortInfo) {
                     <div className="resort-details">
 
                         <div className="resort-title-content">
-                            <h4>{resort.name}<span>({resort.country})</span></h4>
+                            <h4>{resort.name || ""}<span>({resort.country || ""})</span></h4>
                             {/*<p>({resort.country})</p>*/}
                         </div>
 
@@ -55,11 +55,11 @@ function processSkiResort(resort: ResortInfo) {
                             </div>
                             <div className="resort-info-item">
                                 <TbAerialLift />
-                                <span>{resort.skiLift}</span>
+                                <span>{resort.skiLift || 0}</span>
                             </div>
                             <div className="resort-info-item">
                                 <GiTwoCoins />
-                                <span>{resort.adultPrice}</span>
+                                <span>{resort.adultPrice || "Price not available"}</span>
                             </div>
 
                         </div>

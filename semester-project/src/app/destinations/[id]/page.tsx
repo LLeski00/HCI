@@ -28,29 +28,29 @@ export default async function DestinationDestination({
     return (
         <>
             <HeroSection titleTop="" 
-                        titleBottom={destination.name} 
-                        description={destination.country} 
+                        titleBottom={destination.name || ""} 
+                        description={destination.country || ""} 
                         backgroundImage="/images/2.jpg"/>
 
             <main>
                 <div className="info-description">
-                    <p>{destination.description}</p>
+                    <p>{destination.description || ""}</p>
                 </div>
                 <div className="info-container">
                     <div className="info-content">
                         <div className="info-item">
                             <FaMountain />
-                            <p>{destination.elevation}</p>
+                            <p>{destination.elevation || "No elevation info"}</p>
                         </div>
                         <div className="info-item">
                             <TbAerialLift />
-                            <p>{destination.skiLift}</p>
+                            <p>{destination.skiLift || 0}</p>
                         </div>
                         <div className="info-item">
                             <FaPersonSkiing />
-                            <p>easy slopes: {destination.easySlopes}</p>   
-                            <p>intermediate slopes: {destination.intermediateSlopes}</p>
-                            <p>difficult slopes: {destination.difficultSlopes}</p>
+                            <p>easy slopes: {destination.easySlopes || 0}</p>   
+                            <p>intermediate slopes: {destination.intermediateSlopes || 0}</p>
+                            <p>difficult slopes: {destination.difficultSlopes || 0}</p>
                         </div>
                         
                     </div>
@@ -60,8 +60,8 @@ export default async function DestinationDestination({
                 <div className="information-content">
                     <div className="information-item">
                         <h2>Price</h2>
-                        <p>Adults: {destination.adultPrice}</p>
-                        <p>Children: {destination.youthPrice}</p>
+                        <p>Adults: {destination.adultPrice || "Price not available"}</p>
+                        <p>Children: {destination.youthPrice || "Price not available"}</p>
                     </div>
                 </div>
             </main>
