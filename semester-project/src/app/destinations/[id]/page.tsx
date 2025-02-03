@@ -1,35 +1,71 @@
 import { Metadata } from "next";
-import { Navbar } from "@/components/navbar/navbar";
+import HeroSection from "@/components/hero/hero";
+import { getResortById } from "../_lib/api";
+import { FaPersonSkiing, FaMountain  } from "react-icons/fa6";
+import { TbAerialLift } from "react-icons/tb";
 
 export const metadata: Metadata = {
     title: "Destination",
 };
 
 type DestinationProps = {
-    params: { id: string };
+    params: { id: string, name: string };
 };
 
-/*async function getDestination(id: string): Promise<ResortInfo> {
-    const data = await fetch(`${process.env.BASE_API_URL}/${id}`);
-    return data.json();
-}*/
+async function getSkiResort(id: string) {
+    const resort = getResortById(id);
+    return resort;
+}
 
 export default async function DestinationDestination({
     params,
 }: DestinationProps) {
     const destination = await getSkiResort(params.id);
-    console.log(destination);
+    if (!destination) {
+        return <div>Destination not found</div>;
+    }
 
     return (
-        <main className="flex min-h-screen flex-col items-center p-10">
-            <Navbar />
-            <article className="w-full max-w-2xl bg-white shadow-lg rounded-lg overflow-hidden p-6">
-                
-            </article>
-        </main>
+        <>
+            <HeroSection titleTop="" 
+                        titleBottom={destination.name} 
+                        description={destination.country} 
+                        backgroundImage="/images/2.jpg"/>
+
+            <main>
+                <div className="info-description">
+                    <p>{destination.description}</p>
+                </div>
+                <div className="info-container">
+                    <div className="info-content">
+                        <div className="info-item">
+                            <FaMountain />
+                            <p>{destination.elevation}</p>
+                        </div>
+                        <div className="info-item">
+                            <TbAerialLift />
+                            <p>{destination.skiLift}</p>
+                        </div>
+                        <div className="info-item">
+                            <FaPersonSkiing />
+                            <p>easy slopes: {destination.easySlopes}</p>   
+                            <p>intermediate slopes: {destination.intermediateSlopes}</p>
+                            <p>difficult slopes: {destination.difficultSlopes}</p>
+                        </div>
+                        
+                    </div>
+                    <div className="tear-effect"></div>
+                    
+                </div>
+                <div className="information-content">
+                    <div className="information-item">
+                        <h2>Price</h2>
+                        <p>Adults: {destination.adultPrice}</p>
+                        <p>Children: {destination.youthPrice}</p>
+                    </div>
+                </div>
+            </main>
+        </>
     );
 }
 
-function getSkiResort(id: string) {
-    return id;
-}

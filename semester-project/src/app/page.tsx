@@ -1,21 +1,16 @@
+import HeroSection from "@/components/hero/hero";
 import { Button } from "../components/button/button";
 import { Footer } from "../components/footer/footer";
-import { Navbar } from "../components/navbar/navbar";
 import { Rating } from "../components/rating/rating";
 import "./home.css";
 
 export default function Home() {
     return (
         <div className="">
-            <section className="hero-section">
-                <div className="hero-overlay"></div>
-                <Navbar />
-                <div className="hero-text">
-                    <h1 className="hero-heading top"> YOUR SKI</h1>
-                    <h1 className="hero-heading bottom">ADVENTURE AWAITS! </h1>
-                    <p> PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET </p>
-                </div>
-            </section>
+            <HeroSection titleTop="YOUR SKI"
+                         titleBottom="ADVENTURE AWAITS!" 
+                         description="PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET" 
+                         backgroundImage="/images/4.jpg"/>
 
             <section className="home-section">
                 <div className="text-content">
@@ -36,7 +31,7 @@ export default function Home() {
                     <Button text="EXPLORE" href="/" />
                 </div>
                 <div className="image-container">
-                    <img src="/images/skiing.jpeg" />
+                    <img src="/images/skiing.jpg" />
                 </div>
             </section>
             <section className="home-destinations-section">

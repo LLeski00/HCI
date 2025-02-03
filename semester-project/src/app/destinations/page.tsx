@@ -1,19 +1,32 @@
-import type { Metadata } from "next";
+/*import type { Metadata } from "next";*/
 import { getResorts } from "./_lib/api";
 import Pagination from "./_components/pagination";
-import { Navbar } from "../../components/navbar/navbar";
 import type { ResortInfo } from "./_lib/api";
 import "./destinations.css";
+import Link from "next/link";
+import HeroSection from "@/components/hero/hero";
+
+import { FaPersonSkiing } from "react-icons/fa6";
+import { TbAerialLift } from "react-icons/tb";
+import { GiTwoCoins } from "react-icons/gi";
+import { Footer } from "@/components/footer/footer";
 
 type DestinationPageProps = {
     searchParams: { page: string };
 };
 
-const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 6;
+const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 20;
 
-export const metadata: Metadata = {
+/*export const metadata: Metadata = {
     title: "Destination",
-};
+};*/
+
+const getTotalDistance = (easy: string, intermediate: string, difficult: string) => {
+    return [easy, intermediate, difficult]
+      .map((slope) => parseInt(slope)) 
+      .reduce((a, b) => a + b, 0); 
+  };
+  
 
 function processSkiResort(resort: ResortInfo) {
     if(!resort)
@@ -21,23 +34,42 @@ function processSkiResort(resort: ResortInfo) {
 
     return (
             <div key={resort.id} className="resort-container">
-                <div className="resort-location">
-                    <h3>{resort.name}</h3>
-                    <p>{resort.country}</p>
-                </div>
-                <div className="resort-info">
-                    <div className="image-container">
+                <Link href={`/destinations/${resort.id}`}>
+
+                    <div className="resort-image-container">
                         <img src="/images/1.jpg" />
                     </div>
+
                     <div className="resort-details">
-                        <p><strong>Elevation Range:</strong> {resort.elevation}</p>
-                        <p><strong>Beginner:</strong> {resort.easySlopes}</p>
-                        <p><strong>Intermediate:</strong> {resort.intermediateSlopes}</p>
-                        <p><strong>Advanced:</strong> {resort.difficultSlopes}</p>
-                        <p><strong>Adult Price:</strong> {resort.adultPrice ? `${resort.adultPrice} $` : "Not available"}</p>
-                        <p><strong>Rating:</strong> {resort.review}</p>
+
+                        <div className="resort-title-content">
+                            <h4>{resort.name}<span>({resort.country})</span></h4>
+                            {/*<p>({resort.country})</p>*/}
+                        </div>
+
+                        <div className="resort-info">
+
+                            <div className="resort-info-item">
+                                <FaPersonSkiing />
+                                <span>{getTotalDistance(resort.easySlopes ?? '0', resort.intermediateSlopes ?? '0', resort.difficultSlopes ?? '0')} km</span>
+                            </div>
+                            <div className="resort-info-item">
+                                <TbAerialLift />
+                                <span>{resort.skiLift}</span>
+                            </div>
+                            <div className="resort-info-item">
+                                <GiTwoCoins />
+                                <span>{resort.adultPrice}</span>
+                            </div>
+
+                        </div>
+
+                        <div className="details-button">
+                            <button>Details</button>
+                        </div>
                     </div>
-                </div>
+              
+                </Link>
             </div>
     );
 };
@@ -56,15 +88,42 @@ export default async function DestinationPage({searchParams}: DestinationPagePro
     const destinations : ResortInfo[] = await getResorts({ _start, _limit });
 
     return (
-        <main className="flex flex-col flex-1 max-w-3xl m-auto items-center p-10">
-            <Navbar />
-            <h1 className="text-6xl font-extrabold tracking-tight mb-10">
-                Ski resorts
-            </h1>
-            <Pagination currentPage={currentPage} pagesCount={pagesCount} />
-            <ul className="w-full space-y-4">
-                {destinations && destinations.map((destination:ResortInfo)=>processSkiResort(destination))}
-            </ul>
-        </main>
+        <>
+            <HeroSection titleTop="EUROPE SKI" 
+                            titleBottom="DESTINATIONS" 
+                            description="Find the best resorts in Europe" 
+                            backgroundImage="/images/2.jpg"/>
+
+            <main>
+                <div className="info-description">
+                    <p>Europe is home to some of the most breathtaking ski resorts in the world, offering a blend of thrilling slopes, stunning alpine landscapes, and charming mountain villages. From the majestic peaks of the Alps to the snow-capped ranges of the Pyrenees and beyond, the continent provides an unparalleled experience for skiers and snowboarders of all skill levels.<br/><br/>
+                        Whether you're carving through powdery trails in the famous Swiss resort of Zermatt, enjoying the lively après-ski scene in France's Chamonix, or exploring Austria's vast ski circuits in St. Anton, each destination boasts a unique blend of world-class facilities, rich cultural heritage, and scenic beauty. With modern lift systems, luxurious accommodations, and activities ranging from off-piste adventures to family-friendly snow parks, European ski resorts cater to every type of traveler.<br/><br/>
+                        For those seeking more than just skiing, these resorts often offer spa retreats, gourmet dining experiences, and opportunities to soak in the charm of historic alpine towns. Europe’s ski season typically runs from December to April, making it the perfect winter getaway for adventurers and leisure seekers alike.<br/><br/>
+                        No matter your preferences, Europe’s diverse range of ski resorts promises an unforgettable winter wonderland experience.</p>
+                </div>
+                <div className="info-container">
+                    
+                    <div className="info-content"></div>
+                    <div className="tear-effect"></div>
+                    
+                </div>
+                
+
+                <div className="ski-resorts-page">
+                    <div className="sidebar">
+                        <h3>FILTERS</h3>
+                    </div>
+                    <ul className="ski-resorts-list">
+                        {destinations && destinations.map((destination:ResortInfo)=>processSkiResort(destination))}
+                    </ul>
+
+                    <div className="pagination">
+                        <Pagination currentPage={currentPage} pagesCount={pagesCount} />
+                    </div>
+                </div>
+            </main>
+            <Footer />
+        </>
+        
     );
 }

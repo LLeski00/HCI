@@ -1,5 +1,6 @@
 import { db } from "@/db/drizzle";
 import { resorts } from "@/db/schemas/ski-resorts";
+import { eq } from "drizzle-orm";
 
 type PagingInfo = {
     _start?: number;
@@ -15,6 +16,7 @@ export type ResortInfo = {
     easySlopes:string | null,
     intermediateSlopes:string | null,
     difficultSlopes:string | null,
+    skiLift:string | null,
     adultPrice:string | null,
     youthPrice:string | null,
     review:string | null,
@@ -26,8 +28,7 @@ const PAGE_SIZE = Number(process.env.PAGE_SIZE);
 async function getAllResorts() {
     const data = await db
         .select()    
-        .from(resorts)
-        .orderBy(resorts.name);
+        .from(resorts);
 
     return data;
 }
@@ -40,9 +41,17 @@ async function getResorts({
         .select()
         .from(resorts)
         .limit(_limit) 
-        .offset(_start)    
-        .orderBy(resorts.name); 
+        .offset(_start); 
     return data;
 }
 
-export { getAllResorts, getResorts };
+async function getResortById(id: string): Promise<ResortInfo | null> {
+    const data = await db
+        .select()
+        .from(resorts)
+        .where(eq(resorts.id, id))
+        .limit(1);
+    return data ? data[0] : null;
+}	
+
+export { getAllResorts, getResorts, getResortById };
