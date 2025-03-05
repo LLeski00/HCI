@@ -47,13 +47,15 @@ export default function Home() {
                         <img src="/images/altaBadia.jpg" />
                     </div>
                     <div className="home-destination">
-                        <h4>Val Torens, Italy</h4>
+                        <h4>Val Thorens, France</h4>
                         <img src="/images/valtores.jpg" />
                     </div>
                 </div>
                 <Button text="VIEW MORE" href="/" />
+                <div className="tear-effect"></div>
             </section>
 
+                
             <section className="planner-section">
                 <div className="title-content">
                     <h1>Your personal ski planner</h1>
