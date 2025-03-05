@@ -1,27 +1,12 @@
 import { db } from "@/db/drizzle";
 import { resorts } from "@/db/schemas/ski-resorts";
 import { eq } from "drizzle-orm";
+import { ResortInfo } from "../types/resort";
 
 type PagingInfo = {
     _start?: number;
     _limit?: number;
 };
-
-export type ResortInfo = {
-    id:string,
-    name:string,
-    country:string,
-    description:string | null,
-    elevation:string | null,
-    easySlopes:string | null,
-    intermediateSlopes:string | null,
-    difficultSlopes:string | null,
-    skiLift:string | null,
-    adultPrice:string | null,
-    youthPrice:string | null,
-    review:string | null,
- 
- };
 
 const PAGE_SIZE = Number(process.env.PAGE_SIZE);
 
