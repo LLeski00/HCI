@@ -1,4 +1,3 @@
-/*import type { Metadata } from "next";*/
 import { getAllResorts } from "./_lib/api";
 import "./destinations.css";
 import HeroSection from "@/components/hero/hero";
@@ -19,7 +18,7 @@ export default async function DestinationPage() {
             <main>
                 <DestinationClientView allDestinations={destinations} />
             </main>
-            
+
             <Footer />
         </>
         

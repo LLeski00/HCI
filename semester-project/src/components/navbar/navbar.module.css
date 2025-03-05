@@ -12,6 +12,7 @@
     color: var(--background);
     margin: 0;
     margin-left: 20px;
+    z-index: 1;
 }
 
 .navList {
@@ -46,6 +47,11 @@
     color: var(--background);
     background-color: var(--orange);
     margin-right: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
 
 .underline {

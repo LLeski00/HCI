@@ -49,5 +49,5 @@ export default function ResortCard ({resort}:{resort: ResortInfo}) {
           
             </Link>
         </div>
-);
+    );
 };

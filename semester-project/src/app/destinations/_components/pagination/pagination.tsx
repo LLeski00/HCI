@@ -1,25 +1,34 @@
-import Link from "next/link";
 import "./pagination.css";
+import { useState } from "react";
 
 type PaginationProps = {
-    currentPage: number;
+    initialPage: number;
     pagesCount: number;
+    onChange: (page: number) => void;
 };
 
 export default function Pagination(pagination: PaginationProps) {
-    const { currentPage, pagesCount } = pagination;
+    const { initialPage, pagesCount, onChange } = pagination;
+    const [currentPage, setCurrentPage] = useState(initialPage);
     const isFirstPage = currentPage === 1;
     const isLastPage = currentPage === pagesCount;
 
+    const goToPage = (page: number) => {
+        if(page >= 1 && page <= pagesCount){
+            setCurrentPage(page);
+            onChange(page);
+        }
+    }
+
     return (
         <div className="pagination-container">
-            <Link
-                href={`/destinations?page=${currentPage - 1}`}
+            <button
+                onClick={() => goToPage(currentPage - 1)}
                 className={isFirstPage ? "disabled" : ""}
                 aria-disabled={isFirstPage}
             >
                 Previous
-            </Link>
+            </button>
             <p>
                 Page{" "}
                 <span>
@@ -30,13 +39,15 @@ export default function Pagination(pagination: PaginationProps) {
                     {pagesCount}
                 </span>
             </p>
-            <Link
-                href={`/destinations?page=${currentPage + 1}`}
+            <button
+                onClick={() => goToPage(currentPage + 1)}
                 className={isLastPage ? "disabled" : ""}
                 aria-disabled={isLastPage}
             >
                 Next
-            </Link>
+            </button>
         </div>
     );
 }
+
+//
