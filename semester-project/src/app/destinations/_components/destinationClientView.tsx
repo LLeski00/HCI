@@ -5,6 +5,8 @@ import { FilterProps } from "../types/filter";
 import SkiResortsList from "./skiResortList";
 import FilterByName from "./filters/filterByName";
 import FilterByCountry from "./filters/filterByCountry";
+import FilterByRange from "./filters/filterByRange";
+import FilterToSort from "./filters/filterToSort";
 
 export default function DestinationClientView ({allDestinations}: {allDestinations: ResortInfo[]}) {
     const [filterData, setFilterData] = useState<FilterProps>({
@@ -21,11 +23,9 @@ export default function DestinationClientView ({allDestinations}: {allDestinatio
                     <h3>FILTERS</h3>
                     <div className="filters-box">
                         <FilterByName filterData={filterData} setFilterData={setFilterData} />
+                        <FilterToSort filterData={filterData} setFilterData={setFilterData} />
                         <FilterByCountry filterData={filterData} setFilterData={setFilterData} />
-                        {/*<SearchBar filterData={filterData} setFilterData={setFilterData} />
-                        <SortFilter filterData={filterData} setFilterData={setFilterData}/>
-                        <CountryFilter filterData={filterData} setFilterData={setFilterData} /> 
-                        <RangeFilter filterData={filterData} setFilterData={setFilterData}/>*/}
+                        <FilterByRange filterData={filterData} setFilterData={setFilterData} />
                     </div>
                 </aside>
                 <SkiResortsList destinations={allDestinations}

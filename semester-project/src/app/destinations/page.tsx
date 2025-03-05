@@ -17,14 +17,9 @@ export default async function DestinationPage() {
                             backgroundImage="/images/2.jpg"/>
 
             <main>
-                {/*<div className="ski-resorts-page">
-                    <aside>
-                        <h3>FILTERS</h3>
-                    </aside>
-                    <SkiResortsList destinations={destinations} />
-                </div>*/}
                 <DestinationClientView allDestinations={destinations} />
             </main>
+            
             <Footer />
         </>
         
