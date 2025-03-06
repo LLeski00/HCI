@@ -1,4 +1,5 @@
 //import Pagination from "./pagination";
+"use client";
 import ResortCard from "./resortCard";
 import { ResortInfo } from "../types/resort";
 import { FilterProps } from "../types/filter";

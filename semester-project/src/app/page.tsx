@@ -3,6 +3,7 @@ import { Button } from "../components/button/button";
 import { Footer } from "../components/footer/footer";
 import { Rating } from "../components/rating/rating";
 import "./home.css";
+import TearEffect from "@/components/tearEffect/tearEffect";
 
 export default function Home() {
     return (
@@ -52,7 +53,7 @@ export default function Home() {
                     </div>
                 </div>
                 <Button text="VIEW MORE" href="/" />
-                <div className="tear-effect"></div>
+                <TearEffect />
             </section>
 
                 

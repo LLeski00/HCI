@@ -1,9 +1,3 @@
-.info-description{
-    display: flex;
-    align-items: center;
-    margin: 10vh 15vw;
-}
-
 .ski-resorts-page{
     display: grid;
     grid-template-areas: 
@@ -45,6 +39,7 @@
 }
 
 .resort-image-container{
+    position: relative;
     height: 200px;
 }
 
@@ -118,47 +113,33 @@
     */
 }
 
-.info-container{
-    height: 70vh;
-    background-color: var(--dark);
-    display: flex;
-    flex-direction: column;
-    margin-top: 100px;
-}
-
 .resort-info-content{
     display: flex;
     height: 10vh;
     background-color: rgb(3, 16, 27);
 }
 
-.info-content, .information-item{
-    height: 62vh;
-    margin: 0 15vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
-
-.info-item{
+.icon-content{
+    position:absolute;
+    top: 10px; 
+    right: 10px;
+    font-size: 25px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    color: var(--background);
-    font-size: 1.5rem;
-    padding-top: 15vh;
+    background-color: var(--background);
+    border-radius: 5px;
+    padding: 3px;
 }
 
-.info-item svg{
-    font-size: 5rem;
-    margin-bottom: 5vh;
-
+.icon-content p{
+    font-size: 15px;
 }
 
-.info-item p{
-    font-size: 1.5rem;
-    color: var(--background);
+.filled-star{
+    fill: var(--orange);
+    
 }
+
 
 aside{
     border-right: 1px solid var(--blue-background);
@@ -174,3 +155,4 @@ aside h3{
     align-self: flex-start;
     margin: 4vh 2vw;
 }
+

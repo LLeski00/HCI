@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar } from '../navbar/navbar';
 import styles from "./hero.module.css";
+import TearEffect from '../tearEffect/tearEffect';
 
 interface HeroSectionProps {
     titleTop: string;
@@ -21,8 +22,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ titleTop, titleBottom, descri
                     <h1 className={` ${styles.heroHeading} ${styles.bottom}`}>{titleBottom}</h1>
                     <p>{description}</p>
                 </div>
+               
             </section>
-            <div className={styles.tearEffect}></div>
+            <TearEffect isHero={true} />
         </>
         
     );

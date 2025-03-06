@@ -1,3 +1,5 @@
+"use client";
+//import Router from 'next/router'
 import "./pagination.css";
 import { useState } from "react";
 
@@ -17,6 +19,9 @@ export default function Pagination(pagination: PaginationProps) {
         if(page >= 1 && page <= pagesCount){
             setCurrentPage(page);
             onChange(page);
+
+            const newUrl = page === 1 ? "/destinations" : `/destinations?page_${page}`;
+            window.history.pushState({}, "", newUrl);            
         }
     }
 
