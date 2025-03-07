@@ -58,3 +58,8 @@
 .info-item p{
     font-weight: 800;
 }
+
+.table{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}

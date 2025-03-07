@@ -61,7 +61,7 @@ export default async function DestinationDestination({
                         <div className="info-item">
                             <FaPersonSkiing />
                             <h3>Slope length</h3>
-                            <div className="item-content">
+                            <div className="item-content table">
                                 <p>easy slopes: {destination.easySlopes || 0}</p>   
                                 <p>intermediate slopes: {destination.intermediateSlopes || 0}</p>
                                 <p>difficult slopes: {destination.difficultSlopes || 0}</p>
@@ -70,7 +70,7 @@ export default async function DestinationDestination({
                         <div className="info-item">
                             <GiTwoCoins />
                             <h3>Price</h3>
-                            <div className="item-content">
+                            <div className="item-content table">
                                 <p>Adults: {destination.adultPrice || "Price not available"} €</p>
                                 <p>Children: {destination.youthPrice || "Price not available"} €</p>
                             </div>

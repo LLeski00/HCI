@@ -35,6 +35,8 @@ export default function Home() {
                     <img src="/images/skiing.jpg" />
                 </div>
             </section>
+            
+            <TearEffect blueBackground={true}/>
             <section className="home-destinations-section">
                 <h1>Explore popular destinations</h1>
                 {/*slideshow */}
@@ -108,6 +110,7 @@ export default function Home() {
                 </article>
             </section>
 
+            <TearEffect blueBackground={true}/>
             <section className="review-section">
                 <h3>Hear From Fellow Skiers!</h3>
                 <article>
