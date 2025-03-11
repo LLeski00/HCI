@@ -39,8 +39,7 @@
     stroke: var(--text-color);
 }*/
 
-.info-item h3{
-    font-size: 1.5rem;
+.info-item h3, .info-item p{
     color: var(--background);
 }
 
@@ -55,11 +54,11 @@
 
 }
 
-.info-item p{
-    font-weight: 800;
-}
-
 .table{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
+}
+
+.images-content{
+   padding: 80px;
 }

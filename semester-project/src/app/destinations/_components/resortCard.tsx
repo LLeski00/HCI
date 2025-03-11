@@ -17,7 +17,7 @@ export default function ResortCard ({resort}:{resort: ResortInfo}) {
             <Link href={`/destinations/${resort.id}`}>
 
             <div className="resort-image-container">
-                <img src={resort.images || "/images/1.jpg"} alt="Resort" />
+                <img src={resort.images?.[0] || "/images/1.jpg"} alt="Resort" />
                 <div className="icon-content">
                     <IoIosStar className="filled-star" />
                     <p>{resort.review}</p>

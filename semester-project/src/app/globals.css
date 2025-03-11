@@ -7,7 +7,7 @@
     --background: #f0f9ff;
     --foreground: #171717;
 
-    --text-color: #082449;
+    --text-color: #0e2c53;
     --blue-background: #c3d8ed;
     --dark: #5e748e;
     --orange: #f7a260;
@@ -79,4 +79,5 @@ img {
 button{
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }

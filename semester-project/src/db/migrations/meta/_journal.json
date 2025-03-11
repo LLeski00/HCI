@@ -8,6 +8,27 @@
       "when": 1737414947964,
       "tag": "0000_lean_cerise",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1741436560187,
+      "tag": "0001_known_warhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1741436775508,
+      "tag": "0002_smiling_shinko_yamashiro",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1741438925534,
+      "tag": "0003_sour_tiger_shark",
+      "breakpoints": true
     }
   ]
 }

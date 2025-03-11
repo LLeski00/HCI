@@ -2,7 +2,7 @@ type ResortInfo = {
     id:string,
     name:string,
     country:string,
-    images:string | null,
+    images: string[] | null,
     description:string | null,
     elevation:string | null,
     easySlopes:string | null,

@@ -1,4 +1,4 @@
-import { pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { numeric, pgTable, text, uuid } from 'drizzle-orm/pg-core';
 
 export const resorts = pgTable('resorts', {
     id: uuid('id').primaryKey(),          
@@ -6,12 +6,12 @@ export const resorts = pgTable('resorts', {
     country: text('country').notNull(),       
     description: text('description'),        
     elevation: text('elevation'), 
-    easySlopes: text('easy-slopes'), 
-    intermediateSlopes: text('intermediate-slopes'), 
-    difficultSlopes: text('difficult-slopes'), 
-    skiLift:text('ski-lift'),      
-    adultPrice: text('adult-price'),
-    youthPrice: text('youth-price'),                          
-    review: text('review'),             
-    images: text('images'),
+    easySlopes: numeric('easy-slopes'), 
+    intermediateSlopes: numeric('intermediate-slopes'), 
+    difficultSlopes: numeric('difficult-slopes'), 
+    skiLift:numeric('ski-lift'),      
+    adultPrice: numeric('adult-price'),
+    youthPrice: numeric('youth-price'),                          
+    review: numeric('review'),             
+    images: text('images').array(),
 });

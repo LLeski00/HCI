@@ -6,7 +6,7 @@ import { TbAerialLift } from "react-icons/tb";
 import { GiTwoCoins } from "react-icons/gi";
 import './resort.css';
 import TearEffect from "@/components/tearEffect/tearEffect";
-
+import Carousel from "@/components/carousel/carousel";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -31,9 +31,9 @@ export default async function DestinationDestination({
     return (
         <>
             <HeroSection titleTop="" 
-                        titleBottom={destination.name || ""} 
-                        description={destination.country || ""} 
-                        backgroundImage={destination.images || "/images/2.jpg"}/>
+                         titleBottom={destination.name || ""} 
+                         description={destination.country || ""} 
+                         backgroundImage={destination.images?.[0] || "/images/2.jpg"} />
 
             <main>
                 <div className="info-description">
@@ -54,7 +54,7 @@ export default async function DestinationDestination({
                             <TbAerialLift className="lift"/>
                             <h3>Ski lifts</h3>
                             <div className="item-content">
-                                <p>{destination.skiLift || 0}</p>
+                                <p>Total lifts: {destination.skiLift || 0}</p>
                             </div>
                             
                         </div>
@@ -62,9 +62,9 @@ export default async function DestinationDestination({
                             <FaPersonSkiing />
                             <h3>Slope length</h3>
                             <div className="item-content table">
-                                <p>easy slopes: {destination.easySlopes || 0}</p>   
-                                <p>intermediate slopes: {destination.intermediateSlopes || 0}</p>
-                                <p>difficult slopes: {destination.difficultSlopes || 0}</p>
+                                <p>easy slopes: {destination.easySlopes || 0} km</p>   
+                                <p>intermediate slopes: {destination.intermediateSlopes || 0} km</p>
+                                <p>difficult slopes: {destination.difficultSlopes || 0} km</p>
                             </div>
                         </div>
                         <div className="info-item">
@@ -81,8 +81,14 @@ export default async function DestinationDestination({
                     <TearEffect />
                     
                 </div>
-                <div className="information-content">
+
+                {/*kada kliknemo na sliku uveca se*/} 
+                <div className="images-content">
+                    <h2>Resort images</h2>
+                    <Carousel destination={destination} />
                 </div>
+                
+                
             </main>
         </>
     );

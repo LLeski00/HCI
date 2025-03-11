@@ -1,0 +1,30 @@
+.carouselWrapper{
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.swiperContainer {
+    flex-grow: 1; 
+    max-width: 90%;
+}
+
+.carouselWrapper img{
+    height: 300px;
+    width: 500px;
+}
+
+.swiperBottun {
+    background-color: var(--blue-background);
+    color: var(--background);
+    border: none;
+    padding: 20px 15px;
+    font-size: 25px;
+    z-index: 10;
+}
+
+.swiperBottun:hover{
+    background-color: var(--dark);
+}

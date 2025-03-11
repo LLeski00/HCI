@@ -16,6 +16,7 @@ const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 20;
 
 export default function SkiResortsList({ destinations, filterData} : ResortsListProps){
     const [currentPage, setCurrentPage] = useState(1);
+    
     const handleScroll = (page: number) => {
         setCurrentPage(page);
         window.scrollTo(0,700);
@@ -66,13 +67,15 @@ export default function SkiResortsList({ destinations, filterData} : ResortsList
                 break;
           }
 
-        const indexOfLastResort = currentPage * PAGE_SIZE;
-        const indexOfFirstResort = indexOfLastResort - PAGE_SIZE;
-
-        return resortsToDisplay.slice(indexOfFirstResort, indexOfLastResort);
+        return resortsToDisplay;
     }
 
-    const resortsToDisplay = filterResorts();
+    const filteredResorts = filterResorts();
+    const pagesCount = Math.ceil(filteredResorts.length / PAGE_SIZE);
+
+    const startIndex = (currentPage - 1) * PAGE_SIZE;
+    const endIndex = startIndex + PAGE_SIZE;
+    const resortsToDisplay = filteredResorts.slice(startIndex, endIndex);
 
     return(
     <>
@@ -83,10 +86,9 @@ export default function SkiResortsList({ destinations, filterData} : ResortsList
         </ul>
         <div className="pagination">
         <Pagination initialPage={currentPage}
-                    pagesCount={Math.ceil(destinations.length / PAGE_SIZE)}
-                    onChange={handleScroll} // Passes setCurrentPage as the handler
+                    pagesCount={pagesCount}
+                    onChange={handleScroll}
                 />
-            {/*<Pagination currentPage={currentPage} pagesCount={pagesCount} />*/}
         </div>
     </>
     )
