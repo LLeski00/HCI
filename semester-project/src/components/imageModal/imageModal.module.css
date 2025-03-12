@@ -1,0 +1,40 @@
+.fullscreenOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: var(--background);
+}
+
+.overlayContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    gap: 20px;
+}
+
+.arrowButton {
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: var(--background);
+    cursor: pointer;
+}
