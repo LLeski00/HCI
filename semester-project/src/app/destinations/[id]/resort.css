@@ -5,11 +5,11 @@
 }
 
 .info-container{
-    height: 70vh;
+    max-height: 70vh;
     background-color: var(--dark);
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    justify-content: center;
 }
 
 .info-content, .information-item{
@@ -17,8 +17,8 @@
     margin: 0 10vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 15px;
 }
+
 
 .info-item{
     display: flex;
@@ -26,18 +26,12 @@
     align-items: center;
     color: var(--background);
     font-size: 1.5rem;
-    padding-top: 15vh;
+    padding-top: 10vh;
 }
 
 .info-item svg{
     font-size: 5rem;
-    /*fill: var(--text-color);*/
-
 }
-/*.lift{
-    fill: none;
-    stroke: var(--text-color);
-}*/
 
 .info-item h3, .info-item p{
     color: var(--background);

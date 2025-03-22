@@ -1,0 +1,175 @@
+{
+  "id": "f541c5ba-0c96-4f0f-bccc-8b22ae9a7fac",
+  "prevId": "6fa4715c-1bf8-4bbd-a39c-a51bb918e85b",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.resorts": {
+      "name": "resorts",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "country": {
+          "name": "country",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "elevation": {
+          "name": "elevation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "easy-slopes": {
+          "name": "easy-slopes",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "intermediate-slopes": {
+          "name": "intermediate-slopes",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "difficult-slopes": {
+          "name": "difficult-slopes",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ski-lift": {
+          "name": "ski-lift",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adult-price": {
+          "name": "adult-price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "youth-price": {
+          "name": "youth-price",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "review": {
+          "name": "review",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "images": {
+          "name": "images",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "profile_picture": {
+          "name": "profile_picture",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "favorite_resorts": {
+          "name": "favorite_resorts",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'[]'::json"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "user_email_unique": {
+          "name": "user_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

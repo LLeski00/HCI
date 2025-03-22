@@ -2,8 +2,8 @@ import { getAllResorts } from "./_lib/api";
 import "./destinations.css";
 import HeroSection from "@/components/hero/hero";
 import { Footer } from "@/components/footer/footer";
-import { ResortInfo } from "./types/resort";
 import DestinationClientView from "./_components/destinationClientView";
+import { ResortInfo } from "./types/resort";
 
 export default async function DestinationPage() {
     const destinations : ResortInfo[] = await getAllResorts();

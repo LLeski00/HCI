@@ -40,7 +40,9 @@ export default async function DestinationDestination({
                     <p>{destination.description || ""}</p>
                 </div>
 
+                 <TearEffect darkBackground={true} />
                 <div className="info-container">
+                    
                     <div className="info-content">
                         <div className="info-item">
                             <FaMountain />
@@ -87,6 +89,7 @@ export default async function DestinationDestination({
                     <h2>Resort images</h2>
                     <Carousel destination={destination} />
                 </div>
+                
                 
                 
             </main>

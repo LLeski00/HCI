@@ -1,4 +1,4 @@
-import { numeric, pgTable, text, uuid } from 'drizzle-orm/pg-core';
+import { jsonb, numeric, pgTable, text, uuid } from 'drizzle-orm/pg-core';
 
 export const resorts = pgTable('resorts', {
     id: uuid('id').primaryKey(),          
@@ -13,5 +13,5 @@ export const resorts = pgTable('resorts', {
     adultPrice: numeric('adult-price'),
     youthPrice: numeric('youth-price'),                          
     review: numeric('review'),             
-    images: text('images').array(),
+    images: jsonb('images').$type<string[] | null>().default([]),
 });

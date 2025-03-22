@@ -70,7 +70,7 @@ export function Navbar() {
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
             <GiHamburgerMenu />
-            <Link href="/login" className={styles.loginButton}>LOGIN</Link>
+            <Link href="/signin" className={styles.loginButton}>LOGIN</Link>
         </div>
     );
 }
