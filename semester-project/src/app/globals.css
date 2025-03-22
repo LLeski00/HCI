@@ -30,6 +30,7 @@ a {
     color: var(--text-color);
     font-family: "Jost", sans-serif;
     margin: 0;
+    cursor: pointer;
 }
 
 p,

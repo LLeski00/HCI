@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import '../signup/signup.css';
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 
 export default function SignUp() {
     const [email, setEmail] = useState("");
@@ -10,7 +11,6 @@ export default function SignUp() {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
-    const searchParams = useSearchParams();
     
     const signIn = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,16 +21,7 @@ export default function SignUp() {
             { email, password },
             {
               onSuccess: () => {
-                const redirectTo = searchParams.get("redirectTo");
-                const decodedRedirectTo = redirectTo
-                  ? decodeURIComponent(redirectTo)
-                  : "/";
-    
-                if (decodedRedirectTo.includes("/signin")) {
                   router.push("/");
-                } else {
-                  router.push(decodedRedirectTo);
-                }
               },
               onError: (ctx) => {
                 alert(ctx.error.message);
@@ -79,9 +70,12 @@ export default function SignUp() {
                           {loading ? "Signing in..." : "Sign in"}
                         </button>
                     </div>
-
+                
                 </form>
                 
+                <p className="auth-text">Forgotten password?</p>
+                <p className="auth-text">Don't have account yet? <Link href="/signup">Sign up here!</Link></p>
+
             </div>
         </div>
         
