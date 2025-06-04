@@ -48,9 +48,8 @@ function processPage(page: Page, index: number, pathname: string) {
                 {page.title}
 
                 <span
-                    className={`${styles.underline} ${
-                        isActive ? styles.underlineActive : ""
-                    }`}
+                    className={`${styles.underline} ${isActive ? styles.underlineActive : ""
+                        }`}
                 />
             </Link>
         </li>
@@ -70,7 +69,7 @@ export function Navbar() {
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
             <GiHamburgerMenu />
-            <Link href="/signin" className={styles.loginButton}>SIGN IN</Link>
+            <Link href="/auth/signin" className={styles.loginButton}>SIGN IN</Link>
         </div>
     );
 }

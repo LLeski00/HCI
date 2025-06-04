@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import './signup.css';
-import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { signUp } from "../_lib/authApi";
 
 export default function SignUp() {
     const [name, setName] = useState("");
@@ -12,45 +12,34 @@ export default function SignUp() {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
-    
-    const signUp = async (e: React.FormEvent) => {
+
+    const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-    
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            setLoading(false);
+            return;
+        }
+
         try {
-            if(password !== confirmPassword){
-                alert("Passwords do not match");
-                setLoading(false);
-                return;
-            }
-
-            await authClient.signUp.email({ name, email, password },
-                {
-                  onSuccess: () => {
-                    router.replace("/");
-                  },
-                  onError: (ctx) => {
-                    alert(ctx.error.message);
-                    setPassword("");
-                    setConfirmPassword("");
-                  },
-                });
-
-        } catch (error: any) {
-            console.error("Sign up error:", error);
-          
+            await signUp(name, email, password);
+            router.push("/");
+        } catch (error) {
+            alert("Signup failed: " + (error as Error).message);
         } finally {
             setLoading(false);
         }
-      };
-        
+    };
+
 
     return (
         <div className="auth-container">
             <div className="auth-box">
                 <h1>Sign up</h1>
-                <form className="auth-info" onSubmit={signUp}>
-                    <div> 
+                <form className="auth-info" onSubmit={handleSignup}>
+                    <div>
                         <label>Name</label>
                         <input id="name"
                             type="text"
@@ -104,9 +93,9 @@ export default function SignUp() {
                     </div>
 
                 </form>
-                
+
             </div>
         </div>
-        
+
     );
 }
