@@ -1,11 +1,13 @@
-import { Navbar } from "@/components/navbar/navbar";
-import { PlannerNavbar } from "./components/plannerNavbar";
+import HeroSection from "@/components/hero/hero";
 
 export default function Home() {
     return (
         <div>
-            <Navbar />
-            <PlannerNavbar />
+            <HeroSection
+                description="Planner"
+                titleBottom="Planner"
+                titleTop="Planner"
+            />
             <h1>Planner</h1>
         </div>
     );
