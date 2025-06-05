@@ -1,23 +1,13 @@
 "use client";
 
 import HeroSection from "@/components/hero/hero";
-import PlannerForm from "./_components/PlannerForm";
+import PlannerForm from "./_components/PlannerForm/PlannerForm";
 import { useState } from "react";
 import { PlannerFormData } from "@/types/planner";
+import PlannerResults from "./_components/PlannerResults/PlannerResults";
 
 export default function Home() {
-    const [formData, setFormData] = useState<PlannerFormData>({
-        startDate: new Date(),
-        endDate: new Date(),
-        numOfPeople: 1,
-        currentLocation: "",
-        budget: 0,
-    });
-
-    function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        console.log("Form submitted with data:", formData);
-    }
+    const [formData, setFormData] = useState<PlannerFormData | null>(null);
 
     return (
         <div>
@@ -27,11 +17,11 @@ export default function Home() {
                 titleTop="Planner"
             />
             <h1>Planner</h1>
-            <PlannerForm
-                formData={formData}
-                setFormData={setFormData}
-                handleFormSubmit={handleFormSubmit}
-            />
+            {formData ? (
+                <PlannerResults formData={formData} />
+            ) : (
+                <PlannerForm setFormData={setFormData} />
+            )}
         </div>
     );
 }
