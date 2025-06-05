@@ -1,8 +1,9 @@
 "use client";
+import '../styles/auth.css';
 import { useState } from "react";
-import './signup.css';
 import { useRouter } from "next/navigation";
 import { signUp } from "../_lib/authApi";
+import { AuthFormButton, AuthFormInput, AuthLayout } from "../components";
 
 export default function SignUp() {
     const [name, setName] = useState("");
@@ -10,7 +11,6 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [loading, setLoading] = useState(false);
-
     const router = useRouter();
 
     const handleSignup = async (e: React.FormEvent) => {
@@ -35,67 +35,57 @@ export default function SignUp() {
 
 
     return (
-        <div className="auth-container">
-            <div className="auth-box">
-                <h1>Sign up</h1>
-                <form className="auth-info" onSubmit={handleSignup}>
-                    <div>
-                        <label>Name</label>
-                        <input id="name"
-                            type="text"
-                            name="name"
-                            required placeholder="Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="info-box" />
-                    </div>
+        <AuthLayout>
+            <h1>Sign up</h1>
+            <form className="auth-info" onSubmit={handleSignup}>
+                <AuthFormInput
+                    id="name"
+                    label="Name"
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
 
-                    <div>
-                        <label>Email</label>
-                        <input id="email"
-                            type="email"
-                            name="email"
-                            required
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="info-box" />
-                    </div>
+                <AuthFormInput
+                    id="email"
+                    label="Email"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-                    <div>
-                        <label>Password</label>
-                        <input id="password"
-                            type="password"
-                            name="password"
-                            required
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="info-box" />
-                    </div>
+                <AuthFormInput
+                    id="password"
+                    label="Password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-                    <div>
-                        <label>Confirm Password</label>
-                        <input id="confirm-password"
-                            type="password"
-                            name="confirm-password"
-                            required
-                            placeholder="Confirm password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="info-box" />
-                    </div>
-
-                    <div className="button-container">
-                        <button type="submit" className="auth-button" disabled={loading}>
-                            {loading ? "Signing up..." : "Sign up"}
-                        </button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div>
-
+                <AuthFormInput
+                    id="confirm-password"
+                    label="Confirm Password"
+                    type="password"
+                    name="confirm-password"
+                    placeholder="Confirm password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <AuthFormButton
+                    loading={loading}
+                    loadingText="Signing in..."
+                    defaultText="Sign up"
+                    linkText="Already have an account?"
+                    linkHref="/auth/signin"
+                    linkLabel="Sign in here!"
+                />
+            </form>
+        </AuthLayout>
     );
 }
