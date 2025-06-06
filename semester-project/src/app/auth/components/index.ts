@@ -1,3 +1,3 @@
-export { default as AuthFormButton } from "./authFormButton";
-export { default as AuthFormInput } from "./authFormInput";
-export { default as AuthLayout } from "./authLayout";
+export { default as AuthFormButton } from "./AuthFormButton";
+export { default as AuthFormInput } from "./AuthFormInput";
+export { default as AuthLayout } from "./AuthLayout";

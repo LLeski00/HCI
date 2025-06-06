@@ -1,4 +1,3 @@
-// components/AuthFormButton.tsx
 "use client";
 import '../styles/auth.css';
 import Link from "next/link";
