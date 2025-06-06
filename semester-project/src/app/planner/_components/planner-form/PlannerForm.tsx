@@ -9,12 +9,13 @@ interface PlannerFormProps {
 
 const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const today = new Date().toISOString().split("T")[0];
 
     function isFormValid(event: React.FormEvent<HTMLFormElement>): boolean {
-        if (
-            event.currentTarget.endDate.value <
-            event.currentTarget.startDate.value
-        ) {
+        const startDate = new Date(event.currentTarget.startDate.value);
+        const endDate = new Date(event.currentTarget.endDate.value);
+
+        if (endDate < startDate) {
             setErrorMessage("End date cannot be before start date.");
             return false;
         }
@@ -40,13 +41,14 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
 
     return (
         <form onSubmit={handleFormSubmit}>
+            {" "}
             <label>
                 Start date:
-                <input type="date" name="startDate" required />
+                <input type="date" name="startDate" min={today} required />
             </label>
             <label>
                 End date:
-                <input type="date" name="endDate" required />
+                <input type="date" name="endDate" min={today} required />
             </label>
             <label>
                 Number of people:

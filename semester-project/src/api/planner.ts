@@ -8,9 +8,10 @@ export async function getPlannerResults(
 ): Promise<PlannerResults> {
     const numOfDays: number =
         formData.endDate.getDate() - formData.startDate.getDate() + 1;
-    const budgetPerDay: number = formData.budget / numOfDays;
+    const budgetPerDayPerPerson: number =
+        formData.budget / numOfDays / formData.numOfPeople;
     const resortsInsideBudget: ResortInfo[] = await getResortsUnderPrice(
-        budgetPerDay
+        budgetPerDayPerPerson
     );
 
     if (resortsInsideBudget.length === 0) return {} as PlannerResults;

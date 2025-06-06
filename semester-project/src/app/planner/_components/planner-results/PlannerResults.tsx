@@ -1,19 +1,16 @@
-import { getPlannerResults } from "@/api/planner";
-import {
-    PlannerFormData,
-    PlannerResults as PlannerResultsType,
-} from "@/types/planner";
+import { PlannerResults as PlannerResultsType } from "@/types/planner";
 import { FC } from "react";
 
 interface PlannerResultsProps {
-    formData: PlannerFormData;
+    results: PlannerResultsType;
 }
 
-const PlannerResults: FC<PlannerResultsProps> = async ({ formData }) => {
-    const results: PlannerResultsType = await getPlannerResults(formData);
+const PlannerResults: FC<PlannerResultsProps> = ({ results }) => {
+    if (!results || !results.bestMatch || !results.cheapest || !results.closest)
+        return <p>No results available for the given form</p>;
 
     return (
-        <>
+        <div>
             <h2>The best match:</h2>
             <p>
                 {results.bestMatch.name}, {results.bestMatch.country}
@@ -26,7 +23,7 @@ const PlannerResults: FC<PlannerResultsProps> = async ({ formData }) => {
             <p>
                 {results.closest.name}, {results.closest.country}
             </p>
-        </>
+        </div>
     );
 };
 

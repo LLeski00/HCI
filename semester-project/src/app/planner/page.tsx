@@ -2,12 +2,11 @@
 
 import HeroSection from "@/components/hero/hero";
 import PlannerForm from "./_components/planner-form/PlannerForm";
-import { useState } from "react";
-import { PlannerFormData } from "@/types/planner";
 import PlannerResults from "./_components/planner-results/PlannerResults";
+import { usePlanner } from "@/hooks/usePlanner";
 
-export default function Home() {
-    const [formData, setFormData] = useState<PlannerFormData | null>(null);
+export default function Planner() {
+    const { formData, setFormData, results, loading, error } = usePlanner();
 
     return (
         <div>
@@ -18,7 +17,13 @@ export default function Home() {
             />
             <h1>Planner</h1>
             {formData ? (
-                <PlannerResults formData={formData} />
+                loading ? (
+                    <p>Loading results...</p>
+                ) : error ? (
+                    <p style={{ color: "red" }}>{error}</p>
+                ) : (
+                    results && <PlannerResults results={results} />
+                )
             ) : (
                 <PlannerForm setFormData={setFormData} />
             )}
