@@ -26,8 +26,7 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
     function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        if (!isFormValid(event)) {
-        }
+        if (!isFormValid(event)) return;
 
         const formData: PlannerFormData = {
             startDate: new Date(event.currentTarget.startDate.value),
