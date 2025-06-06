@@ -1,4 +1,4 @@
-import { ResortInfo } from "@/app/destinations/types/resort";
+import { ResortInfo } from "./resort";
 
 export interface PlannerFormData {
     startDate: Date;

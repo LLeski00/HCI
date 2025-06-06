@@ -1,7 +1,7 @@
 import { PlannerFormData, PlannerResults } from "@/types/planner";
 import { getResortsUnderPrice } from "./resort";
-import { ResortInfo } from "@/app/destinations/types/resort";
 import { calculateResortScores } from "@/utils/plannerUtils";
+import { ResortInfo } from "@/types/resort";
 
 export async function getPlannerResults(
     formData: PlannerFormData
@@ -24,10 +24,10 @@ export async function getPlannerResults(
     )!;
 
     const minPrice: number = Math.min(
-        ...resortsInsideBudget.map((r) => parseFloat(r.adultPrice || "0"))
+        ...resortsInsideBudget.map((r) => r.adultPrice)
     );
     const cheapest: ResortInfo = resortsInsideBudget.find(
-        (r) => parseFloat(r.adultPrice || "0") === minPrice
+        (r) => r.adultPrice === minPrice
     )!;
 
     // TODO: Implement distance calculation based on formData.currentLocation
