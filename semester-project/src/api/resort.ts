@@ -2,7 +2,7 @@
 import { ResortInfo } from "@/app/destinations/types/resort";
 import { db } from "@/db/drizzle";
 import { resorts } from "@/db/schemas/ski-resorts";
-import { asc, eq } from "drizzle-orm";
+import { asc, eq, lte } from "drizzle-orm";
 
 type PagingInfo = {
     _start?: number;
@@ -49,4 +49,19 @@ async function getResortsByCountry(
     return data.length > 0 ? (data as ResortInfo[]) : null;
 }
 
-export { getAllResorts, getResorts, getResortById, getResortsByCountry };
+async function getResortsUnderPrice(price: number): Promise<ResortInfo[]> {
+    const data = await db
+        .select()
+        .from(resorts)
+        .where(lte(resorts.adultPrice, price));
+
+    return data as ResortInfo[];
+}
+
+export {
+    getAllResorts,
+    getResorts,
+    getResortById,
+    getResortsByCountry,
+    getResortsUnderPrice,
+};

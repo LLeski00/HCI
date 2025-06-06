@@ -1,9 +1,9 @@
+import { getPlannerResults } from "@/api/planner";
 import {
     PlannerFormData,
     PlannerResults as PlannerResultsType,
 } from "@/types/planner";
 import { FC } from "react";
-import { getPlannerResults } from "../../_lib/planner";
 
 interface PlannerResultsProps {
     formData: PlannerFormData;
