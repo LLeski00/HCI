@@ -2,12 +2,13 @@ import { PlannerFormData, PlannerResults } from "@/types/planner";
 import { getResortsUnderPrice } from "./resort";
 import { calculateResortScores } from "@/utils/plannerUtils";
 import { ResortInfo } from "@/types/resort";
+import { getDaysDifference } from "@/utils/dateUtils";
 
 export async function getPlannerResults(
     formData: PlannerFormData
 ): Promise<PlannerResults> {
-    const numOfDays: number =
-        formData.endDate.getDate() - formData.startDate.getDate() + 1;
+    const numOfDays =
+        getDaysDifference(formData.startDate, formData.endDate) + 1;
     const budgetPerDayPerPerson: number =
         formData.budget / numOfDays / formData.numOfPeople;
     const resortsInsideBudget: ResortInfo[] = await getResortsUnderPrice(

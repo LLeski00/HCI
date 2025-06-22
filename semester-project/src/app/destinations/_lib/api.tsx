@@ -1,8 +1,8 @@
 "use server";
 import { db } from "@/db/drizzle";
 import { resorts } from "@/db/schemas/ski-resorts";
+import { ResortInfo } from "@/types/resort";
 import { asc, eq } from "drizzle-orm";
-import { ResortInfo } from "../types/resort";
 
 type PagingInfo = {
     _start?: number;

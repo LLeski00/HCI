@@ -3,9 +3,7 @@ export const getTotalDistance = (
     intermediate: number,
     difficult: number
 ) => {
-    return [easy, intermediate, difficult]
-        .map((slope) => slope)
-        .reduce((a, b) => a + b, 0);
+    return [easy, intermediate, difficult].reduce((a, b) => a + b, 0);
 };
 export const parseDistanceRange = (range: string) => {
     const [min, max] = range.split("-").map(Number);

@@ -20,7 +20,7 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
             return false;
         }
 
-        if (errorMessage) setErrorMessage(null);
+        setErrorMessage(null);
         return true;
     }
 
