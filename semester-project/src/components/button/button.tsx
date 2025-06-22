@@ -8,8 +8,8 @@ interface CustomButtonProps {
 
 export function Button({ text, href }: CustomButtonProps) {
     return (
-            <button type="button" className={styles.customButton}>
-                <Link href={href}>{text}</Link>
-            </button>
+        <button type="button" className={styles.customButton}>
+            <Link href={href}>{text}</Link>
+        </button>
     );
 }
