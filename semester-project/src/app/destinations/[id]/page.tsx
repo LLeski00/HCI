@@ -7,6 +7,7 @@ import { GiTwoCoins } from "react-icons/gi";
 import "./resort.css";
 import TearEffect from "@/components/tearEffect/tearEffect";
 import Carousel from "@/components/carousel/carousel";
+import Reviews from "./_components/reviews/Reviews";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -108,9 +109,7 @@ export default async function DestinationDestination({
                     <Carousel destination={destination} />
                 </div>
                 <TearEffect darkBackground={true} />
-                <div className="reviews">
-                    <h2>Reviews</h2>
-                </div>
+                <Reviews />
             </main>
         </>
     );
