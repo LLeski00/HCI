@@ -16,15 +16,10 @@ type DestinationProps = {
     params: { id: string; name: string };
 };
 
-async function getSkiResort(id: string) {
-    const resort = getResortById(id);
-    return resort;
-}
-
 export default async function DestinationDestination({
     params,
 }: DestinationProps) {
-    const destination = await getSkiResort(params.id);
+    const destination = await getResortById(params.id);
     if (!destination) {
         return <div>Destination not found</div>;
     }
@@ -109,7 +104,7 @@ export default async function DestinationDestination({
                     <Carousel destination={destination} />
                 </div>
                 <TearEffect darkBackground={true} />
-                <Reviews />
+                <Reviews destination={destination} />
             </main>
         </>
     );

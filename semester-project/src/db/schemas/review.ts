@@ -1,9 +1,9 @@
-import { integer, varchar, pgTable } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uuid } from "drizzle-orm/pg-core";
 
 export const reviews = pgTable("reviews", {
-    id: integer("id").primaryKey(),
-    user_id: integer("user_id").notNull(),
-    resort_id: integer("resort_id").notNull(),
+    id: uuid("id").primaryKey(),
+    user_id: uuid("user_id").notNull(),
+    resort_id: uuid("resort_id").notNull(),
     rating: integer("rating"),
-    text: varchar("text"),
+    text: text("text"),
 });
