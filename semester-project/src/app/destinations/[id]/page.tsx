@@ -7,7 +7,7 @@ import { GiTwoCoins } from "react-icons/gi";
 import "./resort.css";
 import TearEffect from "@/components/tearEffect/tearEffect";
 import Carousel from "@/components/carousel/carousel";
-import Reviews from "./_components/reviews/Reviews";
+import Reviews from "./_components/Reviews";
 export const metadata: Metadata = {
     title: "Destination",
 };

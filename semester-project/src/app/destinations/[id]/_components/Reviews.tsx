@@ -3,6 +3,7 @@ import { ResortInfo } from "@/app/destinations/types/resort";
 import { Review as ReviewType } from "@/types/review";
 import { FC } from "react";
 import Review from "./Review";
+import ReviewForm from "./ReviewForm";
 
 interface ReviewsProps {
     destination: ResortInfo;
@@ -20,6 +21,7 @@ const Reviews: FC<ReviewsProps> = async ({ destination }) => {
     return (
         <div className="reviews">
             <h2>Reviews</h2>
+            <ReviewForm />
             <div className="review-list">
                 {reviews.length > 0 ? (
                     reviews.map((review) => (

@@ -127,6 +127,13 @@
       "when": 1750760888274,
       "tag": "0017_perfect_pandemic",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1750761370601,
+      "tag": "0018_slippery_mathemanic",
+      "breakpoints": true
     }
   ]
 }

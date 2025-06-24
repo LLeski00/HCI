@@ -2,18 +2,25 @@ import { User } from "./user";
 
 type Review = {
     id: string;
-    user_id: string;
-    resort_id: string;
-    rating: number | null;
+    userId: string;
+    resortId: string;
+    rating: number;
     text: string | null;
 };
 
 type ReviewInfo = {
     id: string;
     user: User;
-    resort_id: string;
-    rating: number | null;
+    resortId: string;
+    rating: number;
     text: string | null;
 };
 
-export type { Review, ReviewInfo };
+type ReviewReq = {
+    userId: string;
+    resortId: string;
+    rating: number;
+    text: string | null;
+};
+
+export type { Review, ReviewInfo, ReviewReq };
