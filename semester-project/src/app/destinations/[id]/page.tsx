@@ -104,7 +104,7 @@ export default async function DestinationDestination({
                     <Carousel destination={destination} />
                 </div>
                 <TearEffect darkBackground={true} />
-                <Reviews destination={destination} />
+                <Reviews resort={destination} />
             </main>
         </>
     );

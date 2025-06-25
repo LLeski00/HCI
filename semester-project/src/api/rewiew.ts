@@ -2,7 +2,7 @@
 import { db } from "@/db/drizzle";
 import { reviews } from "@/db/schemas/review";
 import { Review, ReviewReq } from "@/types/review";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 export async function getReviewsByResortId(
     resortId: string
@@ -23,7 +23,7 @@ export async function getReviewsByResortId(
     return data;
 }
 
-/*export async function createReview(newReview: ReviewReq): Promise<void> {
+export async function createReview(newReview: ReviewReq): Promise<void> {
     await db.insert(reviews).values({
         id: crypto.randomUUID(),
         user_id: newReview.userId,
@@ -31,4 +31,4 @@ export async function getReviewsByResortId(
         rating: newReview.rating,
         text: newReview.text,
     });
-}*/
+}

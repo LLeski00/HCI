@@ -3,6 +3,8 @@
 import { FC } from "react";
 import { ResortInfo } from "../../types/resort";
 import { ReviewReq } from "@/types/review";
+import { createReview } from "@/api/rewiew";
+import styles from "./ReviewForm.module.css";
 
 interface ReviewFormProps {
     resort: ResortInfo;
@@ -20,17 +22,17 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort }) => {
             rating: Number(rating),
             text: text ? String(text) : "",
         };
-        //TODO: createReview(newReview);
+        createReview(newReview);
     }
 
     return (
-        <form className="review-form" onSubmit={handleSubmit}>
+        <form className={styles.reviewForm} onSubmit={handleSubmit}>
             <h2>Leave a Review</h2>
-            <label>
+            <label className={styles.ratingLabel}>
                 Rating (1-10):
                 <input type="number" name="rating" min="1" max="10" required />
             </label>
-            <label>
+            <label className={styles.textLabel}>
                 Review:
                 <textarea name="text" />
             </label>

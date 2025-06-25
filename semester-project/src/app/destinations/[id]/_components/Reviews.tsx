@@ -6,22 +6,21 @@ import Review from "./Review";
 import ReviewForm from "./ReviewForm";
 
 interface ReviewsProps {
-    destination: ResortInfo;
+    resort: ResortInfo;
 }
 
-const Reviews: FC<ReviewsProps> = async ({ destination }) => {
-    const reviews: ReviewType[] | null = await getReviewsByResortId(
-        destination.id
-    );
+const Reviews: FC<ReviewsProps> = async ({ resort }) => {
+    const reviews: ReviewType[] = await getReviewsByResortId(resort.id);
 
-    if (!reviews) {
-        return <div>There was an issue with fetching the reviews.</div>;
+    function isReviewed(): boolean {
+        const currentUserId = "currentUserId"; // TODO: Replace with actual user ID after implementing user authentication
+        return reviews.some((review) => review.userId === currentUserId);
     }
 
     return (
         <div className="reviews">
             <h2>Reviews</h2>
-            <ReviewForm />
+            {!isReviewed() && <ReviewForm resort={resort} />}
             <div className="review-list">
                 {reviews.length > 0 ? (
                     reviews.map((review) => (
