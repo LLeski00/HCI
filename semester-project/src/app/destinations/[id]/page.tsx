@@ -97,8 +97,6 @@ export default async function DestinationDestination({
                     </div>
                     <TearEffect />
                 </div>
-
-                {/*kada kliknemo na sliku uveca se*/}
                 <div className="images-content">
                     <h2>Resort images</h2>
                     <Carousel destination={destination} />

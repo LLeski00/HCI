@@ -1,24 +1,27 @@
 "use server";
 import { db } from "@/db/drizzle";
 import { reviews } from "@/db/schemas/review";
-import { Review, ReviewReq } from "@/types/review";
-import { eq, and } from "drizzle-orm";
+import { ReviewInfo, ReviewReq } from "@/types/review";
+import { eq } from "drizzle-orm";
+import { getUserById } from "./user";
 
 export async function getReviewsByResortId(
     resortId: string
-): Promise<Review[]> {
+): Promise<ReviewInfo[]> {
     const dbData = await db
         .select()
         .from(reviews)
         .where(eq(reviews.resort_id, resortId));
 
-    const data: Review[] = dbData.map((review) => ({
-        id: review.id,
-        userId: review.user_id,
-        resortId: review.resort_id,
-        rating: review.rating,
-        text: review.text,
-    }));
+    const data: ReviewInfo[] = await Promise.all(
+        dbData.map(async (review) => ({
+            id: review.id,
+            user: await getUserById(review.user_id),
+            resortId: review.resort_id,
+            rating: review.rating,
+            text: review.text,
+        }))
+    );
 
     return data;
 }

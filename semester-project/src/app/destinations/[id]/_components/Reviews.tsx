@@ -1,6 +1,6 @@
 import { getReviewsByResortId } from "@/api/rewiew";
 import { ResortInfo } from "@/app/destinations/types/resort";
-import { Review as ReviewType } from "@/types/review";
+import { ReviewInfo, Review as ReviewType } from "@/types/review";
 import { FC } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
@@ -10,11 +10,11 @@ interface ReviewsProps {
 }
 
 const Reviews: FC<ReviewsProps> = async ({ resort }) => {
-    const reviews: ReviewType[] = await getReviewsByResortId(resort.id);
+    const reviews: ReviewInfo[] = await getReviewsByResortId(resort.id);
 
     function isReviewed(): boolean {
         const currentUserId = "currentUserId"; // TODO: Replace with actual user ID after implementing user authentication
-        return reviews.some((review) => review.userId === currentUserId);
+        return reviews.some((review) => review.user.id === currentUserId);
     }
 
     return (
