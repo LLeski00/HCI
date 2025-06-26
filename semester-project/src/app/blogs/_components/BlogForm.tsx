@@ -1,5 +1,6 @@
 "use client";
 
+import { createBlog } from "@/api/blog";
 import { ResortInfo } from "@/app/destinations/types/resort";
 import { Blog, BlogReq } from "@/types/blog";
 import { FC } from "react";
@@ -33,9 +34,7 @@ const BlogForm: FC<BlogFormProps> = ({ resorts }) => {
             resortId: resortId,
             text: blogText,
         };
-
-        //TODO: Implement the API call to post the new blog
-        console.log("New blog submitted:", newBlog);
+        createBlog(newBlog);
     }
 
     return (
