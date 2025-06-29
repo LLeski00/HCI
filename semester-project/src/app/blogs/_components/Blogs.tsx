@@ -1,5 +1,5 @@
-import { getAllBlogs } from "@/api/blog";
-import { Blog as BlogType } from "@/types/blog";
+import { getAllBlogs } from "@/app/api/blog";
+import { BlogInfo } from "@/types/blog";
 import Blog from "./Blog";
 import { ResortInfo } from "@/app/destinations/types/resort";
 import { getAllResorts } from "@/app/destinations/_lib/api";
@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 const BlogForm = dynamic(() => import("./BlogForm"), { ssr: false });
 
 const Blogs = async () => {
-    const blogs: BlogType[] = await getAllBlogs();
+    const blogs: BlogInfo[] = await getAllBlogs();
     const resorts: ResortInfo[] = await getAllResorts();
 
     return (

@@ -1,16 +1,15 @@
-import { Blog as BlogType } from "@/types/blog";
+import { BlogInfo } from "@/types/blog";
 import { FC } from "react";
 
 interface BlogProps {
-    blog: BlogType;
+    blog: BlogInfo;
 }
 
 const Blog: FC<BlogProps> = ({ blog }) => {
     return (
         <div className="blog">
-            <h2>Blog ID: {blog.id}</h2>
-            <p>User ID: {blog.userId}</p>
-            <p>Resort ID: {blog.resortId}</p>
+            <p>User: {blog.user.name}</p>
+            <p>Resort: {blog.resort ? blog.resort.name : "Unknown"}</p>
             <p>Text: {blog.text}</p>
         </div>
     );

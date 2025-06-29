@@ -1,8 +1,8 @@
 "use client";
 
-import { createBlog } from "@/api/blog";
+import { createBlog } from "@/app/api/blog";
 import { ResortInfo } from "@/app/destinations/types/resort";
-import { Blog, BlogReq } from "@/types/blog";
+import { BlogReq } from "@/types/blog";
 import { FC } from "react";
 import Select from "react-select";
 
@@ -24,7 +24,7 @@ const BlogForm: FC<BlogFormProps> = ({ resorts }) => {
         );
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData: FormData = new FormData(event.currentTarget);
         const blogText: string = formData.get("blog") as string;
@@ -34,7 +34,7 @@ const BlogForm: FC<BlogFormProps> = ({ resorts }) => {
             resortId: resortId,
             text: blogText,
         };
-        createBlog(newBlog);
+        await createBlog(newBlog);
     }
 
     return (
