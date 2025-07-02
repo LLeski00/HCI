@@ -3,7 +3,7 @@
 import { FC } from "react";
 import { ResortInfo } from "../../types/resort";
 import { ReviewReq } from "@/types/review";
-import { createReview } from "@/api/rewiew";
+import { createReview } from "@/api/review";
 import styles from "./ReviewForm.module.css";
 
 interface ReviewFormProps {

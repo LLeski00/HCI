@@ -1,4 +1,4 @@
-import { getReviewsByResortId } from "@/api/rewiew";
+import { getReviewsByResortId } from "@/api/review";
 import { ResortInfo } from "@/app/destinations/types/resort";
 import { ReviewInfo, Review as ReviewType } from "@/types/review";
 import { FC } from "react";
