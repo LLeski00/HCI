@@ -4,34 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "@/components/navbar/navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
-
-type Page = {
-    title: string;
-    path: `/${string}`;
-};
-
-const pages: Page[] = [
-    {
-        title: "HOME",
-        path: "/",
-    },
-    {
-        title: "DESTINATIONS",
-        path: "/destinations",
-    },
-    {
-        title: "PLANNER",
-        path: "/planner",
-    },
-    {
-        title: "INFO",
-        path: "/info",
-    },
-    {
-        title: "CONTACT US",
-        path: "/contact",
-    },
-];
+import { Page } from "@/types/page";
+import { pages } from "@/constants/pages";
 
 function processPage(page: Page, index: number, pathname: string) {
     const isActive =
@@ -48,8 +22,9 @@ function processPage(page: Page, index: number, pathname: string) {
                 {page.title}
 
                 <span
-                    className={`${styles.underline} ${isActive ? styles.underlineActive : ""
-                        }`}
+                    className={`${styles.underline} ${
+                        isActive ? styles.underlineActive : ""
+                    }`}
                 />
             </Link>
         </li>
@@ -69,7 +44,9 @@ export function Navbar() {
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
             <GiHamburgerMenu />
-            <Link href="/auth/signin" className={styles.loginButton}>SIGN IN</Link>
+            <Link href="/auth/signin" className={styles.loginButton}>
+                SIGN IN
+            </Link>
         </div>
     );
 }
