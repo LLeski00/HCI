@@ -1,9 +1,9 @@
 import { getReviewsByResortId } from "@/api/review";
-import { ResortInfo } from "@/app/destinations/types/resort";
-import { ReviewInfo, Review as ReviewType } from "@/types/review";
+import { ReviewInfo } from "@/types/review";
 import { FC } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
+import { ResortInfo } from "@/types/resort";
 
 interface ReviewsProps {
     resort: ResortInfo;
