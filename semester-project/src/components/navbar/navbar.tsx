@@ -6,6 +6,7 @@ import styles from "@/components/navbar/navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Page } from "@/types/page";
 import { pages } from "@/constants/pages";
+import { useAuth } from "@/context/AuthContext";
 
 function processPage(page: Page, index: number, pathname: string) {
     const isActive =
@@ -30,6 +31,7 @@ function processPage(page: Page, index: number, pathname: string) {
     );
 }
 export function Navbar() {
+    const { user } = useAuth();
     const pathname = usePathname();
     const navClass =
         pathname === "/"
@@ -43,9 +45,18 @@ export function Navbar() {
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
             <GiHamburgerMenu />
-            <Link href="/auth/signin" className={styles.loginButton}>
-                SIGN IN
-            </Link>
+            {user ? (
+                <div className={`${styles.profileSection} ${styles.signinSection}`}>
+                    <img src={user.profile.profile_image || "/images/profile.png"}
+                        className={styles.profileImage} />
+                    <p>{user.profile.name}</p>
+                </div>
+            ) : (
+                <Link href="/auth/signin" className={`${styles.signinSection} ${styles.loginButton}`}>
+                    SIGN IN
+                </Link>
+            )}
+
         </div>
     );
 }
