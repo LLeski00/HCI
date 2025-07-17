@@ -6,6 +6,7 @@ type Review = {
     resortId: string;
     rating: number;
     text: string | null;
+    createdAt: string;
 };
 
 type ReviewInfo = {
@@ -14,6 +15,7 @@ type ReviewInfo = {
     resortId: string;
     rating: number;
     text: string | null;
+    createdAt: string;
 };
 
 type ReviewReq = {
