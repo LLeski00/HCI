@@ -1,4 +1,4 @@
-import { integer, pgTable, text, uuid } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uuid, timestamp } from "drizzle-orm/pg-core";
 
 export const reviews = pgTable("reviews", {
     id: uuid("id").primaryKey(),
@@ -6,4 +6,5 @@ export const reviews = pgTable("reviews", {
     resort_id: uuid("resort_id").notNull(),
     rating: integer("rating").notNull(),
     text: text("text"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
 });
