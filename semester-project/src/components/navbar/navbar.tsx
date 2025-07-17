@@ -22,9 +22,8 @@ function processPage(page: Page, index: number, pathname: string) {
                 {page.title}
 
                 <span
-                    className={`${styles.underline} ${
-                        isActive ? styles.underlineActive : ""
-                    }`}
+                    className={`${styles.underline} ${isActive ? styles.underlineActive : ""
+                        }`}
                 />
             </Link>
         </li>
