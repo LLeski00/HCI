@@ -1,4 +1,4 @@
-import { ResortInfo } from "@/app/destinations/types/resort";
+import { ResortInfo } from "./resort";
 import { User } from "./user";
 
 export type Blog = {

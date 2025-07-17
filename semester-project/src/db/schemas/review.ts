@@ -6,5 +6,5 @@ export const reviews = pgTable("reviews", {
     resort_id: uuid("resort_id").notNull(),
     rating: integer("rating").notNull(),
     text: text("text"),
-    createdAt: timestamp("created_at").notNull().defaultNow(),
+    created_at: timestamp("created_at").notNull().defaultNow(),
 });

@@ -18,15 +18,12 @@ const Review: FC<ReviewProps> = ({ review }) => {
             <div className="author">
                 <p>{review.user.name}</p>
             </div>
-            <div className="date">
-                <p>{new Date(review.createdAt).toLocaleDateString()}</p>
-            </div>
+            <p>{review.createdAt.toLocaleDateString()}</p>
             <div className="rating">
                 <IoIosStar className="filled-star" />
                 <p>Rating: {review.rating || "No rating"}</p>
             </div>
             {review.text && <p>{isExpanded ? review.text : snippet}</p>}
-
             {isExpanded && <ReviewComments reviewId={review.id} />}
             <button onClick={() => setIsExpanded(!isExpanded)}>
                 {isExpanded ? "Show less" : "Show more"}

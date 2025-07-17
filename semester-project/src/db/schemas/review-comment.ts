@@ -5,5 +5,5 @@ export const reviewComments = pgTable("review-comments", {
     user_id: uuid("user_id").notNull(),
     review_id: uuid("review_id").notNull(),
     text: text("text").notNull(),
-    createdAt: timestamp("created_at").notNull().defaultNow(),
+    created_at: timestamp("created_at").notNull().defaultNow(),
 });
