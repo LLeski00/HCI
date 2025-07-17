@@ -14,7 +14,7 @@ interface ReviewProps {
 const Review: FC<ReviewProps> = ({ review }) => {
     const snippet: string = review.text ? review.text.slice(0, 50) + "..." : "";
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
-    let userReaction: Reaction | null = null;
+    const [userReaction, setUserReaction] = useState<Reaction | null>(null);
     const { likes, dislikes } = (review.reactions ?? []).reduce(
         (acc, r) => {
             if (r.reaction === Reaction.Like) acc.likes++;
@@ -22,7 +22,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
 
             if (r.userId === "currentUserId") {
                 // TODO: Replace with actual user ID after implementing user authentication
-                userReaction = r.reaction;
+                setUserReaction(r.reaction);
             }
 
             return acc;
@@ -31,11 +31,8 @@ const Review: FC<ReviewProps> = ({ review }) => {
     );
 
     function handleReaction(reaction: Reaction) {
-        if (userReaction === reaction) {
-            userReaction = null;
-        } else {
-            userReaction = reaction;
-        }
+        if (userReaction === reaction) setUserReaction(null);
+        else setUserReaction(reaction);
     }
 
     return (
@@ -50,7 +47,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
             </div>
             {review.text && <p>{isExpanded ? review.text : snippet}</p>}
             <div className="reactions">
-                <p>{likes}</p>
+                <p>{userReaction === Reaction.Like ? likes + 1 : likes}</p>
                 {userReaction === Reaction.Like ? (
                     <BiSolidLike
                         onClick={() => handleReaction(Reaction.Like)}
@@ -68,7 +65,11 @@ const Review: FC<ReviewProps> = ({ review }) => {
                     />
                 )}
                 <BiDislike />
-                <p>{dislikes}</p>
+                <p>
+                    {userReaction === Reaction.Dislike
+                        ? dislikes + 1
+                        : dislikes}
+                </p>
             </div>
             {isExpanded && <ReviewComments reviewId={review.id} />}
             <button onClick={() => setIsExpanded(!isExpanded)}>

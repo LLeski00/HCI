@@ -13,9 +13,9 @@ export async function getReviewReactionsByReviewId(
         .where(eq(reviewReactions.review_id, reviewId));
 
     const reactionData: ReactionData[] = await Promise.all(
-        fetchedReactions.map(async (review) => ({
-            reaction: review.reaction as ReactionData["reaction"],
-            userId: review.user_id,
+        fetchedReactions.map(async (reaction) => ({
+            reaction: reaction.reaction as ReactionData["reaction"],
+            userId: reaction.user_id,
         }))
     );
 

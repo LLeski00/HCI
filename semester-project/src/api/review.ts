@@ -4,7 +4,7 @@ import { reviews } from "@/db/schemas/review";
 import { ReviewInfo, ReviewReq } from "@/types/review";
 import { eq } from "drizzle-orm";
 import { getUserById } from "./user";
-import { getReviewReactionsByReviewId } from "./review-reaction";
+import { getReviewReactionsByReviewId } from "../app/api/review-reaction";
 
 export async function getReviewsByResortId(
     resortId: string
