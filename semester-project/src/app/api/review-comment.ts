@@ -2,7 +2,7 @@
 import { db } from "@/db/drizzle";
 import { eq, desc } from "drizzle-orm";
 import { reviewComments } from "@/db/schemas/review-comment";
-import { Comment } from "@/types/comment";
+import { Comment, CommentReq } from "@/types/comment";
 import { getUserById } from "./user";
 
 export async function getReviewCommentsByReviewId(
@@ -16,6 +16,7 @@ export async function getReviewCommentsByReviewId(
 
     const commentData: Comment[] = await Promise.all(
         fetchedComments.map(async (comment) => ({
+            id: comment.id,
             user: await getUserById(comment.user_id),
             text: comment.text,
             createdAt: comment.created_at,
@@ -23,4 +24,13 @@ export async function getReviewCommentsByReviewId(
     );
 
     return commentData;
+}
+
+export async function createComment(comment: CommentReq): Promise<void> {
+    await db.insert(reviewComments).values({
+        id: crypto.randomUUID(),
+        user_id: comment.userId,
+        review_id: comment.reviewId,
+        text: comment.text,
+    });
 }
