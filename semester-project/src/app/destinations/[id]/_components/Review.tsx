@@ -5,6 +5,7 @@ import { FC, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import ReviewComments from "./ReviewComments";
 import { Reaction } from "@/types/reaction";
+import { BiDislike, BiLike, BiSolidDislike, BiSolidLike } from "react-icons/bi";
 
 interface ReviewProps {
     review: ReviewInfo;
@@ -12,15 +13,30 @@ interface ReviewProps {
 
 const Review: FC<ReviewProps> = ({ review }) => {
     const snippet: string = review.text ? review.text.slice(0, 50) + "..." : "";
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    let userReaction: Reaction | null = null;
     const { likes, dislikes } = (review.reactions ?? []).reduce(
         (acc, r) => {
             if (r.reaction === Reaction.Like) acc.likes++;
             else if (r.reaction === Reaction.Dislike) acc.dislikes++;
+
+            if (r.userId === "currentUserId") {
+                // TODO: Replace with actual user ID after implementing user authentication
+                userReaction = r.reaction;
+            }
+
             return acc;
         },
         { likes: 0, dislikes: 0 }
     );
+
+    function handleReaction(reaction: Reaction) {
+        if (userReaction === reaction) {
+            userReaction = null;
+        } else {
+            userReaction = reaction;
+        }
+    }
 
     return (
         <div className="review">
@@ -34,8 +50,25 @@ const Review: FC<ReviewProps> = ({ review }) => {
             </div>
             {review.text && <p>{isExpanded ? review.text : snippet}</p>}
             <div className="reactions">
-                <span className="like">{likes} 👍</span>
-                <span className="dislike">👎 {dislikes}</span>
+                <p>{likes}</p>
+                {userReaction === Reaction.Like ? (
+                    <BiSolidLike
+                        onClick={() => handleReaction(Reaction.Like)}
+                    />
+                ) : (
+                    <BiLike onClick={() => handleReaction(Reaction.Like)} />
+                )}
+                {userReaction === Reaction.Dislike ? (
+                    <BiSolidDislike
+                        onClick={() => handleReaction(Reaction.Dislike)}
+                    />
+                ) : (
+                    <BiDislike
+                        onClick={() => handleReaction(Reaction.Dislike)}
+                    />
+                )}
+                <BiDislike />
+                <p>{dislikes}</p>
             </div>
             {isExpanded && <ReviewComments reviewId={review.id} />}
             <button onClick={() => setIsExpanded(!isExpanded)}>
