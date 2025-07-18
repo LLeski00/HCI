@@ -1,9 +1,12 @@
-import { UserState } from "@/types/user";
+import { User } from "@/types/user";
 import { createContext, useContext } from "react";
 
 interface AuthContextType {
-    user: UserState | null;
-    setUser: React.Dispatch<React.SetStateAction<UserState | null>>;
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+    signUp: (name: string, email: string, password: string) => Promise<void>;
+    signIn: (email: string, password: string) => Promise<void>;
+    signOut: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);

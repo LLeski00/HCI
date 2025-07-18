@@ -1,9 +1,10 @@
 "use client";
+
 import '../styles/auth.css';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signUp } from "../_lib/authApi";
 import { AuthFormButton, AuthFormInput, AuthLayout } from "../components";
+import { useAuth } from '@/context/AuthContext';
 
 export default function SignUp() {
     const [name, setName] = useState("");
@@ -12,6 +13,7 @@ export default function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const { signUp } = useAuth();
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,7 +34,6 @@ export default function SignUp() {
             setLoading(false);
         }
     };
-
 
     return (
         <AuthLayout>

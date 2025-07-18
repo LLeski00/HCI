@@ -52,37 +52,19 @@
         width: 100%;
 }
 
-.signinSection {
+.loginButton {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 8vw;
         margin-right: 20px;
-        color: var(--background);
-        font-weight: bold;
-}
-
-.loginButton {
         width: 8vw;
         height: 5vh;
         border: none;
         border-radius: 10px;
         background-color: var(--orange);
+        color: var(--background);
+        font-weight: bold;
         z-index: 1;
-}
-
-.profileSection {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-}
-
-.profileImage {
-        width: 45px;
-        height: 45px;
-        box-shadow: none;
-        border-radius: 50%;
-        object-fit: cover;
 }
 
 /*.navBackground {
