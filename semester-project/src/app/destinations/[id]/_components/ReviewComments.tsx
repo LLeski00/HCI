@@ -9,7 +9,7 @@ interface ReviewCommentsProps {
     reviewId: string;
 }
 
-const ReviewComments: FC<ReviewCommentsProps> = async ({ reviewId }) => {
+const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     async function handleSubmitComment(e: React.FormEvent<HTMLFormElement>) {
@@ -29,7 +29,7 @@ const ReviewComments: FC<ReviewCommentsProps> = async ({ reviewId }) => {
     return (
         <div className="comments">
             {isExpanded && <ReviewCommentList reviewId={reviewId} />}
-            <button onClick={() => setIsExpanded(!isExpanded)}>
+            <button onClick={() => setIsExpanded((prev) => !prev)}>
                 {isExpanded ? "Hide Comments" : "Show Comments"}
             </button>
             <h3>Leave a comment:</h3>

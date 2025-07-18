@@ -11,28 +11,37 @@ interface ReviewProps {
     review: ReviewInfo;
 }
 
+interface ReactionCount {
+    likes: number;
+    dislikes: number;
+}
+
 const Review: FC<ReviewProps> = ({ review }) => {
     const snippet: string = review.text ? review.text.slice(0, 50) + "..." : "";
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [userReaction, setUserReaction] = useState<Reaction | null>(null);
-    const { likes, dislikes } = (review.reactions ?? []).reduce(
-        (acc, r) => {
-            if (r.reaction === Reaction.Like) acc.likes++;
-            else if (r.reaction === Reaction.Dislike) acc.dislikes++;
-
-            if (r.userId === "currentUserId") {
-                // TODO: Replace with actual user ID after implementing user authentication
-                setUserReaction(r.reaction);
-            }
-
-            return acc;
-        },
-        { likes: 0, dislikes: 0 }
-    );
+    const reactions: ReactionCount = getReactionCount();
 
     function handleReaction(reaction: Reaction) {
         if (userReaction === reaction) setUserReaction(null);
         else setUserReaction(reaction);
+    }
+
+    function getReactionCount(): ReactionCount {
+        return (review.reactions ?? []).reduce(
+            (acc, r) => {
+                if (r.reaction === Reaction.Like) acc.likes++;
+                else if (r.reaction === Reaction.Dislike) acc.dislikes++;
+
+                if (r.userId === "currentUserId") {
+                    // TODO: Replace with actual user ID after implementing user authentication
+                    setUserReaction(r.reaction);
+                }
+
+                return acc;
+            },
+            { likes: 0, dislikes: 0 }
+        );
     }
 
     return (
@@ -47,7 +56,11 @@ const Review: FC<ReviewProps> = ({ review }) => {
             </div>
             {review.text && <p>{isExpanded ? review.text : snippet}</p>}
             <div className="reactions">
-                <p>{userReaction === Reaction.Like ? likes + 1 : likes}</p>
+                <p>
+                    {userReaction === Reaction.Like
+                        ? reactions.likes + 1
+                        : reactions.likes}
+                </p>
                 {userReaction === Reaction.Like ? (
                     <BiSolidLike
                         onClick={() => handleReaction(Reaction.Like)}
@@ -64,11 +77,10 @@ const Review: FC<ReviewProps> = ({ review }) => {
                         onClick={() => handleReaction(Reaction.Dislike)}
                     />
                 )}
-                <BiDislike />
                 <p>
                     {userReaction === Reaction.Dislike
-                        ? dislikes + 1
-                        : dislikes}
+                        ? reactions.dislikes + 1
+                        : reactions.dislikes}
                 </p>
             </div>
             {isExpanded && <ReviewComments reviewId={review.id} />}
