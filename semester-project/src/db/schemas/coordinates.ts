@@ -1,4 +1,4 @@
-import { pgTable, doublePrecision, integer, uuid } from "drizzle-orm/pg-core";
+import { pgTable, doublePrecision, uuid } from "drizzle-orm/pg-core";
 import { resorts } from "./ski-resorts";
 import { sql } from "drizzle-orm";
 
