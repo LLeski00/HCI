@@ -1,3 +1,4 @@
+CREATE TYPE "public"."reaction" AS ENUM('like', 'dislike');--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "blogs" (
 	"id" uuid PRIMARY KEY NOT NULL,
 	"user_id" uuid NOT NULL,
@@ -5,12 +6,28 @@ CREATE TABLE IF NOT EXISTS "blogs" (
 	"text" text NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "review-comments" (
+	"id" uuid PRIMARY KEY NOT NULL,
+	"user_id" uuid NOT NULL,
+	"review_id" uuid NOT NULL,
+	"text" text NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "review-reactions" (
+	"id" uuid PRIMARY KEY NOT NULL,
+	"user_id" uuid NOT NULL,
+	"review_id" uuid NOT NULL,
+	"reaction" "reaction" NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "reviews" (
 	"id" uuid PRIMARY KEY NOT NULL,
 	"user_id" uuid NOT NULL,
 	"resort_id" uuid NOT NULL,
 	"rating" integer NOT NULL,
-	"text" text
+	"text" text,
+	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "resorts" (

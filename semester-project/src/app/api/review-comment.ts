@@ -4,6 +4,7 @@ import { eq, desc } from "drizzle-orm";
 import { reviewComments } from "@/db/schemas/review-comment";
 import { Comment, CommentReq } from "@/types/comment";
 import { getUserById } from "./user";
+import { revalidatePath } from "next/cache";
 
 export async function getReviewCommentsByReviewId(
     reviewId: string
@@ -33,4 +34,6 @@ export async function createComment(comment: CommentReq): Promise<void> {
         review_id: comment.reviewId,
         text: comment.text,
     });
+
+    revalidatePath("/destinations/[id]");
 }
