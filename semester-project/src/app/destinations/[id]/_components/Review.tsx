@@ -6,6 +6,7 @@ import { IoIosStar } from "react-icons/io";
 import ReviewComments from "./ReviewComments";
 import { Reaction } from "@/types/reaction";
 import { BiDislike, BiLike, BiSolidDislike, BiSolidLike } from "react-icons/bi";
+import { useAuth } from "@/context/AuthContext";
 
 interface ReviewProps {
     review: ReviewInfo;
@@ -21,6 +22,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [userReaction, setUserReaction] = useState<Reaction | null>(null);
     const reactions: ReactionCount = getReactionCount();
+    const { user } = useAuth();
 
     function handleReaction(reaction: Reaction) {
         if (userReaction === reaction) setUserReaction(null);
@@ -33,10 +35,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
                 if (r.reaction === Reaction.Like) acc.likes++;
                 else if (r.reaction === Reaction.Dislike) acc.dislikes++;
 
-                if (r.userId === "currentUserId") {
-                    // TODO: Replace with actual user ID after implementing user authentication
-                    setUserReaction(r.reaction);
-                }
+                if (r.userId === user?.id) setUserReaction(r.reaction);
 
                 return acc;
             },

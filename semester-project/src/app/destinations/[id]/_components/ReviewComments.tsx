@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import ReviewCommentList from "./ReviewCommentList";
 import { createComment } from "@/app/api/review-comment";
 import { CommentReq } from "@/types/comment";
+import { useAuth } from "@/context/AuthContext";
 
 interface ReviewCommentsProps {
     reviewId: string;
@@ -11,14 +12,14 @@ interface ReviewCommentsProps {
 
 const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const { user } = useAuth();
 
     async function handleSubmitComment(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const formData: FormData = new FormData(e.currentTarget);
         const text: string = formData.get("comment") as string;
-        const userId: string = "currentUserId"; // Replace with actual user id
         const newComment: CommentReq = {
-            userId,
+            userId: user!.id,
             reviewId,
             text,
         };
@@ -32,19 +33,23 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
             <button onClick={() => setIsExpanded((prev) => !prev)}>
                 {isExpanded ? "Hide Comments" : "Show Comments"}
             </button>
-            <h3>Leave a comment:</h3>
-            <form
-                onSubmit={(e) => {
-                    handleSubmitComment(e);
-                }}
-            >
-                <textarea
-                    name="comment"
-                    placeholder="Write your comment here..."
-                    required
-                ></textarea>
-                <button type="submit">Post</button>
-            </form>
+            {user && (
+                <>
+                    <h3>Leave a comment:</h3>
+                    <form
+                        onSubmit={(e) => {
+                            handleSubmitComment(e);
+                        }}
+                    >
+                        <textarea
+                            name="comment"
+                            placeholder="Write your comment here..."
+                            required
+                        ></textarea>
+                        <button type="submit">Post</button>
+                    </form>
+                </>
+            )}
         </div>
     );
 };

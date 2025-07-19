@@ -1,8 +1,9 @@
 "use client";
 
 import { createBlog } from "@/app/api/blog";
-import { ResortInfo } from "@/app/destinations/types/resort";
+import { useAuth } from "@/context/AuthContext";
 import { BlogReq } from "@/types/blog";
+import { ResortInfo } from "@/types/resort";
 import { FC } from "react";
 import Select from "react-select";
 
@@ -11,6 +12,8 @@ interface BlogFormProps {
 }
 
 const BlogForm: FC<BlogFormProps> = ({ resorts }) => {
+    const { user } = useAuth();
+
     const resortOptions = resorts.map((resort) => ({
         value: resort.id,
         label: resort.name,
@@ -30,7 +33,7 @@ const BlogForm: FC<BlogFormProps> = ({ resorts }) => {
         const blogText: string = formData.get("blog") as string;
         const resortId: string = formData.get("resort") as string;
         const newBlog: BlogReq = {
-            userId: "currentUserId", // Replace with actual user ID logic
+            userId: user!.id,
             resortId: resortId,
             text: blogText,
         };
