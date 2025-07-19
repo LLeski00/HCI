@@ -1,15 +1,17 @@
 "use client";
+
 import '../styles/auth.css';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "../_lib/authApi";
 import { AuthFormButton, AuthFormInput, AuthLayout } from "../components";
+import { useAuth } from '@/context/AuthContext';
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { signIn } = useAuth();
 
   const handleSignin = async (e: React.FormEvent) => {
     e.preventDefault();
