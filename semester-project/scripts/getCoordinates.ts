@@ -33,22 +33,28 @@ async function main() {
         const allResorts = await db.select().from(resorts);
 
         for (const resort of allResorts) {
-                const existing = await db
-                        .select()
-                        .from(coordinates)
-                        .where(eq(coordinates.resortId, resort.id));
-
-                if (existing.length > 0) continue;
+                if (resort.coordinatesId) continue;
 
                 const query = `${resort.name}, ${resort.country}`;
                 const coords = await getCoordinates(query);
 
                 if (coords) {
-                        await db.insert(coordinates).values({
-                                resortId: resort.id,
-                                latitude: coords.lat,
-                                longitude: coords.lng,
-                        });
+                        const inserted = await db
+                                .insert(coordinates)
+                                .values({
+                                        latitude: coords.lat,
+                                        longitude: coords.lng,
+                                })
+                                .returning({ id: coordinates.id });
+
+                        const coordId = inserted[0]?.id;
+
+                        if (coordId) {
+                                await db
+                                        .update(resorts)
+                                        .set({ coordinatesId: coordId })
+                                        .where(eq(resorts.id, resort.id));
+                        }
                 } else {
                         console.warn(`Could not get coordinates for ${query}`);
                 }
