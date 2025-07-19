@@ -16,7 +16,8 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
 
     async function handleSubmitComment(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const formData: FormData = new FormData(e.currentTarget);
+        const form = e.currentTarget;
+        const formData: FormData = new FormData(form);
         const text: string = formData.get("comment") as string;
         const newComment: CommentReq = {
             userId: user!.id,
@@ -24,7 +25,7 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
             text,
         };
         await createComment(newComment);
-        e.currentTarget.reset();
+        form.reset();
     }
 
     return (
@@ -36,11 +37,7 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
             {user && (
                 <>
                     <h3>Leave a comment:</h3>
-                    <form
-                        onSubmit={(e) => {
-                            handleSubmitComment(e);
-                        }}
-                    >
+                    <form onSubmit={handleSubmitComment}>
                         <textarea
                             name="comment"
                             placeholder="Write your comment here..."
