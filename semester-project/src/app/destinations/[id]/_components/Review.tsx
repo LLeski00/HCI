@@ -1,12 +1,16 @@
 "use client";
 
 import { ReviewInfo } from "@/types/review";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import ReviewComments from "./ReviewComments";
-import { Reaction } from "@/types/reaction";
+import { Reaction, ReactionReq } from "@/types/reaction";
 import { BiDislike, BiLike, BiSolidDislike, BiSolidLike } from "react-icons/bi";
 import { useAuth } from "@/context/AuthContext";
+import {
+    createReviewReaction,
+    deleteReviewReaction,
+} from "@/app/api/review-reaction";
 
 interface ReviewProps {
     review: ReviewInfo;
@@ -21,12 +25,33 @@ const Review: FC<ReviewProps> = ({ review }) => {
     const snippet: string = review.text ? review.text.slice(0, 50) + "..." : "";
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [userReaction, setUserReaction] = useState<Reaction | null>(null);
-    const reactions: ReactionCount = getReactionCount();
     const { user } = useAuth();
+    const reactions: ReactionCount = getReactionCount();
+
+    useEffect(() => {
+        if (user && review.reactions) {
+            const userReaction = review.reactions.find(
+                (r) => r.userId === user.id
+            );
+            setUserReaction(userReaction ? userReaction.reaction : null);
+        }
+    }, [review.reactions, user]);
 
     function handleReaction(reaction: Reaction) {
-        if (userReaction === reaction) setUserReaction(null);
-        else setUserReaction(reaction);
+        const reactionReq: ReactionReq = {
+            userId: user!.id,
+            reviewId: review.id,
+            reaction: reaction,
+        };
+
+        if (userReaction === reaction) {
+            setUserReaction(null);
+            deleteReviewReaction(reactionReq);
+            return;
+        }
+
+        createReviewReaction(reactionReq);
+        setUserReaction(reaction);
     }
 
     function getReactionCount(): ReactionCount {
@@ -34,9 +59,6 @@ const Review: FC<ReviewProps> = ({ review }) => {
             (acc, r) => {
                 if (r.reaction === Reaction.Like) acc.likes++;
                 else if (r.reaction === Reaction.Dislike) acc.dislikes++;
-
-                if (r.userId === user?.id) setUserReaction(r.reaction);
-
                 return acc;
             },
             { likes: 0, dislikes: 0 }
@@ -55,11 +77,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
             </div>
             {review.text && <p>{isExpanded ? review.text : snippet}</p>}
             <div className="reactions">
-                <p>
-                    {userReaction === Reaction.Like
-                        ? reactions.likes + 1
-                        : reactions.likes}
-                </p>
+                <p>{reactions.likes}</p>
                 {userReaction === Reaction.Like ? (
                     <BiSolidLike
                         onClick={() => handleReaction(Reaction.Like)}
@@ -76,11 +94,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
                         onClick={() => handleReaction(Reaction.Dislike)}
                     />
                 )}
-                <p>
-                    {userReaction === Reaction.Dislike
-                        ? reactions.dislikes + 1
-                        : reactions.dislikes}
-                </p>
+                <p>{reactions.dislikes}</p>
             </div>
             {isExpanded && <ReviewComments reviewId={review.id} />}
             <button onClick={() => setIsExpanded(!isExpanded)}>
