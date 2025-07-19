@@ -6,6 +6,8 @@ import styles from "@/components/navbar/navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Page } from "@/types/page";
 import { pages } from "@/constants/pages";
+import { useAuth } from "@/context/AuthContext";
+import UserHeader from "@/components/user/userHeader";
 
 function processPage(page: Page, index: number, pathname: string) {
     const isActive =
@@ -22,15 +24,15 @@ function processPage(page: Page, index: number, pathname: string) {
                 {page.title}
 
                 <span
-                    className={`${styles.underline} ${
-                        isActive ? styles.underlineActive : ""
-                    }`}
+                    className={`${styles.underline} ${isActive ? styles.underlineActive : ""
+                        }`}
                 />
             </Link>
         </li>
     );
 }
 export function Navbar() {
+    const { user } = useAuth();
     const pathname = usePathname();
     const navClass =
         pathname === "/"
@@ -44,9 +46,14 @@ export function Navbar() {
                 {pages.map((page, index) => processPage(page, index, pathname))}
             </ul>
             <GiHamburgerMenu />
-            <Link href="/auth/signin" className={styles.loginButton}>
-                SIGN IN
-            </Link>
+            {user ? (
+                <UserHeader user={user} />
+            ) : (
+                <Link href="/auth/signin" className={styles.loginButton}>
+                    SIGN IN
+                </Link>
+            )}
+
         </div>
     );
 }

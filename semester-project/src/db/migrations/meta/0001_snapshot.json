@@ -1,384 +1,377 @@
 {
-  "id": "b143332f-e389-45f7-9b2c-06dfcc25d145",
-  "prevId": "aa37a6b0-c5ec-4b90-9c02-ea45cdea0f7d",
-  "version": "7",
-  "dialect": "postgresql",
-  "tables": {
-    "public.blogs": {
-      "name": "blogs",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+        "id": "b143332f-e389-45f7-9b2c-06dfcc25d145",
+        "prevId": "aa37a6b0-c5ec-4b90-9c02-ea45cdea0f7d",
+        "version": "7",
+        "dialect": "postgresql",
+        "tables": {
+                "public.blogs": {
+                        "name": "blogs",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true
+                                },
+                                "user_id": {
+                                        "name": "user_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "resort_id": {
+                                        "name": "resort_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "text": {
+                                        "name": "text",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {},
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                },
+                "public.coordinates": {
+                        "name": "coordinates",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true,
+                                        "default": "gen_random_uuid()"
+                                },
+                                "latitude": {
+                                        "name": "latitude",
+                                        "type": "double precision",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "longitude": {
+                                        "name": "longitude",
+                                        "type": "double precision",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {},
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                },
+                "public.review-comments": {
+                        "name": "review-comments",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true
+                                },
+                                "user_id": {
+                                        "name": "user_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "review_id": {
+                                        "name": "review_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "text": {
+                                        "name": "text",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "created_at": {
+                                        "name": "created_at",
+                                        "type": "timestamp",
+                                        "primaryKey": false,
+                                        "notNull": true,
+                                        "default": "now()"
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {},
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                },
+                "public.review-reactions": {
+                        "name": "review-reactions",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true
+                                },
+                                "user_id": {
+                                        "name": "user_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "review_id": {
+                                        "name": "review_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "reaction": {
+                                        "name": "reaction",
+                                        "type": "reaction",
+                                        "typeSchema": "public",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {},
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                },
+                "public.reviews": {
+                        "name": "reviews",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true
+                                },
+                                "user_id": {
+                                        "name": "user_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "resort_id": {
+                                        "name": "resort_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "rating": {
+                                        "name": "rating",
+                                        "type": "integer",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "text": {
+                                        "name": "text",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "created_at": {
+                                        "name": "created_at",
+                                        "type": "timestamp",
+                                        "primaryKey": false,
+                                        "notNull": true,
+                                        "default": "now()"
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {},
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                },
+                "public.resorts": {
+                        "name": "resorts",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true
+                                },
+                                "name": {
+                                        "name": "name",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "country": {
+                                        "name": "country",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "description": {
+                                        "name": "description",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "elevation": {
+                                        "name": "elevation",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "easy-slopes": {
+                                        "name": "easy-slopes",
+                                        "type": "real",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "intermediate-slopes": {
+                                        "name": "intermediate-slopes",
+                                        "type": "real",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "difficult-slopes": {
+                                        "name": "difficult-slopes",
+                                        "type": "real",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "ski-lift": {
+                                        "name": "ski-lift",
+                                        "type": "smallint",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "adult-price": {
+                                        "name": "adult-price",
+                                        "type": "real",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "youth-price": {
+                                        "name": "youth-price",
+                                        "type": "real",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "review": {
+                                        "name": "review",
+                                        "type": "real",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "images": {
+                                        "name": "images",
+                                        "type": "jsonb[]",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "coordinates_id": {
+                                        "name": "coordinates_id",
+                                        "type": "uuid",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {
+                                "resorts_coordinates_id_coordinates_id_fk": {
+                                        "name": "resorts_coordinates_id_coordinates_id_fk",
+                                        "tableFrom": "resorts",
+                                        "tableTo": "coordinates",
+                                        "columnsFrom": ["coordinates_id"],
+                                        "columnsTo": ["id"],
+                                        "onDelete": "no action",
+                                        "onUpdate": "no action"
+                                }
+                        },
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                },
+                "public.users": {
+                        "name": "users",
+                        "schema": "",
+                        "columns": {
+                                "id": {
+                                        "name": "id",
+                                        "type": "uuid",
+                                        "primaryKey": true,
+                                        "notNull": true
+                                },
+                                "email": {
+                                        "name": "email",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "name": {
+                                        "name": "name",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": true
+                                },
+                                "profile_image": {
+                                        "name": "profile_image",
+                                        "type": "text",
+                                        "primaryKey": false,
+                                        "notNull": false
+                                },
+                                "created_at": {
+                                        "name": "created_at",
+                                        "type": "timestamp",
+                                        "primaryKey": false,
+                                        "notNull": false,
+                                        "default": "now()"
+                                }
+                        },
+                        "indexes": {},
+                        "foreignKeys": {},
+                        "compositePrimaryKeys": {},
+                        "uniqueConstraints": {},
+                        "policies": {},
+                        "checkConstraints": {},
+                        "isRLSEnabled": false
+                }
         },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
+        "enums": {
+                "public.reaction": {
+                        "name": "reaction",
+                        "schema": "public",
+                        "values": ["like", "dislike"]
+                }
         },
-        "resort_id": {
-          "name": "resort_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "text": {
-          "name": "text",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
+        "schemas": {},
+        "sequences": {},
+        "roles": {},
+        "policies": {},
+        "views": {},
+        "_meta": {
+                "columns": {},
+                "schemas": {},
+                "tables": {}
         }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.coordinates": {
-      "name": "coordinates",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "latitude": {
-          "name": "latitude",
-          "type": "double precision",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "longitude": {
-          "name": "longitude",
-          "type": "double precision",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.review-comments": {
-      "name": "review-comments",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "review_id": {
-          "name": "review_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "text": {
-          "name": "text",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.review-reactions": {
-      "name": "review-reactions",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "review_id": {
-          "name": "review_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "reaction": {
-          "name": "reaction",
-          "type": "reaction",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.reviews": {
-      "name": "reviews",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "resort_id": {
-          "name": "resort_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "rating": {
-          "name": "rating",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "text": {
-          "name": "text",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.resorts": {
-      "name": "resorts",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "country": {
-          "name": "country",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "description": {
-          "name": "description",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "elevation": {
-          "name": "elevation",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "easy-slopes": {
-          "name": "easy-slopes",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "intermediate-slopes": {
-          "name": "intermediate-slopes",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "difficult-slopes": {
-          "name": "difficult-slopes",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "ski-lift": {
-          "name": "ski-lift",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "adult-price": {
-          "name": "adult-price",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "youth-price": {
-          "name": "youth-price",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "review": {
-          "name": "review",
-          "type": "real",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "images": {
-          "name": "images",
-          "type": "jsonb[]",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "coordinates_id": {
-          "name": "coordinates_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "resorts_coordinates_id_coordinates_id_fk": {
-          "name": "resorts_coordinates_id_coordinates_id_fk",
-          "tableFrom": "resorts",
-          "tableTo": "coordinates",
-          "columnsFrom": [
-            "coordinates_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.users": {
-      "name": "users",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "email": {
-          "name": "email",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "name": {
-          "name": "name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "profile_image": {
-          "name": "profile_image",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    }
-  },
-  "enums": {
-    "public.reaction": {
-      "name": "reaction",
-      "schema": "public",
-      "values": [
-        "like",
-        "dislike"
-      ]
-    }
-  },
-  "schemas": {},
-  "sequences": {},
-  "roles": {},
-  "policies": {},
-  "views": {},
-  "_meta": {
-    "columns": {},
-    "schemas": {},
-    "tables": {}
-  }
 }

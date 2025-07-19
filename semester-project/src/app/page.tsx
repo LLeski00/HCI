@@ -9,9 +9,9 @@ export default function Home() {
     return (
         <div className="">
             <HeroSection titleTop="YOUR SKI"
-                         titleBottom="ADVENTURE AWAITS!" 
-                         description="PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET" 
-                         backgroundImage="/images/4.jpg"/>
+                titleBottom="ADVENTURE AWAITS!"
+                description="PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET"
+                backgroundImage="/images/4.jpg" />
 
             <section className="home-section">
                 <div className="text-content">
@@ -35,8 +35,8 @@ export default function Home() {
                     <img src="/images/skiing.jpg" />
                 </div>
             </section>
-            
-            <TearEffect blueBackground={true}/>
+
+            <TearEffect blueBackground={true} />
             <section className="home-destinations-section">
                 <h1>Explore popular destinations</h1>
                 {/*slideshow */}
@@ -58,7 +58,7 @@ export default function Home() {
                 <TearEffect />
             </section>
 
-                
+
             <section className="planner-section">
                 <div className="title-content">
                     <h1>Your personal ski planner</h1>
@@ -110,7 +110,7 @@ export default function Home() {
                 </article>
             </section>
 
-            <TearEffect blueBackground={true}/>
+            <TearEffect blueBackground={true} />
             <section className="review-section">
                 <h3>Hear From Fellow Skiers!</h3>
                 <article>

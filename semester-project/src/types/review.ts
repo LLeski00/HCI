@@ -1,3 +1,4 @@
+import { ReactionData } from "./reaction";
 import { User } from "./user";
 
 type Review = {
@@ -6,6 +7,7 @@ type Review = {
     resortId: string;
     rating: number;
     text: string | null;
+    createdAt: Date;
 };
 
 type ReviewInfo = {
@@ -14,6 +16,8 @@ type ReviewInfo = {
     resortId: string;
     rating: number;
     text: string | null;
+    reactions?: ReactionData[];
+    createdAt: Date;
 };
 
 type ReviewReq = {
