@@ -4,26 +4,29 @@ import { reviews } from "@/db/schemas/review";
 import { ReviewInfo, ReviewReq } from "@/types/review";
 import { eq } from "drizzle-orm";
 import { getUserById } from "./user";
+import { getReviewReactionsByReviewId } from "../app/api/review-reaction";
 
 export async function getReviewsByResortId(
     resortId: string
 ): Promise<ReviewInfo[]> {
-    const dbData = await db
+    const fetchedReviews = await db
         .select()
         .from(reviews)
         .where(eq(reviews.resort_id, resortId));
 
-    const data: ReviewInfo[] = await Promise.all(
-        dbData.map(async (review) => ({
+    const reviewData: ReviewInfo[] = await Promise.all(
+        fetchedReviews.map(async (review) => ({
             id: review.id,
             user: await getUserById(review.user_id),
             resortId: review.resort_id,
             rating: review.rating,
             text: review.text,
+            reactions: await getReviewReactionsByReviewId(review.id),
+            createdAt: review.created_at,
         }))
     );
 
-    return data;
+    return reviewData;
 }
 
 export async function createReview(newReview: ReviewReq): Promise<void> {
