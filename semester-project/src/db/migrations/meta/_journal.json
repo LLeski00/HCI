@@ -8,6 +8,13 @@
       "when": 1752920784493,
       "tag": "0000_striped_scourge",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1752916474858,
+      "tag": "0003_easy_gauntlet",
+      "breakpoints": true
     }
   ]
 }

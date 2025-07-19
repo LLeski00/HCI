@@ -14,10 +14,6 @@ export const pages: Page[] = [
         path: "/planner",
     },
     {
-        title: "BLOGS",
-        path: "/blogs",
-    },
-    {
         title: "INFO",
         path: "/info",
     },
