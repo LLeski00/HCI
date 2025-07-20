@@ -1,3 +1,4 @@
+import ResortCard from "@/components/resortCard/resortCard";
 import { PlannerResults as PlannerResultsType } from "@/types/planner";
 import { FC } from "react";
 
@@ -12,16 +13,22 @@ const PlannerResults: FC<PlannerResultsProps> = ({ results }) => {
     return (
         <div>
             <h2>The best match:</h2>
+            <ResortCard resort={results.bestMatch.resort} />
             <p>
-                {results.bestMatch.name}, {results.bestMatch.country}
+                Distance: {results.bestMatch.distance.toFixed(2)} km, Total
+                cost: {results.bestMatch.totalCost.toFixed(2)} €
             </p>
             <h2>The cheapest:</h2>
+            <ResortCard resort={results.cheapest.resort} />
             <p>
-                {results.cheapest.name}, {results.cheapest.country}
+                Distance: {results.cheapest.distance.toFixed(2)} km, Total cost:{" "}
+                {results.cheapest.totalCost.toFixed(2)} €
             </p>
             <h2>The closest:</h2>
+            <ResortCard resort={results.closest.resort} />
             <p>
-                {results.closest.name}, {results.closest.country}
+                Distance: {results.closest.distance.toFixed(2)} km, Total cost:{" "}
+                {results.closest.totalCost.toFixed(2)} €
             </p>
         </div>
     );

@@ -1,9 +1,43 @@
 import { ResortInfo } from "@/types/resort";
 import { getTotalDistance } from "./getDistance";
 import { getDaysDifference } from "./dateUtils";
-import { PlannerFormData } from "@/types/planner";
+import { PlannerFormData, PlannerResults } from "@/types/planner";
 import { calculateDistance } from "./coordinatesUtils";
 import { Coordinates } from "@/types/coordinate";
+import { getResortsInsideBudget } from "@/api/resort";
+
+export async function getPlannerResults(
+    formData: PlannerFormData
+): Promise<PlannerResults> {
+    const resortsInsideBudget: ResortInfo[] = await getResortsInsideBudget(
+        formData
+    );
+
+    if (resortsInsideBudget.length === 0) return {} as PlannerResults;
+
+    const scores: Record<string, number> = calculateResortScores(
+        resortsInsideBudget,
+        formData.currentLocation
+    );
+    const bestResort = getBestResort(resortsInsideBudget, scores);
+    const closestResort = getClosestResort(
+        resortsInsideBudget,
+        formData.currentLocation
+    );
+    const cheapestResort = getCheapestResort(resortsInsideBudget);
+    const plannerResults: PlannerResults = formatPlannerResults(
+        bestResort,
+        closestResort,
+        cheapestResort,
+        formData
+    );
+
+    return {
+        bestMatch: plannerResults.bestMatch,
+        cheapest: plannerResults.cheapest,
+        closest: plannerResults.closest,
+    };
+}
 
 export function calculateResortScores(
     resorts: ResortInfo[],
@@ -61,4 +95,82 @@ export function calculateTotalCost(
         adultPrice * formData.numOfPeople * numOfDays +
         averageAccomodationCostPerDay * formData.numOfPeople * numOfDays
     );
+}
+
+function getBestResort(
+    resorts: ResortInfo[],
+    scores: Record<string, number>
+): ResortInfo {
+    const maxScore: number = Math.max(...Object.values(scores));
+    const bestMatch: ResortInfo = resorts.find(
+        (r) => scores[r.id] === maxScore
+    )!;
+    return bestMatch;
+}
+
+function getClosestResort(
+    resorts: ResortInfo[],
+    currentLocation: Coordinates
+): ResortInfo {
+    const minDistance: number = Math.min(
+        ...resorts.map((r) => calculateDistance(r.coordinates, currentLocation))
+    );
+    const closest: ResortInfo = resorts.find(
+        (r) => calculateDistance(r.coordinates, currentLocation) === minDistance
+    )!;
+    return closest;
+}
+
+function getCheapestResort(resorts: ResortInfo[]): ResortInfo {
+    const minPrice: number = Math.min(...resorts.map((r) => r.adultPrice));
+    const cheapest: ResortInfo = resorts.find(
+        (r) => r.adultPrice === minPrice
+    )!;
+    return cheapest;
+}
+
+function formatPlannerResults(
+    bestResort: ResortInfo,
+    closestResort: ResortInfo,
+    cheapestResort: ResortInfo,
+    formData: PlannerFormData
+): PlannerResults {
+    return {
+        bestMatch: {
+            resort: bestResort,
+            distance: calculateDistance(
+                bestResort.coordinates,
+                formData.currentLocation
+            ),
+            totalCost: calculateTotalCost(
+                bestResort.coordinates,
+                bestResort.adultPrice,
+                formData
+            ),
+        },
+        closest: {
+            resort: closestResort,
+            distance: calculateDistance(
+                closestResort.coordinates,
+                formData.currentLocation
+            ),
+            totalCost: calculateTotalCost(
+                closestResort.coordinates,
+                closestResort.adultPrice,
+                formData
+            ),
+        },
+        cheapest: {
+            resort: cheapestResort,
+            distance: calculateDistance(
+                cheapestResort.coordinates,
+                formData.currentLocation
+            ),
+            totalCost: calculateTotalCost(
+                cheapestResort.coordinates,
+                cheapestResort.adultPrice,
+                formData
+            ),
+        },
+    };
 }
