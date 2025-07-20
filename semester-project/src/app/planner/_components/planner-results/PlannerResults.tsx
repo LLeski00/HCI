@@ -6,7 +6,7 @@ interface PlannerResultsProps {
 }
 
 const PlannerResults: FC<PlannerResultsProps> = ({ results }) => {
-    if (!results || !results.bestMatch || !results.cheapest || !results.closest)
+    if (!results.bestMatch || !results.cheapest || !results.closest)
         return <p>No results available for the given form</p>;
 
     return (

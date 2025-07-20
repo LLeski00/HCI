@@ -10,7 +10,7 @@ export interface PlannerFormData {
 }
 
 export interface PlannerResults {
-    bestMatch: ResortInfo;
-    cheapest: ResortInfo;
-    closest: ResortInfo;
+    bestMatch: ResortInfo | null;
+    cheapest: ResortInfo | null;
+    closest: ResortInfo | null;
 }

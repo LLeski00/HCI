@@ -1,5 +1,9 @@
 import { ResortInfo } from "@/types/resort";
 import { getTotalDistance } from "./getDistance";
+import { getDaysDifference } from "./dateUtils";
+import { PlannerFormData } from "@/types/planner";
+import { calculateDistance } from "./coordinatesUtils";
+import { Coordinates } from "@/types/coordinate";
 
 export function calculateResortScores(
     resorts: ResortInfo[]
@@ -28,4 +32,25 @@ export function calculateResortScores(
     });
 
     return scores;
+}
+
+export function calculateTotalCost(
+    resortLocation: Coordinates,
+    adultPrice: number,
+    formData: PlannerFormData
+): number {
+    const numOfDays =
+        getDaysDifference(formData.startDate, formData.endDate) + 1;
+    const averageAccomodationCostPerDay = 70;
+    const distance = calculateDistance(
+        resortLocation,
+        formData.currentLocation
+    );
+    const transportCostPerKilometer = 0.2;
+
+    return (
+        distance * transportCostPerKilometer +
+        adultPrice * formData.numOfPeople * numOfDays +
+        averageAccomodationCostPerDay * formData.numOfPeople * numOfDays
+    );
 }

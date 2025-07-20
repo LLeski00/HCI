@@ -1,7 +1,9 @@
 "use server";
 import { db } from "@/db/drizzle";
 import { resorts } from "@/db/schemas/ski-resorts";
+import { PlannerFormData } from "@/types/planner";
 import { ResortInfo } from "@/types/resort";
+import { calculateTotalCost, getDaysDifference } from "@/utils";
 import { asc, eq, lte } from "drizzle-orm";
 
 type PagingInfo = {
@@ -49,11 +51,22 @@ async function getResortsByCountry(
     return data.length > 0 ? (data as ResortInfo[]) : null;
 }
 
-async function getResortsUnderPrice(price: number): Promise<ResortInfo[]> {
+async function getResortsInsideBudget(
+    formData: PlannerFormData
+): Promise<ResortInfo[]> {
     const data = await db
         .select()
         .from(resorts)
-        .where(lte(resorts.adultPrice, price));
+        .where(
+            lte(
+                calculateTotalCost(
+                    resorts.coordinates,
+                    resorts.adultPrice,
+                    formData
+                ),
+                formData.budget
+            )
+        );
 
     return data as ResortInfo[];
 }
@@ -63,5 +76,5 @@ export {
     getResorts,
     getResortById,
     getResortsByCountry,
-    getResortsUnderPrice,
+    getResortsInsideBudget,
 };
