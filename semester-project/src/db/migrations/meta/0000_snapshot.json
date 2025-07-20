@@ -1,34 +1,29 @@
 {
-  "id": "2c9608ce-226f-4c56-8c62-948abb94e906",
+  "id": "a93d42cf-9c2e-4b4a-bec0-4493fab1f8ae",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.blogs": {
-      "name": "blogs",
+    "public.coordinates": {
+      "name": "coordinates",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
-        "user_id": {
-          "name": "user_id",
-          "type": "uuid",
+        "latitude": {
+          "name": "latitude",
+          "type": "double precision",
           "primaryKey": false,
           "notNull": true
         },
-        "resort_id": {
-          "name": "resort_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "text": {
-          "name": "text",
-          "type": "text",
+        "longitude": {
+          "name": "longitude",
+          "type": "double precision",
           "primaryKey": false,
           "notNull": true
         }
@@ -254,10 +249,30 @@
           "type": "jsonb[]",
           "primaryKey": false,
           "notNull": false
+        },
+        "coordinates_id": {
+          "name": "coordinates_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "resorts_coordinates_id_coordinates_id_fk": {
+          "name": "resorts_coordinates_id_coordinates_id_fk",
+          "tableFrom": "resorts",
+          "tableTo": "coordinates",
+          "columnsFrom": [
+            "coordinates_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
