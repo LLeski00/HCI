@@ -5,7 +5,7 @@ export async function getCoordinates(
 ): Promise<Coordinates | null> {
     const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
         location
-    )}&key=${process.env.OPENCAGE_API_KEY}`;
+    )}&key=${process.env.NEXT_PUBLIC_OPENCAGE_API_KEY}`;
 
     try {
         const response = await fetch(url);

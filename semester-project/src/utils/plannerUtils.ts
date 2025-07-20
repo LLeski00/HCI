@@ -6,11 +6,14 @@ import { calculateDistance } from "./coordinatesUtils";
 import { Coordinates } from "@/types/coordinate";
 
 export function calculateResortScores(
-    resorts: ResortInfo[]
+    resorts: ResortInfo[],
+    currentLocation: Coordinates
 ): Record<string, number> {
     const scores: Record<string, number> = {};
-    const priceWeight: number = 0.5;
-    const slopeWeight: number = 0.5;
+    const distanceWeight: number = 0.3;
+    const priceWeight: number = 0.3;
+    const slopeWeight: number = 0.4;
+    const maxDistance: number = 4000;
     const maxPrice: number = 120;
     const maxSlopeLength: number = 600;
 
@@ -23,10 +26,15 @@ export function calculateResortScores(
             resort.difficultSlopes ?? 0
         );
 
+        const distanceScore: number =
+            distanceWeight *
+            (1 -
+                calculateDistance(resort.coordinates, currentLocation) /
+                    maxDistance);
         const priceScore: number = priceWeight * (1 - adultPrice / maxPrice);
         const slopeScore: number =
             slopeWeight * (totalSlopeLength / maxSlopeLength);
-        const totalScore: number = priceScore + slopeScore;
+        const totalScore: number = priceScore + slopeScore + distanceScore;
 
         scores[resort.id] = totalScore;
     });

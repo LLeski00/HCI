@@ -13,9 +13,9 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const today = new Date().toISOString().split("T")[0];
 
-    function isFormValid(event: React.FormEvent<HTMLFormElement>): boolean {
-        const startDate = new Date(event.currentTarget.startDate.value);
-        const endDate = new Date(event.currentTarget.endDate.value);
+    function isFormValid(form: HTMLFormElement): boolean {
+        const startDate = new Date(form.startDate.value);
+        const endDate = new Date(form.endDate.value);
 
         if (endDate < startDate) {
             setErrorMessage("End date cannot be before start date.");
@@ -28,11 +28,12 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
 
     async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        const form: HTMLFormElement = event.currentTarget;
 
-        if (!isFormValid(event)) return;
+        if (!isFormValid(form)) return;
 
         const coordinates: Coordinates | null = await getCoordinates(
-            event.currentTarget.currentLocation.value
+            form.currentLocation.value
         );
 
         if (!coordinates) {
@@ -41,10 +42,10 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
         }
 
         const formData: PlannerFormData = {
-            startDate: new Date(event.currentTarget.startDate.value),
-            endDate: new Date(event.currentTarget.endDate.value),
-            numOfPeople: parseInt(event.currentTarget.numOfPeople.value),
-            budget: parseFloat(event.currentTarget.budget.value),
+            startDate: new Date(form.startDate.value),
+            endDate: new Date(form.endDate.value),
+            numOfPeople: parseInt(form.numOfPeople.value),
+            budget: parseFloat(form.budget.value),
             currentLocation: coordinates,
         };
         setFormData(formData);
