@@ -1,5 +1,6 @@
 "use server";
 import { db } from "@/db/drizzle";
+import { coordinates } from "@/db/schemas/coordinates";
 import { resorts } from "@/db/schemas/ski-resorts";
 import { PlannerFormData } from "@/types/planner";
 import { ResortInfo } from "@/types/resort";
@@ -55,20 +56,39 @@ async function getResortsInsideBudget(
     formData: PlannerFormData
 ): Promise<ResortInfo[]> {
     const data = await db
-        .select()
+        .select({
+            id: resorts.id,
+            name: resorts.name,
+            country: resorts.country,
+            description: resorts.description,
+            elevation: resorts.elevation,
+            easySlopes: resorts.easySlopes,
+            intermediateSlopes: resorts.intermediateSlopes,
+            difficultSlopes: resorts.difficultSlopes,
+            skiLift: resorts.skiLift,
+            adultPrice: resorts.adultPrice,
+            youthPrice: resorts.youthPrice,
+            review: resorts.review,
+            images: resorts.images,
+            coordinates: {
+                latitude: coordinates.latitude,
+                longitude: coordinates.longitude,
+            },
+        })
         .from(resorts)
-        .where(
-            lte(
-                calculateTotalCost(
-                    resorts.coordinates,
-                    resorts.adultPrice,
-                    formData
-                ),
-                formData.budget
-            )
+        .leftJoin(coordinates, eq(resorts.coordinatesId, coordinates.id));
+
+    return data.filter((resort) => {
+        if (!resort.coordinates || !resort.adultPrice) return false;
+
+        const totalCost = calculateTotalCost(
+            resort.coordinates,
+            resort.adultPrice,
+            formData
         );
 
-    return data as ResortInfo[];
+        return totalCost <= formData.budget;
+    }) as ResortInfo[];
 }
 
 export {
