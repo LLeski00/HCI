@@ -5,6 +5,7 @@ import { ReviewInfo, ReviewReq } from "@/types/review";
 import { eq } from "drizzle-orm";
 import { getUserById } from "./user";
 import { getReviewReactionsByReviewId } from "../app/api/review-reaction";
+import { User } from "@/types/user";
 
 export async function getReviewsByResortId(
     resortId: string
@@ -17,7 +18,7 @@ export async function getReviewsByResortId(
     const reviewData: ReviewInfo[] = await Promise.all(
         fetchedReviews.map(async (review) => ({
             id: review.id,
-            user: await getUserById(review.user_id),
+            user: (await getUserById(review.user_id)) ?? ({} as User),
             resortId: review.resort_id,
             rating: review.rating,
             text: review.text,

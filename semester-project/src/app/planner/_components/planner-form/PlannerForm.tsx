@@ -1,5 +1,7 @@
 "use client";
 
+import { getCoordinates } from "@/app/api/coordinate";
+import { Coordinates } from "@/types/coordinate";
 import { PlannerFormData } from "@/types/planner";
 import { FC, useState } from "react";
 
@@ -24,17 +26,26 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
         return true;
     }
 
-    function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
+    async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         if (!isFormValid(event)) return;
+
+        const coordinates: Coordinates | null = await getCoordinates(
+            event.currentTarget.currentLocation.value
+        );
+
+        if (!coordinates) {
+            setErrorMessage("Invalid current location. Please try again.");
+            return;
+        }
 
         const formData: PlannerFormData = {
             startDate: new Date(event.currentTarget.startDate.value),
             endDate: new Date(event.currentTarget.endDate.value),
             numOfPeople: parseInt(event.currentTarget.numOfPeople.value),
             budget: parseFloat(event.currentTarget.budget.value),
-            currentLocation: event.currentTarget.currentLocation.value,
+            currentLocation: coordinates,
         };
         setFormData(formData);
     }
