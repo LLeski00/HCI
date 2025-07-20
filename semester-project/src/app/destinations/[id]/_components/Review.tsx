@@ -57,6 +57,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
     function getReactionCount(): ReactionCount {
         return (review.reactions ?? []).reduce(
             (acc, r) => {
+                if (user && r.userId === user.id) return acc;
                 if (r.reaction === Reaction.Like) acc.likes++;
                 else if (r.reaction === Reaction.Dislike) acc.dislikes++;
                 return acc;
@@ -77,7 +78,11 @@ const Review: FC<ReviewProps> = ({ review }) => {
             </div>
             {review.text && <p>{isExpanded ? review.text : snippet}</p>}
             <div className="reactions">
-                <p>{reactions.likes}</p>
+                <p>
+                    {userReaction === Reaction.Like
+                        ? reactions.likes + 1
+                        : reactions.likes}
+                </p>
                 {userReaction === Reaction.Like ? (
                     <BiSolidLike
                         onClick={() => handleReaction(Reaction.Like)}
@@ -94,7 +99,11 @@ const Review: FC<ReviewProps> = ({ review }) => {
                         onClick={() => handleReaction(Reaction.Dislike)}
                     />
                 )}
-                <p>{reactions.dislikes}</p>
+                <p>
+                    {userReaction === Reaction.Dislike
+                        ? reactions.dislikes + 1
+                        : reactions.dislikes}
+                </p>
             </div>
             {isExpanded && <ReviewComments reviewId={review.id} />}
             <button onClick={() => setIsExpanded(!isExpanded)}>

@@ -4,7 +4,6 @@ import { FC } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
 import { ResortInfo } from "@/types/resort";
-import { useAuth } from "@/context/AuthContext";
 
 interface ReviewsProps {
     resort: ResortInfo;

@@ -44,12 +44,12 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews }) => {
                         >
                             <h2>Leave a Review</h2>
                             <label className={styles.ratingLabel}>
-                                Rating (1-10):
+                                Rating (1-5):
                                 <input
                                     type="number"
                                     name="rating"
                                     min="1"
-                                    max="10"
+                                    max="5"
                                     required
                                 />
                             </label>

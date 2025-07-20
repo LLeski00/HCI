@@ -8,10 +8,12 @@ import TearEffect from "@/components/tearEffect/tearEffect";
 export default function Home() {
     return (
         <div className="">
-            <HeroSection titleTop="YOUR SKI"
+            <HeroSection
+                titleTop="YOUR SKI"
                 titleBottom="ADVENTURE AWAITS!"
                 description="PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET"
-                backgroundImage="/images/4.jpg" />
+                backgroundImage="/images/4.jpg"
+            />
 
             <section className="home-section">
                 <div className="text-content">
@@ -57,7 +59,6 @@ export default function Home() {
                 <Button text="VIEW MORE" href="/" />
                 <TearEffect />
             </section>
-
 
             <section className="planner-section">
                 <div className="title-content">
