@@ -1,10 +1,14 @@
 import { Button } from "@/components/button/button";
-import TearEffect from "@/components/tearEffect/tearEffect";
+import { FC } from "react";
 
-const DestinationsSection = () => {
+interface DestinationsSectionProps {
+    header: string;
+}
+
+const DestinationsSection: FC<DestinationsSectionProps> = ({ header }) => {
     return (
         <section className="home-destinations-section">
-            <h1>Explore popular destinations</h1>
+            <h1>{header}</h1>
             {/*slideshow */}
             <div className="home-destinations">
                 <div className="home-destination">

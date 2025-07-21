@@ -7,21 +7,47 @@ const client = createClient({
 });
 
 export interface HomePageContent {
-    heroTitle: string;
-    heroSubtitle: string;
-    heroDescription: string;
-    sectionOneTitle: string;
-    sectionOneDescription: string;
+    homeSectionHeader: string;
+    homeSectionParagraph: string;
+    homeDestinationsSectionHeader: string;
+    plannerSectionHeader: string;
+    plannerSectionParagraph: string;
+    stepSectionHeader: string;
+    stepSectionHeader1: string;
+    stepSectionParagraph1: string;
+    stepSectionHeader2: string;
+    stepSectionParagraph2: string;
+    stepSectionHeader3: string;
+    stepSectionParagraph3: string;
+    reviewSectionHeader: string;
+    reviewSectionArticle: string;
+    reviewSectionParagraph1: string;
+    reviewSectionParagraph2: string;
+    reviewSectionParagraph3: string;
 }
 
 export async function getHomePageContent(): Promise<HomePageContent> {
-    const entry = await client.getEntry("homePageContentId");
+    const entry = await client.getEntry(
+        process.env.CONTENTFUL_HOMEPAGE_CONTENT_ID!
+    );
     const fields = entry.fields as { [key: string]: any };
     return {
-        heroTitle: fields.heroTitle ?? "",
-        heroSubtitle: fields.heroSubtitle ?? "",
-        heroDescription: fields.heroDescription ?? "",
-        sectionOneTitle: fields.sectionOneTitle ?? "",
-        sectionOneDescription: fields.sectionOneDescription ?? "",
+        homeSectionHeader: fields.homeSectionHeader,
+        homeSectionParagraph: fields.homeSectionParagraph,
+        homeDestinationsSectionHeader: fields.homeDestinationsSectionHeader,
+        plannerSectionHeader: fields.plannerSectionHeader,
+        plannerSectionParagraph: fields.plannerSectionParagraph,
+        stepSectionHeader: fields.stepSectionHeader,
+        stepSectionHeader1: fields.stepSectionHeader1,
+        stepSectionParagraph1: fields.stepSectionParagraph1,
+        stepSectionHeader2: fields.stepSectionHeader2,
+        stepSectionParagraph2: fields.stepSectionParagraph2,
+        stepSectionHeader3: fields.stepSectionHeader3,
+        stepSectionParagraph3: fields.stepSectionParagraph3,
+        reviewSectionHeader: fields.reviewSectionHeader,
+        reviewSectionArticle: fields.reviewSectionArticle,
+        reviewSectionParagraph1: fields.reviewSectionParagraph1,
+        reviewSectionParagraph2: fields.reviewSectionParagraph2,
+        reviewSectionParagraph3: fields.reviewSectionParagraph3,
     };
 }

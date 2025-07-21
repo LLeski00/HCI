@@ -1,20 +1,17 @@
 import { Button } from "@/components/button/button";
+import { FC } from "react";
 
-const HomeSection = () => {
+interface HomeSectionProps {
+    header: string;
+    paragraph: string;
+}
+
+const HomeSection: FC<HomeSectionProps> = async ({ header, paragraph }) => {
     return (
         <section className="home-section">
             <div className="text-content">
-                <h2>
-                    Everything you need to <br />
-                    know in one place
-                </h2>
-                <p>
-                    Embark on your next snowy adventure with ease! Discover top
-                    ski resorts in Europe, compare features, and plan your dream
-                    trip—all in one place. From family-friendly slopes to
-                    thrilling alpine runs, we have everything you need to make
-                    your ski vacation unforgettable. Start exploring today!
-                </p>
+                <h2>{header}</h2>
+                <p>{paragraph}</p>
                 <Button text="EXPLORE" href="/" />
             </div>
             <div className="image-container">
