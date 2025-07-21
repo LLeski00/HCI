@@ -36,7 +36,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     <p>{description}</p>
                 </div>
             </section>
-            <TearEffect isHero={true} />
         </>
     );
 };
