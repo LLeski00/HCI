@@ -13,28 +13,29 @@ type PagingInfo = {
 };
 
 const PAGE_SIZE = Number(process.env.PAGE_SIZE);
+const RESORT_SELECT = {
+    id: resorts.id,
+    name: resorts.name,
+    country: resorts.country,
+    description: resorts.description,
+    elevation: resorts.elevation,
+    easySlopes: resorts.easySlopes,
+    intermediateSlopes: resorts.intermediateSlopes,
+    difficultSlopes: resorts.difficultSlopes,
+    skiLift: resorts.skiLift,
+    adultPrice: resorts.adultPrice,
+    youthPrice: resorts.youthPrice,
+    review: resorts.review,
+    images: resorts.images,
+    coordinates: {
+        latitude: coordinates.latitude,
+        longitude: coordinates.longitude,
+    },
+};
 
 async function getAllResorts() {
     const data = await db
-        .select({
-            id: resorts.id,
-            name: resorts.name,
-            country: resorts.country,
-            description: resorts.description,
-            elevation: resorts.elevation,
-            easySlopes: resorts.easySlopes,
-            intermediateSlopes: resorts.intermediateSlopes,
-            difficultSlopes: resorts.difficultSlopes,
-            skiLift: resorts.skiLift,
-            adultPrice: resorts.adultPrice,
-            youthPrice: resorts.youthPrice,
-            review: resorts.review,
-            images: resorts.images,
-            coordinates: {
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude,
-            },
-        })
+        .select(RESORT_SELECT)
         .from(resorts)
         .leftJoin(coordinates, eq(resorts.coordinatesId, coordinates.id))
         .orderBy(asc(resorts.images));
@@ -47,25 +48,7 @@ async function getResorts({
     _limit = PAGE_SIZE,
 }: PagingInfo): Promise<ResortInfo[]> {
     const data = await db
-        .select({
-            id: resorts.id,
-            name: resorts.name,
-            country: resorts.country,
-            description: resorts.description,
-            elevation: resorts.elevation,
-            easySlopes: resorts.easySlopes,
-            intermediateSlopes: resorts.intermediateSlopes,
-            difficultSlopes: resorts.difficultSlopes,
-            skiLift: resorts.skiLift,
-            adultPrice: resorts.adultPrice,
-            youthPrice: resorts.youthPrice,
-            review: resorts.review,
-            images: resorts.images,
-            coordinates: {
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude,
-            },
-        })
+        .select(RESORT_SELECT)
         .from(resorts)
         .leftJoin(coordinates, eq(resorts.coordinatesId, coordinates.id))
         .orderBy(asc(resorts.images))
@@ -76,25 +59,7 @@ async function getResorts({
 
 async function getResortById(id: string): Promise<ResortInfo | null> {
     const data = await db
-        .select({
-            id: resorts.id,
-            name: resorts.name,
-            country: resorts.country,
-            description: resorts.description,
-            elevation: resorts.elevation,
-            easySlopes: resorts.easySlopes,
-            intermediateSlopes: resorts.intermediateSlopes,
-            difficultSlopes: resorts.difficultSlopes,
-            skiLift: resorts.skiLift,
-            adultPrice: resorts.adultPrice,
-            youthPrice: resorts.youthPrice,
-            review: resorts.review,
-            images: resorts.images,
-            coordinates: {
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude,
-            },
-        })
+        .select(RESORT_SELECT)
         .from(resorts)
         .leftJoin(coordinates, eq(resorts.coordinatesId, coordinates.id))
         .where(eq(resorts.id, id))
@@ -106,25 +71,7 @@ async function getResortsByCountry(
     country: string
 ): Promise<ResortInfo[] | null> {
     const data = await db
-        .select({
-            id: resorts.id,
-            name: resorts.name,
-            country: resorts.country,
-            description: resorts.description,
-            elevation: resorts.elevation,
-            easySlopes: resorts.easySlopes,
-            intermediateSlopes: resorts.intermediateSlopes,
-            difficultSlopes: resorts.difficultSlopes,
-            skiLift: resorts.skiLift,
-            adultPrice: resorts.adultPrice,
-            youthPrice: resorts.youthPrice,
-            review: resorts.review,
-            images: resorts.images,
-            coordinates: {
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude,
-            },
-        })
+        .select(RESORT_SELECT)
         .from(resorts)
         .leftJoin(coordinates, eq(resorts.coordinatesId, coordinates.id))
         .where(eq(resorts.country, country));
@@ -135,25 +82,7 @@ async function getResortsInsideBudget(
     formData: PlannerFormData
 ): Promise<ResortInfo[]> {
     const data = await db
-        .select({
-            id: resorts.id,
-            name: resorts.name,
-            country: resorts.country,
-            description: resorts.description,
-            elevation: resorts.elevation,
-            easySlopes: resorts.easySlopes,
-            intermediateSlopes: resorts.intermediateSlopes,
-            difficultSlopes: resorts.difficultSlopes,
-            skiLift: resorts.skiLift,
-            adultPrice: resorts.adultPrice,
-            youthPrice: resorts.youthPrice,
-            review: resorts.review,
-            images: resorts.images,
-            coordinates: {
-                latitude: coordinates.latitude,
-                longitude: coordinates.longitude,
-            },
-        })
+        .select(RESORT_SELECT)
         .from(resorts)
         .leftJoin(coordinates, eq(resorts.coordinatesId, coordinates.id));
 

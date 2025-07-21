@@ -4,6 +4,7 @@ import { getCoordinates } from "@/app/api/coordinate";
 import { Coordinates } from "@/types/coordinate";
 import { PlannerFormData } from "@/types/planner";
 import { FC, useState } from "react";
+import { Country, getData } from "country-list";
 
 interface PlannerFormProps {
     setFormData: Function;
@@ -12,6 +13,7 @@ interface PlannerFormProps {
 const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const today = new Date().toISOString().split("T")[0];
+    const countries: Country[] = getData();
 
     function isFormValid(form: HTMLFormElement): boolean {
         const startDate = new Date(form.startDate.value);
@@ -32,8 +34,9 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
 
         if (!isFormValid(form)) return;
 
+        const currentLocation = form.city.value + ", " + form.country.value;
         const coordinates: Coordinates | null = await getCoordinates(
-            form.currentLocation.value
+            currentLocation
         );
 
         if (!coordinates) {
@@ -71,8 +74,24 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
                 <input type="number" name="budget" min={10} required />
             </label>
             <label>
-                Current location:
-                <input type="text" name="currentLocation" required />
+                Country:
+                <select name="country" required>
+                    <option value="">Select a country</option>
+                    {countries.map((country) => (
+                        <option key={country.code} value={country.name}>
+                            {country.name}
+                        </option>
+                    ))}
+                </select>
+            </label>
+            <label>
+                City:
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="Enter your city"
+                    required
+                />
             </label>
             <button type="submit">Generate</button>
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

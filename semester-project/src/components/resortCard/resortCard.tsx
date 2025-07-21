@@ -53,10 +53,6 @@ export default function ResortCard({ resort }: { resort: ResortInfo }) {
                             </span>
                         </div>
                     </div>
-
-                    {/*<div className="details-button">
-                        <button>Details</button>
-                    </div>*/}
                 </div>
             </Link>
         </div>
