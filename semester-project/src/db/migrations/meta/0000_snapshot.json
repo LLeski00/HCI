@@ -1,11 +1,43 @@
 {
-  "id": "aa37a6b0-c5ec-4b90-9c02-ea45cdea0f7d",
+  "id": "a93d42cf-9c2e-4b4a-bec0-4493fab1f8ae",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.blogs": {
-      "name": "blogs",
+    "public.coordinates": {
+      "name": "coordinates",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "latitude": {
+          "name": "latitude",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "longitude": {
+          "name": "longitude",
+          "type": "double precision",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.review-comments": {
+      "name": "review-comments",
       "schema": "",
       "columns": {
         "id": {
@@ -20,8 +52,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "resort_id": {
-          "name": "resort_id",
+        "review_id": {
+          "name": "review_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -29,6 +61,51 @@
         "text": {
           "name": "text",
           "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.review-reactions": {
+      "name": "review-reactions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "review_id": {
+          "name": "review_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reaction": {
+          "name": "reaction",
+          "type": "reaction",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         }
@@ -74,6 +151,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -165,10 +249,30 @@
           "type": "jsonb[]",
           "primaryKey": false,
           "notNull": false
+        },
+        "coordinates_id": {
+          "name": "coordinates_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "resorts_coordinates_id_coordinates_id_fk": {
+          "name": "resorts_coordinates_id_coordinates_id_fk",
+          "tableFrom": "resorts",
+          "tableTo": "coordinates",
+          "columnsFrom": [
+            "coordinates_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
@@ -220,7 +324,16 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.reaction": {
+      "name": "reaction",
+      "schema": "public",
+      "values": [
+        "like",
+        "dislike"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

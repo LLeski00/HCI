@@ -5,6 +5,7 @@ import { ReviewInfo, ReviewReq } from "@/types/review";
 import { eq } from "drizzle-orm";
 import { getUserById } from "./user";
 import { getReviewReactionsByReviewId } from "../app/api/review-reaction";
+import { revalidatePath } from "next/cache";
 
 export async function getReviewsByResortId(
     resortId: string
@@ -15,15 +16,21 @@ export async function getReviewsByResortId(
         .where(eq(reviews.resort_id, resortId));
 
     const reviewData: ReviewInfo[] = await Promise.all(
-        fetchedReviews.map(async (review) => ({
-            id: review.id,
-            user: await getUserById(review.user_id),
-            resortId: review.resort_id,
-            rating: review.rating,
-            text: review.text,
-            reactions: await getReviewReactionsByReviewId(review.id),
-            createdAt: review.created_at,
-        }))
+        fetchedReviews.map(async (review) => {
+            const user = await getUserById(review.user_id);
+            if (!user) {
+                throw new Error(`User with id ${review.user_id} not found`);
+            }
+            return {
+                id: review.id,
+                user: user,
+                resortId: review.resort_id,
+                rating: review.rating,
+                text: review.text,
+                reactions: await getReviewReactionsByReviewId(review.id),
+                createdAt: review.created_at,
+            };
+        })
     );
 
     return reviewData;
@@ -37,4 +44,6 @@ export async function createReview(newReview: ReviewReq): Promise<void> {
         rating: newReview.rating,
         text: newReview.text,
     });
+
+    revalidatePath("/destinations/[id]");
 }
