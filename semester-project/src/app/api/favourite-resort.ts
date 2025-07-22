@@ -13,7 +13,6 @@ export async function getFavouriteResortIdsByUserId(
         .where(eq(favouriteResorts.user_id, userId));
 
     const favourites = dbData.map((item) => item.resort_id);
-    console.log("Fetched favourite resort IDs:", favourites);
 
     return favourites;
 }
@@ -32,7 +31,6 @@ export async function handleFavouriteResort(
         );
 
     if (existingFavourite.length > 0) {
-        console.log("Removing favourite resort:", favouriteResort);
         await db
             .delete(favouriteResorts)
             .where(
@@ -42,7 +40,6 @@ export async function handleFavouriteResort(
                 )
             );
     } else {
-        console.log("Adding favourite resort:", favouriteResort);
         await db.insert(favouriteResorts).values({
             id: crypto.randomUUID(),
             user_id: favouriteResort.userId,
