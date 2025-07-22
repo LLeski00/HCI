@@ -1,11 +1,11 @@
 //import Pagination from "./pagination";
 "use client";
 import ResortCard from "./resortCard";
-import { ResortInfo } from "../types/resort";
 import { FilterProps } from "../types/filter";
 import { getTotalDistance, parseDistanceRange } from "@/utils/getDistance";
 import Pagination from "./pagination/pagination";
 import { useState } from "react";
+import { ResortInfo } from "@/types/resort";
 
 type ResortsListProps = {
     destinations: ResortInfo[];
@@ -14,24 +14,29 @@ type ResortsListProps = {
 
 const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 20;
 
-export default function SkiResortsList({ destinations, filterData} : ResortsListProps){
+export default function SkiResortsList({
+    destinations,
+    filterData,
+}: ResortsListProps) {
     const [currentPage, setCurrentPage] = useState(1);
-    
+
     const handleScroll = (page: number) => {
         setCurrentPage(page);
-        window.scrollTo(0,700);
-    }
+        window.scrollTo(0, 700);
+    };
     //const pagesCount = Math.ceil(destinations.length / PAGE_SIZE);
-    
+
     const filterResorts = () => {
         let resortsToDisplay = [...destinations];
-        
+
         if (filterData.resortFilter) {
             resortsToDisplay = resortsToDisplay.filter((resort) =>
-                resort.name.toLowerCase().includes(filterData.resortFilter.toLowerCase())
+                resort.name
+                    .toLowerCase()
+                    .includes(filterData.resortFilter.toLowerCase())
             );
         }
-        
+
         if (filterData.countryFilter.length > 0) {
             resortsToDisplay = resortsToDisplay.filter((resort) =>
                 filterData.countryFilter.includes(resort.country)
@@ -41,34 +46,42 @@ export default function SkiResortsList({ destinations, filterData} : ResortsList
         if (filterData.rangeFilter && filterData.rangeFilter !== "remove") {
             resortsToDisplay = resortsToDisplay.filter((resort) => {
                 const totalSlopeDistance = getTotalDistance(
-                    resort.easySlopes ?? '0',
-                    resort.intermediateSlopes ?? '0',
-                    resort.difficultSlopes ?? '0'
+                    resort.easySlopes ?? 0,
+                    resort.intermediateSlopes ?? 0,
+                    resort.difficultSlopes ?? 0
                 );
                 const { min, max } = parseDistanceRange(filterData.rangeFilter);
                 return totalSlopeDistance >= min && totalSlopeDistance <= max;
             });
         }
-        
+
         switch (filterData.sortFilter) {
             case "price-asc":
-                resortsToDisplay.sort((a, b) => Number(a.adultPrice) - Number(b.adultPrice));
+                resortsToDisplay.sort(
+                    (a, b) => Number(a.adultPrice) - Number(b.adultPrice)
+                );
                 break;
             case "price-desc":
-                resortsToDisplay.sort((a, b) => Number(b.adultPrice) - Number(a.adultPrice));
+                resortsToDisplay.sort(
+                    (a, b) => Number(b.adultPrice) - Number(a.adultPrice)
+                );
                 break;
             case "review-asc":
-                resortsToDisplay.sort((a, b) => Number(a.review) - Number(b.review));
+                resortsToDisplay.sort(
+                    (a, b) => Number(a.review) - Number(b.review)
+                );
                 break;
             case "review-desc":
-                resortsToDisplay.sort((a, b) => Number(b.review) - Number(a.review));
+                resortsToDisplay.sort(
+                    (a, b) => Number(b.review) - Number(a.review)
+                );
                 break;
             default:
                 break;
-          }
+        }
 
         return resortsToDisplay;
-    }
+    };
 
     const filteredResorts = filterResorts();
     const pagesCount = Math.ceil(filteredResorts.length / PAGE_SIZE);
@@ -77,19 +90,21 @@ export default function SkiResortsList({ destinations, filterData} : ResortsList
     const endIndex = startIndex + PAGE_SIZE;
     const resortsToDisplay = filteredResorts.slice(startIndex, endIndex);
 
-    return(
-    <>
-        <ul className="ski-resorts-list">
-            {resortsToDisplay && resortsToDisplay.map((resort) => (
-                <ResortCard key={resort.id} resort={resort} />
-            ))}
-        </ul>
-        <div className="pagination">
-        <Pagination initialPage={currentPage}
+    return (
+        <>
+            <ul className="ski-resorts-list">
+                {resortsToDisplay &&
+                    resortsToDisplay.map((resort) => (
+                        <ResortCard key={resort.id} resort={resort} />
+                    ))}
+            </ul>
+            <div className="pagination">
+                <Pagination
+                    initialPage={currentPage}
                     pagesCount={pagesCount}
                     onChange={handleScroll}
                 />
-        </div>
-    </>
-    )
+            </div>
+        </>
+    );
 }
