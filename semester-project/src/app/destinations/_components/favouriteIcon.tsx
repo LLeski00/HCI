@@ -1,30 +1,39 @@
 "use client";
 
-import { User } from "@/types/user";
-import { FC, useState } from "react";
+import { handleFavouriteResort } from "@/app/api/favourite-resort";
+import { FC, useEffect, useState } from "react";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 
 interface FavouriteIconProps {
     initialIsFavourite: boolean;
-    user: User;
+    userId: string;
+    resortId: string;
 }
 
 const FavouriteIcon: FC<FavouriteIconProps> = ({
     initialIsFavourite,
-    user,
+    userId,
+    resortId,
 }) => {
     const [isFavourite, setIsFavourite] = useState<boolean>(initialIsFavourite);
 
-    const handleHeartClick = async () => {
+    useEffect(() => {
+        setIsFavourite(initialIsFavourite);
+    }, [initialIsFavourite]);
+
+    const handleHeartClick = async (event: React.MouseEvent<SVGElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
         setIsFavourite(!isFavourite);
+        handleFavouriteResort({ userId, resortId });
     };
 
     return (
         <>
             {isFavourite ? (
-                <GoHeart onClick={handleHeartClick} />
-            ) : (
                 <GoHeartFill onClick={handleHeartClick} />
+            ) : (
+                <GoHeart onClick={handleHeartClick} />
             )}
         </>
     );

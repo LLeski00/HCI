@@ -41,8 +41,9 @@ export default function ResortCard({
 
                 {user && (
                     <FavouriteIcon
-                        user={user}
+                        userId={user.id}
                         initialIsFavourite={isFavourite}
+                        resortId={resort.id}
                     />
                 )}
 
