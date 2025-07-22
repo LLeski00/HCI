@@ -1,3 +1,4 @@
+import { Coordinates } from "./coordinate";
 import { ResortInfo } from "./resort";
 
 export interface PlannerFormData {
@@ -5,11 +6,17 @@ export interface PlannerFormData {
     endDate: Date;
     numOfPeople: number;
     budget: number;
-    currentLocation: string;
+    currentLocation: Coordinates;
 }
 
 export interface PlannerResults {
-    bestMatch: ResortInfo;
-    cheapest: ResortInfo;
-    closest: ResortInfo;
+    bestMatch: PlannerResultResort | null;
+    cheapest: PlannerResultResort | null;
+    closest: PlannerResultResort | null;
+}
+
+export interface PlannerResultResort {
+    resort: ResortInfo;
+    distance: number;
+    totalCost: number;
 }
