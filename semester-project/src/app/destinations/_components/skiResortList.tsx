@@ -4,8 +4,10 @@ import ResortCard from "./resortCard";
 import { FilterProps } from "../types/filter";
 import { getTotalDistance, parseDistanceRange } from "@/utils/getDistance";
 import Pagination from "./pagination/pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ResortInfo } from "@/types/resort";
+import { useAuth } from "@/context/AuthContext";
+import { getFavouriteResortIdsByUserId } from "@/app/api/favourite-resort";
 
 type ResortsListProps = {
     destinations: ResortInfo[];
@@ -19,6 +21,18 @@ export default function SkiResortsList({
     filterData,
 }: ResortsListProps) {
     const [currentPage, setCurrentPage] = useState(1);
+    const { user } = useAuth();
+    const [favouriteIds, setFavouriteIds] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (user) {
+            const fetchFavouriteResorts = async () => {
+                const resortIds = await getFavouriteResortIdsByUserId(user.id);
+                setFavouriteIds(resortIds);
+            };
+            fetchFavouriteResorts();
+        }
+    }, [user]);
 
     const handleScroll = (page: number) => {
         setCurrentPage(page);
@@ -95,7 +109,12 @@ export default function SkiResortsList({
             <ul className="ski-resorts-list">
                 {resortsToDisplay &&
                     resortsToDisplay.map((resort) => (
-                        <ResortCard key={resort.id} resort={resort} />
+                        <ResortCard
+                            key={resort.id}
+                            resort={resort}
+                            user={user}
+                            isFavourite={favouriteIds.includes(resort.id)}
+                        />
                     ))}
             </ul>
             <div className="pagination">

@@ -6,8 +6,17 @@ import { IoIosStar } from "react-icons/io";
 import { getTotalDistance } from "@/utils/getDistance";
 import { ResortInfo } from "@/types/resort";
 import FavouriteIcon from "./favouriteIcon";
+import { User } from "@/types/user";
 
-export default function ResortCard({ resort }: { resort: ResortInfo }) {
+export default function ResortCard({
+    resort,
+    isFavourite,
+    user,
+}: {
+    resort: ResortInfo;
+    isFavourite: boolean;
+    user: User | null;
+}) {
     if (!resort) return null;
 
     const totalSlopeDistance = getTotalDistance(
@@ -30,7 +39,12 @@ export default function ResortCard({ resort }: { resort: ResortInfo }) {
                     </div>
                 </div>
 
-                <FavouriteIcon />
+                {user && (
+                    <FavouriteIcon
+                        user={user}
+                        initialIsFavourite={isFavourite}
+                    />
+                )}
 
                 <div className="resort-details">
                     <div className="resort-title-content">
