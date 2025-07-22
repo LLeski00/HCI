@@ -5,6 +5,7 @@ import { ReviewInfo, ReviewReq } from "@/types/review";
 import { eq } from "drizzle-orm";
 import { getUserById } from "./user";
 import { getReviewReactionsByReviewId } from "../app/api/review-reaction";
+import { revalidatePath } from "next/cache";
 import { User } from "@/types/user";
 
 export async function getReviewsByResortId(
@@ -38,4 +39,6 @@ export async function createReview(newReview: ReviewReq): Promise<void> {
         rating: newReview.rating,
         text: newReview.text,
     });
+
+    revalidatePath("/destinations/[id]");
 }

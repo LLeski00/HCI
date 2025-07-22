@@ -12,15 +12,10 @@ interface ReviewsProps {
 const Reviews: FC<ReviewsProps> = async ({ resort }) => {
     const reviews: ReviewInfo[] = await getReviewsByResortId(resort.id);
 
-    function isReviewed(): boolean {
-        const currentUserId = "currentUserId"; // TODO: Replace with actual user ID after implementing user authentication
-        return reviews.some((review) => review.user.id === currentUserId);
-    }
-
     return (
         <div className="reviews">
             <h2>Reviews</h2>
-            {!isReviewed() && <ReviewForm resort={resort} />}
+            {<ReviewForm resort={resort} reviews={reviews} />}
             <div className="review-list">
                 {reviews.length > 0 ? (
                     reviews.map((review) => (
