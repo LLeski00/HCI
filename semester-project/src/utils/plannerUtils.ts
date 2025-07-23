@@ -24,7 +24,7 @@ export async function getPlannerResults(
         resortsInsideBudget,
         formData.currentLocation
     );
-    const cheapestResort = getCheapestResort(resortsInsideBudget);
+    const cheapestResort = getCheapestResort(resortsInsideBudget, formData);
     const plannerResults: PlannerResults = formatPlannerResults(
         bestResort,
         closestResort,
@@ -121,11 +121,29 @@ function getClosestResort(
     return closest;
 }
 
-function getCheapestResort(resorts: ResortInfo[]): ResortInfo {
-    const minPrice: number = Math.min(...resorts.map((r) => r.adultPrice));
-    const cheapest: ResortInfo = resorts.find(
-        (r) => r.adultPrice === minPrice
-    )!;
+function getCheapestResort(
+    resorts: ResortInfo[],
+    formData: PlannerFormData
+): ResortInfo {
+    let cheapest = resorts[0];
+    let minCost = calculateTotalCost(
+        cheapest.coordinates,
+        cheapest.adultPrice,
+        formData
+    );
+
+    for (let i = 1; i < resorts.length; i++) {
+        const currentCost = calculateTotalCost(
+            resorts[i].coordinates,
+            resorts[i].adultPrice,
+            formData
+        );
+        if (currentCost < minCost) {
+            minCost = currentCost;
+            cheapest = resorts[i];
+        }
+    }
+
     return cheapest;
 }
 
