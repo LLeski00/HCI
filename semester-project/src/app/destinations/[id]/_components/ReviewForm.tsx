@@ -4,11 +4,11 @@ import { FC } from "react";
 import { ReviewInfo, ReviewReq } from "@/types/review";
 import { createReview } from "@/api/review";
 import styles from "./ReviewForm.module.css";
-import { ResortInfo } from "@/types/resort";
+import { Resort } from "@/types/resort";
 import { useAuth } from "@/context/AuthContext";
 
 interface ReviewFormProps {
-    resort: ResortInfo;
+    resort: Resort;
     reviews: ReviewInfo[];
 }
 
