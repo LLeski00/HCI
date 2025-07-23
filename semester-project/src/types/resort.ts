@@ -1,3 +1,5 @@
+import { Coordinates } from "./coordinate";
+
 type ResortInfo = {
     id: string;
     name: string;
@@ -12,6 +14,7 @@ type ResortInfo = {
     adultPrice: number;
     youthPrice: number | null;
     review: number | null;
+    coordinates: Coordinates;
 };
 
 export type { ResortInfo };
