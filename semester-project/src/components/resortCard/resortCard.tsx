@@ -5,8 +5,8 @@ import { TbAerialLift } from "react-icons/tb";
 import { IoIosStar } from "react-icons/io";
 import { getTotalDistance } from "@/utils/getDistance";
 import { ResortInfo } from "@/types/resort";
-import FavouriteIcon from "./favouriteIcon";
 import { User } from "@/types/user";
+import FavouriteIcon from "@/app/destinations/_components/favouriteIcon";
 
 export default function ResortCard({
     resort,
@@ -71,10 +71,6 @@ export default function ResortCard({
                             </span>
                         </div>
                     </div>
-
-                    {/*<div className="details-button">
-                        <button>Details</button>
-                    </div>*/}
                 </div>
             </Link>
         </div>
