@@ -3,10 +3,10 @@ import { ReviewInfo } from "@/types/review";
 import { FC } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
-import { ResortInfo } from "@/types/resort";
+import { Resort } from "@/types/resort";
 
 interface ReviewsProps {
-    resort: ResortInfo;
+    resort: Resort;
 }
 
 const Reviews: FC<ReviewsProps> = async ({ resort }) => {

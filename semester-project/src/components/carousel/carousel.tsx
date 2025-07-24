@@ -5,9 +5,9 @@ import { Navigation } from "swiper/modules";
 import style from "./carousel.module.css";
 import { useState } from "react";
 import ImageModal from "../imageModal/imageModal";
-import { ResortInfo } from "@/types/resort";
+import { Resort } from "@/types/resort";
 
-export default function Carousel({ destination }: { destination: ResortInfo }) {
+export default function Carousel({ destination }: { destination: Resort }) {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 

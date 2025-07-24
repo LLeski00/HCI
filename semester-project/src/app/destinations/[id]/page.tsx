@@ -8,8 +8,9 @@ import "./resort.css";
 import TearEffect from "@/components/tearEffect/tearEffect";
 import Carousel from "@/components/carousel/carousel";
 import Reviews from "./_components/Reviews";
+import NotFound from "./not-found";
+import { Resort } from "@/types/resort";
 import FavouriteResortSection from "./_components/FavouriteResortSection";
-import { Suspense } from "react";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -21,9 +22,9 @@ type DestinationProps = {
 export default async function DestinationDestination({
     params,
 }: DestinationProps) {
-    const destination = await getResortById(params.id);
+    const destination: Resort | null = await getResortById(params.id);
     if (!destination) {
-        return <div>Destination not found</div>;
+        return NotFound();
     }
 
     return (
