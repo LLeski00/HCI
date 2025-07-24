@@ -10,6 +10,7 @@ import { getResortById } from "@/api/resort";
 import Reviews from "./Reviews";
 import { Suspense } from "react";
 import Loading from "@/components/loading/Loading";
+import FavouriteResortSection from "./FavouriteResortSection";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -37,6 +38,8 @@ export default async function Destination({ params }: DestinationProps) {
                 <div className="info-description">
                     <p>{destination.description || ""}</p>
                 </div>
+
+                <FavouriteResortSection resortId={destination.id} />
 
                 <TearEffect darkBackground={true} />
                 <div className="info-container">

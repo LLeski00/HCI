@@ -5,8 +5,18 @@ import { TbAerialLift } from "react-icons/tb";
 import { IoIosStar } from "react-icons/io";
 import { getTotalDistance } from "@/utils/getDistance";
 import { ResortInfo } from "@/types/resort";
+import { User } from "@/types/user";
+import FavouriteIcon from "@/app/destinations/_components/favouriteIcon";
 
-export default function ResortCard({ resort }: { resort: ResortInfo }) {
+export default function ResortCard({
+    resort,
+    isFavourite,
+    user,
+}: {
+    resort: ResortInfo;
+    isFavourite: boolean;
+    user: User | null;
+}) {
     if (!resort) return null;
 
     const totalSlopeDistance = getTotalDistance(
@@ -28,6 +38,14 @@ export default function ResortCard({ resort }: { resort: ResortInfo }) {
                         <p>{resort.review}</p>
                     </div>
                 </div>
+
+                {user && (
+                    <FavouriteIcon
+                        userId={user.id}
+                        initialIsFavourite={isFavourite}
+                        resortId={resort.id}
+                    />
+                )}
 
                 <div className="resort-details">
                     <div className="resort-title-content">
