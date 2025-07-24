@@ -1,14 +1,7 @@
-import styles from "./not-found.module.css";
-import { Button } from "@/components/button/button";
+import NotFound from "@/components/notFound/NotFound";
 
 const NotFoundPage = () => {
-    return (
-        <div className={styles.notFoundPage}>
-            <h1>404 - Not Found</h1>
-            <p>The page you are looking for does not exist.</p>
-            <Button text="Go to Home" href="/" />
-        </div>
-    );
+    return <NotFound />;
 };
 
 export default NotFoundPage;
