@@ -10,6 +10,7 @@ import Carousel from "@/components/carousel/carousel";
 import Reviews from "./_components/Reviews";
 import NotFound from "./not-found";
 import { Resort } from "@/types/resort";
+import FavouriteResortSection from "./_components/FavouriteResortSection";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -36,6 +37,8 @@ export default async function DestinationDestination({
             />
 
             <main>
+                <FavouriteResortSection resortId={destination.id} />
+
                 <div className="info-description">
                     <p>{destination.description || ""}</p>
                 </div>
