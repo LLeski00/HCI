@@ -9,7 +9,10 @@ import {
 } from "@/lib/contentful/client";
 
 const HomePageContent = async () => {
-    const content: HomePageContentType = await getHomePageContent();
+    const content: HomePageContentType | null = await getHomePageContent();
+    if (!content) {
+        return <p>Error loading content.</p>;
+    }
 
     return (
         <>
