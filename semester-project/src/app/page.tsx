@@ -34,7 +34,7 @@ export default function Home() {
                     <Button text="EXPLORE" href="/" />
                 </div>
                 <div className="image-container">
-                    <img src="/images/skiing.jpg" />
+                    <img src="/images/skiing.jpg" alt="Skiing" />
                 </div>
             </section>
 
@@ -45,15 +45,15 @@ export default function Home() {
                 <div className="home-destinations">
                     <div className="home-destination">
                         <h4>Les 2 alpes, France</h4>
-                        <img src="/images/austria.jpg" />
+                        <img src="/images/austria.jpg" alt="Austria" />
                     </div>
                     <div className="home-destination">
                         <h4>Alta Badia, Italy</h4>
-                        <img src="/images/altaBadia.jpg" />
+                        <img src="/images/altaBadia.jpg" alt="Alta Badia" />
                     </div>
                     <div className="home-destination">
                         <h4>Val Thorens, France</h4>
-                        <img src="/images/valtores.jpg" />
+                        <img src="/images/valtores.jpg" alt="Val Thorens" />
                     </div>
                 </div>
                 <Button text="VIEW MORE" href="/" />
@@ -106,6 +106,7 @@ export default function Home() {
                         <img
                             src="/images/snowboarding.jpg"
                             className="image-content"
+                            alt="Snowboarding"
                         />
                     </div>
                 </article>
@@ -123,7 +124,7 @@ export default function Home() {
                 </article>
                 <div className="reviews">
                     <div className="review">
-                        <img src="/images/User2.jpeg" alt="" />
+                        <img src="/images/User2.jpeg" alt="User 2" />
                         <p>
                             <strong>Chamonix, France</strong>: &quot;Amazing
                             slopes and breathtaking views. Perfect for advanced
@@ -135,7 +136,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="review">
-                        <img src="/images/User3.jpeg" alt="" />
+                        <img src="/images/User3.jpeg" alt="User 3" />
                         <p>
                             <strong>St. Anton, Austria</strong>: &quot;The
                             nightlife here is unbeatable, and the powder was
@@ -147,7 +148,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="review">
-                        <img src="/images/User1.jpeg" alt="" />
+                        <img src="/images/User1.jpeg" alt="User 1" />
                         <p>
                             <strong>Zermatt, Switzerland</strong>: &quot;A bit
                             pricey, but the skiing and the Matterhorn views were
