@@ -1,6 +1,6 @@
 import { getAllResorts } from "@/api/resort";
-import DestinationClientView from "./destinationClientView";
 import { ResortInfo } from "@/types/resort";
+import DestinationsClientView from "./destinationsClientView";
 
 const Destinations = async () => {
     const destinations: ResortInfo[] = await getAllResorts();
@@ -8,7 +8,7 @@ const Destinations = async () => {
         return <div>No destinations found</div>;
     }
 
-    return <DestinationClientView allDestinations={destinations} />;
+    return <DestinationsClientView allDestinations={destinations} />;
 };
 
 export default Destinations;
