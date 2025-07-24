@@ -7,8 +7,11 @@ import FilterByCountry from "./filters/filterByCountry";
 import FilterByRange from "./filters/filterByRange";
 import FilterToSort from "./filters/filterToSort";
 import { ResortInfo } from "@/types/resort";
+import { useFavourites } from "@/hooks/useFavourites";
+import { useAuth } from "@/context/AuthContext";
+import Loading from "@/components/loading/Loading";
 
-export default function DestinationClientView({
+export default function DestinationsClientView({
     allDestinations,
 }: {
     allDestinations: ResortInfo[];
@@ -19,6 +22,12 @@ export default function DestinationClientView({
         countryFilter: [],
         rangeFilter: "",
     });
+    const { user } = useAuth();
+    const { favouriteIds, isLoading } = useFavourites(user?.id ?? null);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <>
@@ -47,6 +56,8 @@ export default function DestinationClientView({
                 <SkiResortsList
                     destinations={allDestinations}
                     filterData={filterData}
+                    user={user}
+                    favouriteIds={favouriteIds}
                 />
             </div>
         </>

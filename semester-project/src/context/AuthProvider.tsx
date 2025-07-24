@@ -10,8 +10,10 @@ const supabase = createClient();
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const loadUserFromSession = async () => {
+        setIsLoading(true);
         const {
             data: { session },
             error: sessionError,
@@ -25,6 +27,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const userProfile = await getUserById(supabaseUser.id);
 
         setUser(userProfile ?? null);
+        setIsLoading(false);
     };
 
     const signUp = async (name: string, email: string, password: string) => {
@@ -109,8 +112,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             signUp,
             signIn,
             signOut,
+            isLoading,
         }),
-        [user]
+        [user, isLoading]
     );
 
     return (

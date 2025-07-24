@@ -2,19 +2,19 @@
 
 import { FC } from "react";
 import FavouriteIcon from "../../_components/favouriteIcon";
-import { useAuth } from "@/context/AuthContext";
-import { useFavourites } from "@/hooks/useFavourites";
+import { User } from "@/types/user";
 
 interface FavouriteResortSectionProps {
     resortId: string;
+    favouriteIds: string[] | null;
+    user: User | null;
 }
 
 const FavouriteResortSection: FC<FavouriteResortSectionProps> = ({
     resortId,
+    favouriteIds,
+    user,
 }) => {
-    const { user } = useAuth();
-    const { favouriteIds } = useFavourites(user?.id ?? null);
-
     return (
         <>
             {favouriteIds && (

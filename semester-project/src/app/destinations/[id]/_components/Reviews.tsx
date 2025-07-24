@@ -1,16 +1,39 @@
+"use client";
+
 import { getReviewsByResortId } from "@/api/review";
 import { ReviewInfo } from "@/types/review";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
 import { ResortInfo } from "@/types/resort";
+import Loading from "@/components/loading/Loading";
 
 interface ReviewsProps {
     resort: ResortInfo;
 }
 
-const Reviews: FC<ReviewsProps> = async ({ resort }) => {
-    const reviews: ReviewInfo[] = await getReviewsByResortId(resort.id);
+const Reviews: FC<ReviewsProps> = ({ resort }) => {
+    const [reviews, setReviews] = useState<ReviewInfo[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchReviews = async () => {
+            try {
+                const fetchedReviews = await getReviewsByResortId(resort.id);
+                setReviews(fetchedReviews);
+            } catch (error) {
+                console.error("Failed to fetch reviews:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchReviews();
+    }, [resort.id]);
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <div className="reviews">
