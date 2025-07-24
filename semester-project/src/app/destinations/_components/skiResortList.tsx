@@ -4,10 +4,10 @@ import ResortCard from "../../../components/resortCard/resortCard";
 import { FilterProps } from "../types/filter";
 import { getTotalDistance, parseDistanceRange } from "@/utils/getDistance";
 import Pagination from "./pagination/pagination";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ResortInfo } from "@/types/resort";
 import { useAuth } from "@/context/AuthContext";
-import { getFavouriteResortIdsByUserId } from "@/app/api/favourite-resort";
+import { useFavourites } from "@/hooks/useFavourites";
 
 type ResortsListProps = {
     destinations: ResortInfo[];
@@ -22,17 +22,7 @@ export default function SkiResortsList({
 }: ResortsListProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const { user } = useAuth();
-    const [favouriteIds, setFavouriteIds] = useState<string[]>([]);
-
-    useEffect(() => {
-        if (user) {
-            const fetchFavouriteResorts = async () => {
-                const resortIds = await getFavouriteResortIdsByUserId(user.id);
-                setFavouriteIds(resortIds);
-            };
-            fetchFavouriteResorts();
-        }
-    }, [user]);
+    const { favouriteIds } = useFavourites(user?.id ?? null);
 
     const handleScroll = (page: number) => {
         setCurrentPage(page);
@@ -113,7 +103,9 @@ export default function SkiResortsList({
                             key={resort.id}
                             resort={resort}
                             user={user}
-                            isFavourite={favouriteIds.includes(resort.id)}
+                            isFavourite={
+                                favouriteIds?.includes(resort.id) ?? false
+                            }
                         />
                     ))}
             </ul>
