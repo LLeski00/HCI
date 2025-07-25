@@ -27,7 +27,10 @@ export interface HomePageContent {
 }
 
 export async function getHomePageContent(): Promise<HomePageContent> {
-    const entry = await client.getEntry("fdfdfd");
+    const entry = await client.getEntry(
+        process.env.CONTENTFUL_HOMEPAGE_CONTENT_ID!
+    );
+
     if (!entry) throw new Error("Failed to fetch homepage content");
 
     const fields = entry.fields as { [key: string]: any };
