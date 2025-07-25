@@ -14,6 +14,8 @@ const PAGE_SIZE = Number(process.env.PAGE_SIZE);
 async function getAllResorts() {
     const data = await db.select().from(resorts).orderBy(asc(resorts.images));
 
+    if (!data) throw new Error("There was an error fetching the resorts");
+
     return data as ResortInfo[];
 }
 
@@ -27,6 +29,9 @@ async function getResorts({
         .orderBy(asc(resorts.images))
         .limit(_limit)
         .offset(_start);
+
+    if (!data) throw new Error("There was an error fetching the resorts");
+
     return data as ResortInfo[];
 }
 
@@ -36,6 +41,9 @@ async function getResortById(id: string): Promise<ResortInfo | null> {
         .from(resorts)
         .where(eq(resorts.id, id))
         .limit(1);
+
+    if (!data) throw new Error("There was an error fetching the resort");
+
     return data ? (data[0] as ResortInfo) : null;
 }
 
@@ -46,6 +54,9 @@ async function getResortsByCountry(
         .select()
         .from(resorts)
         .where(eq(resorts.country, country));
+
+    if (!data) throw new Error("There was an error fetching the resorts");
+
     return data.length > 0 ? (data as ResortInfo[]) : null;
 }
 

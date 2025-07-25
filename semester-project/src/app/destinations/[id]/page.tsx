@@ -10,6 +10,7 @@ import Carousel from "@/components/carousel/carousel";
 import Reviews from "./_components/Reviews";
 import FavouriteResortSection from "./_components/FavouriteResortSection";
 import { Suspense } from "react";
+import { ResortInfo } from "@/types/resort";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -21,7 +22,7 @@ type DestinationProps = {
 export default async function DestinationDestination({
     params,
 }: DestinationProps) {
-    const destination = await getResortById(params.id);
+    const destination: ResortInfo | null = await getResortById(params.id);
     if (!destination) {
         return <div>Destination not found</div>;
     }

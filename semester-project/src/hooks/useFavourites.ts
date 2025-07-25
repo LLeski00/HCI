@@ -17,7 +17,7 @@ export function useFavourites(userId: string | null) {
             const resortIds = await getFavouriteResortIdsByUserId(userId);
             setFavouriteIds(resortIds);
         } catch (err) {
-            console.error("Error fetching favourite resorts:", err);
+            throw new Error("Failed to fetch favourite resorts: " + err);
         }
     };
 

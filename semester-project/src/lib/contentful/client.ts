@@ -26,15 +26,12 @@ export interface HomePageContent {
     reviewSectionParagraph3: string;
 }
 
-export async function getHomePageContent(): Promise<HomePageContent | null> {
+export async function getHomePageContent(): Promise<HomePageContent> {
     const entry = await client.getEntry(
         process.env.CONTENTFUL_HOMEPAGE_CONTENT_ID!
     );
 
-    if (!entry) {
-        console.error("There was an error fetching the homepage content.");
-        return null;
-    }
+    if (!entry) throw new Error("Failed to fetch homepage content");
 
     const fields = entry.fields as { [key: string]: any };
     return {
