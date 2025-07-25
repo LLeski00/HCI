@@ -20,30 +20,39 @@ export async function getFavouriteResortIdsByUserId(
 export async function handleFavouriteResort(
     favouriteResort: FavouriteResortReq
 ): Promise<void> {
-    const existingFavourite = await db
-        .select()
-        .from(favouriteResorts)
-        .where(
-            and(
-                eq(favouriteResorts.resort_id, favouriteResort.resortId),
-                eq(favouriteResorts.user_id, favouriteResort.userId)
-            )
-        );
-
-    if (existingFavourite.length > 0) {
-        await db
-            .delete(favouriteResorts)
+    try {
+        const existingFavourite = await db
+            .select()
+            .from(favouriteResorts)
             .where(
                 and(
                     eq(favouriteResorts.resort_id, favouriteResort.resortId),
                     eq(favouriteResorts.user_id, favouriteResort.userId)
                 )
             );
-    } else {
-        await db.insert(favouriteResorts).values({
-            id: crypto.randomUUID(),
-            user_id: favouriteResort.userId,
-            resort_id: favouriteResort.resortId,
-        });
+
+        if (existingFavourite.length > 0) {
+            await db
+                .delete(favouriteResorts)
+                .where(
+                    and(
+                        eq(
+                            favouriteResorts.resort_id,
+                            favouriteResort.resortId
+                        ),
+                        eq(favouriteResorts.user_id, favouriteResort.userId)
+                    )
+                );
+        } else {
+            await db.insert(favouriteResorts).values({
+                id: crypto.randomUUID(),
+                user_id: favouriteResort.userId,
+                resort_id: favouriteResort.resortId,
+            });
+        }
+    } catch (error) {
+        throw new Error(
+            "There was an error handling the favourite resort: " + error
+        );
     }
 }
