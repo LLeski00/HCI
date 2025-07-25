@@ -1,12 +1,18 @@
-const LearningSection = () => {
+import { FC } from "react";
+
+interface LearningSectionProps {
+    learningSectionHeader: string;
+    learningSectionParagraph: string;
+}
+
+const LearningSection: FC<LearningSectionProps> = ({
+    learningSectionHeader,
+    learningSectionParagraph,
+}) => {
     return (
         <section>
-            <h2>Learning to Ski</h2>
-            <p>
-                Many resorts offer lessons for all ages and skill levels. Look
-                for certified instructors and group or private lesson options.
-                Online tutorials can also help you prepare before your trip.
-            </p>
+            <h2>{learningSectionHeader}</h2>
+            <p>{learningSectionParagraph}</p>
         </section>
     );
 };

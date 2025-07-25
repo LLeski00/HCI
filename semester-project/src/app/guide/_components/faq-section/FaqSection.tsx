@@ -1,26 +1,50 @@
-const FaqSection = () => {
+import { FC } from "react";
+
+interface FaqSectionProps {
+    faqSectionHeader: string;
+    faqSectionQuestion1: string;
+    faqSectionAnswer1: string;
+    faqSectionQuestion2: string;
+    faqSectionAnswer2: string;
+    faqSectionQuestion3: string;
+    faqSectionAnswer3: string;
+}
+
+const FaqSection: FC<FaqSectionProps> = ({
+    faqSectionHeader,
+    faqSectionQuestion1,
+    faqSectionAnswer1,
+    faqSectionQuestion2,
+    faqSectionAnswer2,
+    faqSectionQuestion3,
+    faqSectionAnswer3,
+}) => {
     return (
         <section>
-            <h2>FAQ for Beginners</h2>
+            <h2>{faqSectionHeader}</h2>
             <p>
-                <strong>Q:</strong>Do I need lessons to start skiing?
+                <strong>Q:</strong>
+                {faqSectionQuestion1}
             </p>
             <p>
-                <strong>A:</strong>Lessons are highly recommended for beginners.
+                <strong>A:</strong>
+                {faqSectionAnswer1}
             </p>
             <p>
-                <strong>Q:</strong>What should I wear?
+                <strong>Q:</strong>
+                {faqSectionQuestion2}
             </p>
             <p>
-                <strong>A:</strong>Dress in layers and wear waterproof
-                outerwear.
+                <strong>A:</strong>
+                {faqSectionAnswer2}
             </p>
             <p>
-                <strong>Q:</strong>Is skiing safe?
+                <strong>Q:</strong>
+                {faqSectionQuestion3}
             </p>
             <p>
-                <strong>A:</strong>Skiing is safe when you follow resort rules
-                and use proper equipment.
+                <strong>A:</strong>
+                {faqSectionAnswer3}
             </p>
         </section>
     );

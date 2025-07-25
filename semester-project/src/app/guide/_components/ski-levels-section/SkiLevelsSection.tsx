@@ -1,19 +1,25 @@
-const SkiLevelSection = () => {
+import { FC } from "react";
+
+interface SkiLevelSectionProps {
+    skiLevelSectionHeader: string;
+    skiLevelSectionItem1: string;
+    skiLevelSectionItem2: string;
+    skiLevelSectionItem3: string;
+}
+
+const SkiLevelSection: FC<SkiLevelSectionProps> = ({
+    skiLevelSectionHeader,
+    skiLevelSectionItem1,
+    skiLevelSectionItem2,
+    skiLevelSectionItem3,
+}) => {
     return (
         <section>
-            <h2>Skiing Levels Explained</h2>
+            <h2>{skiLevelSectionHeader}</h2>
             <ul>
-                <li>
-                    Beginner: Green slopes are gentle and ideal for learning.
-                </li>
-                <li>
-                    Intermediate: Blue slopes offer moderate difficulty for
-                    those with some experience.
-                </li>
-                <li>
-                    Advanced: Black and double-black slopes are steep and
-                    challenging, suitable for experts.
-                </li>
+                <li>{skiLevelSectionItem1}</li>
+                <li>{skiLevelSectionItem2}</li>
+                <li>{skiLevelSectionItem3}</li>
             </ul>
         </section>
     );

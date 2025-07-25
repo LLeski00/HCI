@@ -1,12 +1,18 @@
-const WeatherSection = () => {
+import { FC } from "react";
+
+interface WeatherSectionProps {
+    weatherSectionHeader: string;
+    weatherSectionParagraph: string;
+}
+
+const WeatherSection: FC<WeatherSectionProps> = ({
+    weatherSectionHeader,
+    weatherSectionParagraph,
+}) => {
     return (
         <section>
-            <h2>Weather & Conditions</h2>
-            <p>
-                Always check the snow report and weather forecast before your
-                trip. Good conditions make for a safer and more enjoyable
-                experience.
-            </p>
+            <h2>{weatherSectionHeader}</h2>
+            <p>{weatherSectionParagraph}</p>
         </section>
     );
 };
