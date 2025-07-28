@@ -18,6 +18,7 @@ export async function getUserById(userId: string): Promise<User | null> {
                 email: dbData[0].email,
                 name: dbData[0].name,
                 profile_image: dbData[0].profile_image,
+                bio: dbData[0].bio,
         };
 
         return user;
