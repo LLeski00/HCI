@@ -1,16 +1,18 @@
 "use client";
 
-import { updateUserProfile } from "@/actions/userAction";
+import { deleteImageFromSupabase, uploadImageToSupabase } from "@/actions/image-actions";
+import { updateUserProfile } from "@/actions/user-action";
 import { useAuth } from "@/context/AuthContext";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 export default function Profile() {
     const { user } = useAuth();
+    const imageInputRef = useRef<HTMLInputElement>(null);
+
     const [name, setName] = useState('')
     const [bio, setBio] = useState('')
     const [profileImage, setProfileImage] = useState('');
-
-    if (!user) return null;
+    const [imageFile, setImageFile] = useState<File | null>(null);
 
     useEffect(() => {
         if (user) {
@@ -20,13 +22,44 @@ export default function Profile() {
         }
     }, [user]);
 
+    if (!user) return null;
+
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setImageFile(file);
+            setProfileImage(URL.createObjectURL(file));
+        }
+    };
+
     const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const form = new FormData(e.currentTarget);
+        console.log("form", form);
+
+        let imageUrl;
+
+        if (imageFile) {
+            const { publicUrl } = await uploadImageToSupabase({
+                file: imageFile,
+                bucketName: "user-images",
+            });
+            imageUrl = publicUrl;
+            setProfileImage(publicUrl)
+
+            console.log("profile url", user.profile_image);
+            if (user.profile_image) {
+                await deleteImageFromSupabase({
+                    filePath: user.profile_image,
+                    bucketName: "user-images"
+                });
+            }
+        }
         const updatedData = {
             userId: user.id,
             name,
             bio,
-            profile_image: profileImage
+            profile_image: imageUrl
         };
 
         try {
@@ -51,9 +84,15 @@ export default function Profile() {
             <form onSubmit={handleUpdateProfile}>
                 <div>
                     <img
-                        src={user.profile_image || "/images/profile.png"}
+                        src={profileImage}
                         alt={`${user.name}'s profile picture`}
                         style={{ width: 50, height: 50 }}
+                    />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        ref={imageInputRef}
+                        onChange={handleImageChange}
                     />
                 </div>
                 <div>
@@ -77,4 +116,3 @@ export default function Profile() {
         </div>
     );
 }
-
