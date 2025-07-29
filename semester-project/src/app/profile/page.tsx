@@ -3,21 +3,16 @@
 import { deleteImageFromSupabase, uploadImageToSupabase } from "@/actions/image-actions";
 import { updateUserProfile } from "@/actions/user-action";
 import { useAuth } from "@/context/AuthContext";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export default function Profile() {
     const { user } = useAuth();
-    const imageInputRef = useRef<HTMLInputElement>(null);
 
-    const [name, setName] = useState('')
-    const [bio, setBio] = useState('')
     const [profileImage, setProfileImage] = useState('');
     const [imageFile, setImageFile] = useState<File | null>(null);
 
     useEffect(() => {
         if (user) {
-            setName(user.name || '');
-            setBio(user.bio || 'Write something about yourself!');
             setProfileImage(user.profile_image || '/images/profile.png');
         }
     }, [user]);
@@ -34,9 +29,10 @@ export default function Profile() {
 
     const handleUpdateProfile = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        console.log("form", form);
 
+        const formData = new FormData(e.currentTarget);
+        const newName = formData.get("name")?.toString();
+        const newBio = formData.get("bio")?.toString();
         let imageUrl;
 
         if (imageFile) {
@@ -45,9 +41,7 @@ export default function Profile() {
                 bucketName: "user-images",
             });
             imageUrl = publicUrl;
-            setProfileImage(publicUrl)
 
-            console.log("profile url", user.profile_image);
             if (user.profile_image) {
                 await deleteImageFromSupabase({
                     filePath: user.profile_image,
@@ -57,8 +51,8 @@ export default function Profile() {
         }
         const updatedData = {
             userId: user.id,
-            name,
-            bio,
+            name: newName,
+            bio: newBio,
             profile_image: imageUrl
         };
 
@@ -91,7 +85,6 @@ export default function Profile() {
                     <input
                         type="file"
                         accept="image/*"
-                        ref={imageInputRef}
                         onChange={handleImageChange}
                     />
                 </div>
@@ -99,16 +92,16 @@ export default function Profile() {
                     <label>Name</label>
                     <input
                         type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        name="name"
+                        defaultValue={user.name}
                     />
                 </div>
                 <div>
                     <label>Bio</label>
                     <input
                         type="text"
-                        value={bio ?? ''}
-                        onChange={(e) => setBio(e.target.value)}
+                        name="bio"
+                        defaultValue={user.bio || 'Write something about yourself!'}
                     />
                 </div>
                 <button type="submit">Update Profile</button>
