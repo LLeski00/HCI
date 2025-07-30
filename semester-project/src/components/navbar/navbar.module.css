@@ -67,9 +67,9 @@
         z-index: 1;
 }
 
-/*.navBackground {
-    background-color: var(--dark);
-}*/
+.navBackground {
+        background-color: var(--dark);
+}
 
 .navbar svg {
         color: var(--background);

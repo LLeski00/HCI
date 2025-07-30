@@ -6,14 +6,14 @@ import DestinationClientView from "./_components/destinationClientView";
 import { ResortInfo } from "./types/resort";
 
 export default async function DestinationPage() {
-    const destinations : ResortInfo[] = await getAllResorts();
+    const destinations: ResortInfo[] = await getAllResorts();
 
     return (
         <>
-            <HeroSection titleTop="EUROPE SKI" 
-                            titleBottom="DESTINATIONS" 
-                            description="Find the best resorts in Europe" 
-                            backgroundImage="/images/2.jpg"/>
+            <HeroSection titleTop="EUROPE SKI"
+                titleBottom="DESTINATIONS"
+                description="Find the best resorts in Europe"
+                backgroundImage="/images/2.jpg" />
 
             <main>
                 <DestinationClientView allDestinations={destinations} />
@@ -21,6 +21,6 @@ export default async function DestinationPage() {
 
             <Footer />
         </>
-        
+
     );
 }
