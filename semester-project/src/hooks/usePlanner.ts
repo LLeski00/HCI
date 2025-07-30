@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { getPlannerResults } from "@/api/planner";
 import {
     PlannerFormData,
     PlannerResults as PlannerResultsType,
 } from "@/types/planner";
+import { getPlannerResults } from "@/utils";
 
 export function usePlanner() {
     const [formData, setFormData] = useState<PlannerFormData | null>(null);

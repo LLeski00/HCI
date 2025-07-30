@@ -12,7 +12,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
 
     const loadUserFromSession = async () => {
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        const {
+            data: { session },
+            error: sessionError,
+        } = await supabase.auth.getSession();
         if (sessionError || !session) {
             setUser(null);
             return;
@@ -25,21 +28,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const signUp = async (name: string, email: string, password: string) => {
-        const { data: signUpData, error: authError } = await supabase.auth.signUp({
-            email,
-            password,
-        });
+        const { data: signUpData, error: authError } =
+            await supabase.auth.signUp({
+                email,
+                password,
+            });
 
         if (authError) {
             throw authError;
         }
 
-        const { error: insertProfileError } = await supabase.from("users").insert({
-            id: signUpData?.user?.id,
-            email,
-            name,
-            created_at: new Date().toISOString(),
-        });
+        const { error: insertProfileError } = await supabase
+            .from("users")
+            .insert({
+                id: signUpData?.user?.id,
+                email,
+                name,
+                created_at: new Date().toISOString(),
+            });
 
         if (insertProfileError) {
             await supabase.auth.admin.deleteUser(signUpData.user?.id!);
@@ -53,10 +59,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const signIn = async (email: string, password: string) => {
-        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
+        const { data: signInData, error: signInError } =
+            await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
 
         if (signInError) {
             throw signInError;
@@ -65,7 +72,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const userProfile = await getUserById(signInData.user.id);
         if (userProfile) {
             setUser(userProfile);
-
         }
     };
 
@@ -76,7 +82,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
         setUser(null);
     };
-
 
     useEffect(() => {
         loadUserFromSession();
@@ -97,17 +102,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         };
     }, []);
 
-    const value = useMemo(() => ({
-        user,
-        setUser,
-        signUp,
-        signIn,
-        signOut,
-    }), [user]);
+    const value = useMemo(
+        () => ({
+            user,
+            setUser,
+            signUp,
+            signIn,
+            signOut,
+        }),
+        [user]
+    );
 
     return (
-        <AuthContext.Provider value={value}>
-            {children}
-        </AuthContext.Provider>
+        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
     );
 };

@@ -8,6 +8,8 @@ import "./resort.css";
 import TearEffect from "@/components/tearEffect/tearEffect";
 import Carousel from "@/components/carousel/carousel";
 import Reviews from "./_components/Reviews";
+import FavouriteResortSection from "./_components/FavouriteResortSection";
+import { Suspense } from "react";
 export const metadata: Metadata = {
     title: "Destination",
 };
@@ -34,6 +36,8 @@ export default async function DestinationDestination({
             />
 
             <main>
+                <FavouriteResortSection resortId={destination.id} />
+
                 <div className="info-description">
                     <p>{destination.description || ""}</p>
                 </div>
