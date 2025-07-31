@@ -9,7 +9,6 @@ import TearEffect from "@/components/tearEffect/tearEffect";
 import Carousel from "@/components/carousel/carousel";
 import Reviews from "./_components/Reviews";
 import FavouriteResortSection from "./_components/FavouriteResortSection";
-import { Suspense } from "react";
 export const metadata: Metadata = {
     title: "Destination",
 };

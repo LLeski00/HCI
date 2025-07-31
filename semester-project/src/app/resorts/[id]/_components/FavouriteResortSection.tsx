@@ -1,7 +1,7 @@
 "use client";
 
 import { FC } from "react";
-import FavouriteIcon from "../../_components/favouriteIcon";
+import FavouriteIcon from "../../../../components/favourite-icon/FavouriteIcon";
 import { useAuth } from "@/context/AuthContext";
 import { useFavourites } from "@/hooks/useFavourites";
 

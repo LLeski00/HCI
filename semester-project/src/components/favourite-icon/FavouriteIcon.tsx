@@ -3,6 +3,7 @@
 import { handleFavouriteResort } from "@/app/api/favourite-resort";
 import { FC, useEffect, useState } from "react";
 import { GoHeart, GoHeartFill } from "react-icons/go";
+import styles from './favourite-icon.module.css';
 
 interface FavouriteIconProps {
     initialIsFavourite: boolean;
@@ -31,9 +32,11 @@ const FavouriteIcon: FC<FavouriteIconProps> = ({
     return (
         <>
             {isFavourite ? (
-                <GoHeartFill onClick={handleHeartClick} />
+                <GoHeartFill onClick={handleHeartClick}
+                    className={styles.heartIcon} />
             ) : (
-                <GoHeart onClick={handleHeartClick} />
+                <GoHeart onClick={handleHeartClick}
+                    className={styles.heartIcon} />
             )}
         </>
     );

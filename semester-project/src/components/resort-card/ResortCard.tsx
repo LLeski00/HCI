@@ -4,18 +4,21 @@ import { GiTwoCoins } from "react-icons/gi";
 import { TbAerialLift } from "react-icons/tb";
 import { IoIosStar } from "react-icons/io";
 import { getTotalDistance } from "@/utils/getDistance";
-import { ResortInfo } from "@/types/resort";
+import { ResortInfoWithoutCoordinates } from "@/types/resort";
 import { User } from "@/types/user";
-import FavouriteIcon from "@/app/destinations/_components/favouriteIcon";
+import styles from './resort-card.module.css';
+import FavouriteIcon from "../favourite-icon/FavouriteIcon";
 
+interface ResortCardProps {
+    resort: ResortInfoWithoutCoordinates;
+    isFavourite: boolean;
+    user?: User | null;
+}
 export default function ResortCard({
     resort,
     isFavourite,
     user,
-}: {
-    resort: ResortInfo;
-    isFavourite: boolean;
-    user: User | null;
+}: ResortCardProps, {
 }) {
     if (!resort) return null;
 
@@ -26,45 +29,48 @@ export default function ResortCard({
     );
 
     return (
-        <div key={resort.id} className="resort-container">
-            <Link href={`/destinations/${resort.id}`}>
-                <div className="resort-image-container">
+        <div key={resort.id} className={styles.resortContainer}>
+            <Link href={`/resorts/${resort.id}`}>
+                <div className={styles.imageContainer}>
                     <img
                         src={resort.images?.[0] || "/images/1.jpg"}
                         alt="Resort"
                     />
-                    <div className="icon-content">
-                        <IoIosStar className="filled-star" />
+                    <div className={styles.iconContent}>
+                        <IoIosStar className={styles.filledStar} />
                         <p>{resort.review}</p>
                     </div>
+
+                    {user && (
+                        <div className={styles.starContent}>
+                            <FavouriteIcon
+                                userId={user.id}
+                                initialIsFavourite={isFavourite}
+                                resortId={resort.id}
+                            />
+                        </div>
+                    )}
                 </div>
 
-                {user && (
-                    <FavouriteIcon
-                        userId={user.id}
-                        initialIsFavourite={isFavourite}
-                        resortId={resort.id}
-                    />
-                )}
 
-                <div className="resort-details">
-                    <div className="resort-title-content">
+                <div className={styles.resortDetails}>
+                    <div className={styles.titleContent}>
                         <h4>
                             {resort.name || ""}
                             <span>({resort.country || ""})</span>
                         </h4>
                     </div>
 
-                    <div className="resort-info">
-                        <div className="resort-info-item">
+                    <div className={styles.resortInfo}>
+                        <div className={styles.resortInfoItem}>
                             <FaPersonSkiing />
                             <span>{totalSlopeDistance} km</span>
                         </div>
-                        <div className="resort-info-item">
+                        <div className={styles.resortInfoItem}>
                             <TbAerialLift />
                             <span>{resort.skiLift || 0}</span>
                         </div>
-                        <div className="resort-info-item">
+                        <div className={styles.resortInfoItem}>
                             <GiTwoCoins />
                             <span>
                                 {resort.adultPrice || "Price not available"} €

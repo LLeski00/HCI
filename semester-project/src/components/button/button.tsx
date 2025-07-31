@@ -3,13 +3,22 @@ import styles from "./button.module.css";
 
 interface CustomButtonProps {
     text: string;
-    href: string;
+    href?: string;
+    type: "button" | "submit";
 }
 
-export function Button({ text, href }: CustomButtonProps) {
+export function Button({ text, href, type = "button" }: CustomButtonProps) {
+    if (href) {
+        return (
+            <button type={type} className={styles.customButton}>
+                <Link href={href}>{text}</Link>
+            </button>
+        );
+
+    }
     return (
-        <button type="button" className={styles.customButton}>
-            <Link href={href}>{text}</Link>
+        <button type={type} className={styles.customButton}>
+            {text}
         </button>
     );
 }

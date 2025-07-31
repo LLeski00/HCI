@@ -11,11 +11,11 @@ export default function Planner() {
     return (
         <div>
             <HeroSection
-                description="Planner"
+                description="Fill in the form and get best matches!"
                 titleBottom="Planner"
-                titleTop="Planner"
+                titleTop=""
+                backgroundImage="/images/2.jpg"
             />
-            <h1>Planner</h1>
             {formData ? (
                 loading ? (
                     <p>Loading results...</p>
@@ -25,6 +25,7 @@ export default function Planner() {
                     results && <PlannerResults results={results} />
                 )
             ) : (
+
                 <PlannerForm setFormData={setFormData} />
             )}
         </div>

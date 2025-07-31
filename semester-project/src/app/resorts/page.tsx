@@ -1,24 +1,24 @@
 import { getAllResorts } from "./_lib/api";
-import "./destinations.css";
+import "./resorts.css";
 import HeroSection from "@/components/hero/hero";
 import { Footer } from "@/components/footer/footer";
-import DestinationClientView from "./_components/destinationClientView";
+import ResortClientView from "./_components/ResortClientView";
 import { ResortInfo } from "@/types/resort";
 
-export default async function DestinationPage() {
+export default async function ResortsPage() {
     const destinations: ResortInfo[] = await getAllResorts();
 
     return (
         <>
             <HeroSection
-                titleTop="EUROPE SKI"
-                titleBottom="DESTINATIONS"
+                titleTop="EUROPE"
+                titleBottom="SKI RESORTS"
                 description="Find the best resorts in Europe"
                 backgroundImage="/images/2.jpg"
             />
 
             <main>
-                <DestinationClientView allDestinations={destinations} />
+                <ResortClientView allDestinations={destinations} />
             </main>
 
             <Footer />

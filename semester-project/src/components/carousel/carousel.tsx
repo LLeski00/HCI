@@ -4,7 +4,7 @@ import "swiper/css";
 import { Navigation } from "swiper/modules";
 import style from "./carousel.module.css";
 import { useState } from "react";
-import ImageModal from "../imageModal/imageModal";
+import ImageModal from "../image-modal/imageModal";
 import { ResortInfo } from "@/types/resort";
 
 export default function Carousel({ destination }: { destination: ResortInfo }) {

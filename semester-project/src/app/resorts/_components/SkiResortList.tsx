@@ -1,6 +1,6 @@
 //import Pagination from "./pagination";
 "use client";
-import ResortCard from "../../../components/resortCard/resortCard";
+import ResortCard from "../../../components/resort-card/ResortCard";
 import { FilterProps } from "../types/filter";
 import { getTotalDistance, parseDistanceRange } from "@/utils/getDistance";
 import Pagination from "./pagination/pagination";
