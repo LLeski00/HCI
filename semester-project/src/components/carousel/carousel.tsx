@@ -7,7 +7,7 @@ import { useState } from "react";
 import ImageModal from "../image-modal/imageModal";
 import { ResortInfo } from "@/types/resort";
 
-export default function Carousel({ destination }: { destination: ResortInfo }) {
+export default function Carousel({ resort }: { resort: ResortInfo }) {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -37,7 +37,7 @@ export default function Carousel({ destination }: { destination: ResortInfo }) {
                             nextEl: ".swiper-button-next",
                         }}
                     >
-                        {destination.images?.map((image, index) => (
+                        {resort.images?.map((image, index) => (
                             <SwiperSlide key={index}>
                                 <img
                                     src={image}
@@ -56,7 +56,7 @@ export default function Carousel({ destination }: { destination: ResortInfo }) {
 
             <ImageModal
                 isOpen={isFullscreen}
-                images={destination.images || []}
+                images={resort.images || []}
                 currentIndex={currentIndex}
                 onClose={closeFullscreen}
             />
