@@ -1,13 +1,11 @@
-import { getAllResorts } from "./_lib/api";
 import "./destinations.css";
 import HeroSection from "@/components/hero/hero";
 import { Footer } from "@/components/footer/footer";
-import DestinationClientView from "./_components/destinationClientView";
-import { ResortInfo } from "@/types/resort";
+import Destinations from "./_components/Destinations";
+import { Suspense } from "react";
+import Loading from "@/components/loading/Loading";
 
 export default async function DestinationPage() {
-    const destinations: ResortInfo[] = await getAllResorts();
-
     return (
         <>
             <HeroSection
@@ -18,7 +16,9 @@ export default async function DestinationPage() {
             />
 
             <main>
-                <DestinationClientView allDestinations={destinations} />
+                <Suspense fallback={<Loading />}>
+                    <Destinations />
+                </Suspense>
             </main>
 
             <Footer />

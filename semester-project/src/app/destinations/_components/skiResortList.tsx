@@ -6,12 +6,13 @@ import { getTotalDistance, parseDistanceRange } from "@/utils/getDistance";
 import Pagination from "./pagination/pagination";
 import { useState } from "react";
 import { ResortInfo } from "@/types/resort";
-import { useAuth } from "@/context/AuthContext";
-import { useFavourites } from "@/hooks/useFavourites";
+import { User } from "@/types/user";
 
 type ResortsListProps = {
     destinations: ResortInfo[];
     filterData: FilterProps;
+    user: User | null;
+    favouriteIds: string[] | null;
 };
 
 const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 20;
@@ -19,10 +20,10 @@ const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 20;
 export default function SkiResortsList({
     destinations,
     filterData,
+    user,
+    favouriteIds,
 }: ResortsListProps) {
     const [currentPage, setCurrentPage] = useState(1);
-    const { user } = useAuth();
-    const { favouriteIds } = useFavourites(user?.id ?? null);
 
     const handleScroll = (page: number) => {
         setCurrentPage(page);
