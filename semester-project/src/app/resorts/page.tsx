@@ -2,8 +2,10 @@ import { getAllResorts } from "./_lib/api";
 import "./resorts.css";
 import HeroSection from "@/components/hero/hero";
 import { Footer } from "@/components/footer/footer";
-import ResortClientView from "./_components/ResortClientView";
+import ResortClientView from "./_components/ResortsClientView";
 import { ResortInfo } from "@/types/resort";
+import { Suspense } from "react";
+import Loading from "@/components/loading/Loading";
 
 export default async function ResortsPage() {
     const destinations: ResortInfo[] = await getAllResorts();
@@ -18,7 +20,9 @@ export default async function ResortsPage() {
             />
 
             <main>
-                <ResortClientView allDestinations={destinations} />
+                <Suspense fallback={<Loading />}>
+                    <ResortClientView allDestinations={destinations} />
+                </Suspense>
             </main>
 
             <Footer />

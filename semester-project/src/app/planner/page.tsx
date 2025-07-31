@@ -4,6 +4,7 @@ import HeroSection from "@/components/hero/hero";
 import PlannerForm from "./_components/planner-form/PlannerForm";
 import PlannerResults from "./_components/planner-results/PlannerResults";
 import { usePlanner } from "@/hooks/usePlanner";
+import Loading from "@/components/loading/Loading";
 
 export default function Planner() {
     const { formData, setFormData, results, loading, error } = usePlanner();
@@ -18,7 +19,7 @@ export default function Planner() {
             />
             {formData ? (
                 loading ? (
-                    <p>Loading results...</p>
+                    <Loading />
                 ) : error ? (
                     <p style={{ color: "red" }}>{error}</p>
                 ) : (

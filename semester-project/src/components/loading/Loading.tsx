@@ -1,5 +1,12 @@
+import { ClipLoader } from "react-spinners";
+import styles from "./loading.module.css";
+
 const Loading = () => {
-    return <p>Loading...</p>;
+    return (
+        <div className={styles.loadingContainer}>
+            <ClipLoader />
+        </div>
+    );
 };
 
 export default Loading;
