@@ -13,6 +13,7 @@ import Loading from "@/components/loading/Loading";
 import Reviews from "./Reviews";
 import { useAuth } from "@/context/AuthContext";
 import { useFavourites } from "@/hooks/useFavourites";
+import "./resort.css";
 
 interface ResortDetailsViewProps {
     resort: ResortInfo;
