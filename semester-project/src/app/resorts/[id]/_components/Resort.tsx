@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Loading from "@/components/loading/Loading";
 import { ResortInfo } from "@/types/resort";
 import { getResortById } from "@/api/resort";
-import ResortDetailsView from "./ResortDetailsView";
+import ResortDetailsView from "./resort-details-view/ResortDetailsView";
 
 export const metadata: Metadata = {
     title: "Resort",

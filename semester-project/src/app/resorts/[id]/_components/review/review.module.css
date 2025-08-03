@@ -1,0 +1,144 @@
+.reviewContainer {
+        width: 80%;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+
+        border: 1px solid rgb(188, 188, 188);
+        /*box-shadow: 3px 2px 2px 5px rgba(0, 0, 0, 0.1);*/
+}
+
+.reviewsSection {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px;
+}
+
+.titleSection {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+}
+
+.reviewsContent {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+}
+
+.reviewForm {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 30px;
+}
+
+.reviewsList {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 30px;
+}
+
+.ratingContainer {
+        display: flex;
+        padding: 15px;
+        padding-top: 8px;
+        align-items: center;
+}
+
+.ratingContainer > p {
+        font-size: 16px;
+        margin-left: 5px;
+        color: var(--dark);
+}
+.star {
+        color: var(--orange);
+        font-size: 18px;
+}
+
+.textContent {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px 0 10px;
+}
+
+.ratingText {
+        text-align: left;
+        align-self: flex-start;
+        font-size: 16px;
+}
+
+.date {
+        font-size: 14px;
+        color: var(--dark);
+        text-align: right;
+}
+
+.reactionContainer {
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 10px 10px;
+}
+
+.reactionGroup {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+}
+
+.reactionGroup p {
+        margin: 0;
+        font-size: 16px;
+        color: var(--dark);
+}
+
+.reactionGroup svg {
+        cursor: pointer;
+        font-size: 20px;
+}
+
+.reactionGroup svg:active {
+        transform: scale(0.95);
+}
+
+.moreButton {
+        border: none;
+        background-color: var(--background);
+        color: var(--orange);
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 10px;
+}
+
+.moreButton:hover {
+        color: var(--dark);
+}
+
+.leaveReview {
+        padding: 10px;
+}
+
+.commentForm {
+        display: flex;
+        align-items: center;
+}
+
+.commentTextarea {
+        width: 80%;
+        border: 1px solid rgb(198, 198, 198);
+}
+
+.commentForm > button {
+        margin-left: 20px;
+        width: 55px;
+        height: 30px;
+}

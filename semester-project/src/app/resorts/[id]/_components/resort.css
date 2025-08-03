@@ -1,70 +1,57 @@
 .info-description {
-    display: flex;
-    align-items: center;
-    margin: 10vh 15vw;
+        display: flex;
+        align-items: center;
+        margin: 10vh 15vw;
 }
 
 .info-container {
-    max-height: 70vh;
-    background-color: var(--dark);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+        max-height: 70vh;
+        background-color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 }
 
 .info-content,
 .information-item {
-    height: 62vh;
-    margin: 0 10vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: 62vh;
+        margin: 0 10vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--background);
-    font-size: 1.5rem;
-    padding-top: 10vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--background);
+        font-size: 1.5rem;
+        padding-top: 10vh;
 }
 
 .info-item svg {
-    font-size: 5rem;
+        font-size: 5rem;
 }
 
 .info-item h3,
 .info-item p {
-    color: var(--background);
+        color: var(--background);
 }
 
 .item-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 4vh;
-    border-top: 2px solid var(--background);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 4vh;
+        border-top: 2px solid var(--background);
 }
 
 .table {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
 }
 
 .images-content {
-    padding: 80px;
-}
-
-.reviews {
-    background-color: var(--dark);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.reviews > * {
-    color: var(--background);
-    text-align: center;
+        padding: 80px;
 }

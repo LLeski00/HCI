@@ -64,7 +64,7 @@ export default function EditProfile() {
 
         try {
             await updateUserProfile(updatedData);
-            toast.success('Successfully toasted!');
+            toast.success('Successfully updated profile!');
         } catch (error) {
             toast.error("This didn't work.")
         }

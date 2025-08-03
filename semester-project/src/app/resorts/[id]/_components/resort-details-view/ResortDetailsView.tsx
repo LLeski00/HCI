@@ -3,17 +3,17 @@
 import HeroSection from "@/components/hero/hero";
 import { ResortInfo } from "@/types/resort";
 import { FC } from "react";
-import FavouriteResortSection from "./FavouriteResortSection";
+import FavouriteResortSection from "../FavouriteResortSection";
 import TearEffect from "@/components/tearEffect/tearEffect";
 import { FaMountain, FaPersonSkiing } from "react-icons/fa6";
 import { TbAerialLift } from "react-icons/tb";
 import { GiTwoCoins } from "react-icons/gi";
 import Carousel from "@/components/carousel/carousel";
 import Loading from "@/components/loading/Loading";
-import Reviews from "./Reviews";
+import Reviews from "../review/Reviews";
 import { useAuth } from "@/context/AuthContext";
 import { useFavourites } from "@/hooks/useFavourites";
-import "./resort.css";
+import "../resort.css";
 
 interface ResortDetailsViewProps {
     resort: ResortInfo;
