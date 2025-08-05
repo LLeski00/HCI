@@ -8,11 +8,11 @@
         display: flex;
         flex: 1;
         height: calc(100vh - 10vh);
+        margin-top: 10vh;
 }
 
 .main-content {
         flex: 1;
         padding: 50px;
         overflow-y: auto;
-        height: 100%;
 }

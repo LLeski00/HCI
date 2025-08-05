@@ -9,6 +9,7 @@ import { pages } from "@/constants/pages";
 import { useAuth } from "@/context/AuthContext";
 import UserHeader from "@/components/user/userHeader";
 import Loading from "../loading/Loading";
+import { useEffect, useState } from "react";
 
 function processPage(page: Page, index: number, pathname: string) {
     const isActive =
@@ -23,22 +24,27 @@ function processPage(page: Page, index: number, pathname: string) {
                 className={`${styles.navLink} ${isActive ? styles.active : ""}`}
             >
                 {page.title}
-
-                <span
-                    className={`${styles.underline} ${isActive ? styles.underlineActive : ""
-                        }`}
-                />
+                <span className={`${styles.underline} ${isActive ? styles.underlineActive : ""}`} />
             </Link>
         </li>
     );
 }
+
 export function Navbar() {
     const { user, isLoading } = useAuth();
     const pathname = usePathname();
-    const navClass =
-        pathname.startsWith("/profile")
-            ? `${styles.navbar} ${styles.navBackground}`
-            : styles.navbar;
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const navClass = `${styles.navbar} ${scrolled || pathname.startsWith("/profile") ? styles.scrolled : ""}`;
 
     return (
         <div className={navClass}>

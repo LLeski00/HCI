@@ -27,13 +27,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 }}
             >
                 <div className={styles.heroOverlay}></div>
-                <Navbar />
-                <div className={styles.heroText}>
-                    <h1 className={styles.heroHeading}>{titleTop}</h1>
-                    <h1 className={` ${styles.heroHeading} ${styles.bottom}`}>
-                        {titleBottom}
-                    </h1>
-                    <p>{description}</p>
+                <div className={styles.heroContent}>
+                    <Navbar />
+                    <div className={styles.heroText}>
+                        <h1 className={styles.heroHeading}>{titleTop}</h1>
+                        <h1 className={`${styles.heroHeading} ${styles.bottom}`}>
+                            {titleBottom}
+                        </h1>
+                        <p>{description}</p>
+                    </div>
                 </div>
             </section>
             <TearEffect isHero={true} />
