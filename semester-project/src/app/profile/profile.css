@@ -1,0 +1,18 @@
+.profile-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+}
+
+.profile-content {
+        display: flex;
+        flex: 1;
+        height: calc(100vh - 10vh);
+}
+
+.main-content {
+        flex: 1;
+        padding: 50px;
+        overflow-y: auto;
+        height: 100%;
+}

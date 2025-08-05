@@ -69,6 +69,7 @@
 
 .navBackground {
         background-color: var(--dark);
+        position: sticky;
 }
 
 .navbar svg {

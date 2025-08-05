@@ -25,9 +25,8 @@ function processPage(page: Page, index: number, pathname: string) {
                 {page.title}
 
                 <span
-                    className={`${styles.underline} ${
-                        isActive ? styles.underlineActive : ""
-                    }`}
+                    className={`${styles.underline} ${isActive ? styles.underlineActive : ""
+                        }`}
                 />
             </Link>
         </li>
@@ -37,7 +36,7 @@ export function Navbar() {
     const { user, isLoading } = useAuth();
     const pathname = usePathname();
     const navClass =
-        pathname === "/profile"
+        pathname.startsWith("/profile")
             ? `${styles.navbar} ${styles.navBackground}`
             : styles.navbar;
 
