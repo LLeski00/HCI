@@ -5,11 +5,11 @@ import { ReviewInfo } from "@/types/review";
 import { FC, useEffect, useState } from "react";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
-import { ResortInfo } from "@/types/resort";
+import { Resort } from "@/types/resort";
 import Loading from "@/components/loading/Loading";
 
 interface ReviewsProps {
-    resort: ResortInfo;
+    resort: Resort;
 }
 
 const Reviews: FC<ReviewsProps> = ({ resort }) => {
