@@ -1,6 +1,6 @@
 import { getAllResorts } from "./_lib/api";
 import "./resorts.css";
-import HeroSection from "@/components/hero/hero";
+import HeroSection from "@/components/hero/Hero";
 import ResortClientView from "./_components/ResortsClientView";
 import { ResortInfo } from "@/types/resort";
 import { Suspense } from "react";

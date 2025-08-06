@@ -4,11 +4,8 @@ import "swiper/css";
 import { Navigation } from "swiper/modules";
 import style from "./carousel.module.css";
 import { useState } from "react";
-import ImageModal from "../image-modal/imageModal";
+import ImageModal from "../image-modal/ImageModal";
 import { ResortInfo } from "@/types/resort";
-import ResortCard from "../resort-card/ResortCard";
-import { useAuth } from "@/context/AuthContext";
-import ResortPreview from "../resort-preview/ResortPreview";
 import ResortDisplay from "../resort-display/ResortDisplay";
 
 interface CarouselProps {
@@ -19,7 +16,6 @@ interface CarouselProps {
 export default function Carousel({ data, mode }: CarouselProps) {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const { user } = useAuth();
 
     const openFullScreen = (index: number) => {
         setCurrentIndex(index);

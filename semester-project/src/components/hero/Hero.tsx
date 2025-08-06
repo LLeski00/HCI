@@ -1,7 +1,7 @@
 import React from "react";
-import { Navbar } from "../navbar/navbar";
+import { Navbar } from "../navbar/Navbar";
 import styles from "./hero.module.css";
-import TearEffect from "../tearEffect/tearEffect";
+import TearEffect from "../tearEffect/TearEffect";
 
 interface HeroSectionProps {
     titleTop: string;

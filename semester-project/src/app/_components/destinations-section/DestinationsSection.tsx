@@ -1,7 +1,7 @@
 "use client"
 
 import { getBestRatedResorts } from "@/api/resort";
-import { Button } from "@/components/button/button";
+import { Button } from "@/components/button/Button";
 import Carousel from "@/components/carousel/Carousel";
 import Loading from "@/components/loading/Loading";
 import { ResortInfo } from "@/types/resort";

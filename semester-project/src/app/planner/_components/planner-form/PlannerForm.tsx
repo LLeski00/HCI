@@ -6,7 +6,7 @@ import { PlannerFormData } from "@/types/planner";
 import { FC, useState } from "react";
 import { Country, getData } from "country-list";
 import styles from './planner-form.module.css';
-import { Button } from "@/components/button/button";
+import { Button } from "@/components/button/Button";
 
 interface PlannerFormProps {
     setFormData: Function;

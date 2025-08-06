@@ -1,10 +1,10 @@
 "use client";
 
-import HeroSection from "@/components/hero/hero";
+import HeroSection from "@/components/hero/Hero";
 import { ResortInfo } from "@/types/resort";
 import { FC } from "react";
 import FavouriteResortSection from "../FavouriteResortSection";
-import TearEffect from "@/components/tearEffect/tearEffect";
+import TearEffect from "@/components/tearEffect/TearEffect";
 import { FaMountain, FaPersonSkiing } from "react-icons/fa6";
 import { TbAerialLift } from "react-icons/tb";
 import { GiTwoCoins } from "react-icons/gi";

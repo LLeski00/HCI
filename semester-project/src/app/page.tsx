@@ -1,4 +1,4 @@
-import HeroSection from "@/components/hero/hero";
+import HeroSection from "@/components/hero/Hero";
 import "./home.css";
 import HomePageContent from "./_components/home-page-content/HomePageContent";
 import { Suspense } from "react";

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ResortInfoWithoutCoordinates } from "@/types/resort";
-import { User } from "@/types/user";
 import { IoIosStar } from "react-icons/io";
 import styles from './resort-display.module.css';
 

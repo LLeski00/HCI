@@ -1,4 +1,4 @@
-import TearEffect from "@/components/tearEffect/tearEffect";
+import TearEffect from "@/components/tearEffect/TearEffect";
 import HomeSection from "../home-section/HomeSection";
 import DestinationsSection from "../destinations-section/DestinationsSection";
 import PlannerSection from "../planner-section/PlannerSection";

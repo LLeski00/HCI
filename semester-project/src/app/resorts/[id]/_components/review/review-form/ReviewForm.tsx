@@ -7,7 +7,7 @@ import styles from "./ReviewForm.module.css";
 import { ResortInfo } from "@/types/resort";
 import { useAuth } from "@/context/AuthContext";
 import { FaRegStar, FaStar } from "react-icons/fa";
-import { Button } from "@/components/button/button";
+import { Button } from "@/components/button/Button";
 
 interface ReviewFormProps {
     resort: ResortInfo;

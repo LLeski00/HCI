@@ -1,4 +1,4 @@
-import { Button } from "@/components/button/button";
+import { Button } from "@/components/button/Button";
 import { FC } from "react";
 
 interface PlannerSectionProps {

@@ -1,6 +1,6 @@
 "use client";
 
-import HeroSection from "@/components/hero/hero";
+import HeroSection from "@/components/hero/Hero";
 import PlannerForm from "./_components/planner-form/PlannerForm";
 import PlannerResults from "./_components/planner-results/PlannerResults";
 import { usePlanner } from "@/hooks/usePlanner";

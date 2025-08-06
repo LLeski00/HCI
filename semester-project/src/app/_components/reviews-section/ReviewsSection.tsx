@@ -1,5 +1,5 @@
-import { Button } from "@/components/button/button";
-import { Rating } from "@/components/rating/rating";
+import { Button } from "@/components/button/Button";
+import { Rating } from "@/components/rating/Rating";
 import { FC } from "react";
 
 interface ReviewsSectionProps {
