@@ -1,5 +1,4 @@
 import HeroSection from "@/components/hero/hero";
-import { Footer } from "../components/footer/footer";
 import "./home.css";
 import HomePageContent from "./_components/home-page-content/HomePageContent";
 import { Suspense } from "react";
@@ -17,7 +16,6 @@ export default function Home() {
             <Suspense fallback={<Loading />}>
                 <HomePageContent />
             </Suspense>
-            <Footer />
         </div>
     );
 }

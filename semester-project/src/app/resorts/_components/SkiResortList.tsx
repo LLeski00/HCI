@@ -27,7 +27,9 @@ export default function SkiResortsList({
 
     const handleScroll = (page: number) => {
         setCurrentPage(page);
-        window.scrollTo(0, 700);
+        document.getElementById("ski-resorts")?.scrollIntoView({
+            behavior: "smooth",
+        });
     };
     //const pagesCount = Math.ceil(destinations.length / PAGE_SIZE);
 
@@ -97,7 +99,8 @@ export default function SkiResortsList({
 
     return (
         <>
-            <ul className="ski-resorts-list">
+            <ul className="ski-resorts-list"
+                id="ski-resorts">
                 {resortsToDisplay &&
                     resortsToDisplay.map((resort) => (
                         <ResortCard

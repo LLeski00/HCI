@@ -4,7 +4,7 @@ import styles from "./button.module.css";
 interface CustomButtonProps {
     text: string;
     href?: string;
-    type: "button" | "submit";
+    type?: "button" | "submit";
 }
 
 export function Button({ text, href, type = "button" }: CustomButtonProps) {

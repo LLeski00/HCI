@@ -1,30 +1,46 @@
+"use client"
+
+import { getBestRatedResorts } from "@/api/resort";
 import { Button } from "@/components/button/button";
-import { FC } from "react";
+import Carousel from "@/components/carousel/Carousel";
+import Loading from "@/components/loading/Loading";
+import { ResortInfo } from "@/types/resort";
+import { FC, useEffect, useState } from "react";
 
 interface DestinationsSectionProps {
     header: string;
 }
 
 const DestinationsSection: FC<DestinationsSectionProps> = ({ header }) => {
+    const [bestResorts, setBestResorts] = useState<ResortInfo[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        async function fetchBestResorts() {
+            const resorts = await getBestRatedResorts();
+            console.log("API response:", resorts);
+            if (resorts) {
+                setBestResorts(resorts);
+            }
+            setLoading(false);
+        }
+
+        fetchBestResorts();
+    }, []);
+
+    if (loading) return <Loading />
+
     return (
         <section className="home-destinations-section">
             <h1>{header}</h1>
-            {/*slideshow */}
-            <div className="home-destinations">
-                <div className="home-destination">
-                    <h4>Les 2 alpes, France</h4>
-                    <img src="/images/austria.jpg" />
-                </div>
-                <div className="home-destination">
-                    <h4>Alta Badia, Italy</h4>
-                    <img src="/images/altaBadia.jpg" />
-                </div>
-                <div className="home-destination">
-                    <h4>Val Thorens, France</h4>
-                    <img src="/images/valtores.jpg" />
-                </div>
+
+            <div className="destination-carousel">
+                <Carousel
+                    data={bestResorts}
+                    mode="resorts" />
             </div>
-            <Button text="VIEW MORE" href="/" />
+
+            <Button text="VIEW MORE" href="/resorts" />
         </section>
     );
 };

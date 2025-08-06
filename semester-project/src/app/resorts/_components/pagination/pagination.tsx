@@ -1,5 +1,5 @@
 "use client";
-//import Router from 'next/router'
+
 import "./pagination.css";
 import { useState } from "react";
 
@@ -16,12 +16,12 @@ export default function Pagination(pagination: PaginationProps) {
     const isLastPage = currentPage === pagesCount;
 
     const goToPage = (page: number) => {
-        if(page >= 1 && page <= pagesCount){
+        if (page >= 1 && page <= pagesCount) {
             setCurrentPage(page);
             onChange(page);
 
-            const newUrl = page === 1 ? "/destinations" : `/destinations?page_${page}`;
-            window.history.pushState({}, "", newUrl);            
+            const newUrl = page === 1 ? "/resorts" : `/resorts?page_${page}`;
+            window.history.pushState({}, "", newUrl);
         }
     }
 
@@ -54,5 +54,3 @@ export default function Pagination(pagination: PaginationProps) {
         </div>
     );
 }
-
-//

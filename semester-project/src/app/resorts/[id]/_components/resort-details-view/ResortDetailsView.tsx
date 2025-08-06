@@ -8,7 +8,7 @@ import TearEffect from "@/components/tearEffect/tearEffect";
 import { FaMountain, FaPersonSkiing } from "react-icons/fa6";
 import { TbAerialLift } from "react-icons/tb";
 import { GiTwoCoins } from "react-icons/gi";
-import Carousel from "@/components/carousel/carousel";
+import Carousel from "@/components/carousel/Carousel";
 import Loading from "@/components/loading/Loading";
 import Reviews from "../review/Reviews";
 import { useAuth } from "@/context/AuthContext";
@@ -110,7 +110,9 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                 </div>
                 <div className="images-content">
                     <h2>Resort images</h2>
-                    <Carousel resort={resort} />
+                    <Carousel
+                        data={resort}
+                        mode="images" />
                 </div>
                 <TearEffect darkBackground={true} />
                 <Reviews resort={resort} />

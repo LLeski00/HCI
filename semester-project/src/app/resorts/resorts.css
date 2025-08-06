@@ -6,6 +6,8 @@
         grid-template-columns: 1fr 3fr;
         gap: 10px;
         margin-top: 50px;
+
+        min-height: 100vh;
 }
 
 .ski-resorts-list {
@@ -16,15 +18,22 @@
         gap: 50px;
 }
 
+#ski-resorts {
+        scroll-margin-top: 10vh;
+}
+
 .pagination {
         grid-area: pagination;
 }
 
 aside {
         border-right: 1px solid var(--blue-background);
+
+        grid-area: sidebar;
+        height: fit-content;
         position: sticky;
-        height: 100vh;
-        top: 0;
+        height: 90vh;
+        top: 10vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -32,5 +41,5 @@ aside {
 
 aside h3 {
         align-self: flex-start;
-        margin: 4vh 2vw;
+        margin: 2vh 2vw;
 }

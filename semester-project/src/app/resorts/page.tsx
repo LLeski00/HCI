@@ -1,7 +1,6 @@
 import { getAllResorts } from "./_lib/api";
 import "./resorts.css";
 import HeroSection from "@/components/hero/hero";
-import { Footer } from "@/components/footer/footer";
 import ResortClientView from "./_components/ResortsClientView";
 import { ResortInfo } from "@/types/resort";
 import { Suspense } from "react";
@@ -18,15 +17,11 @@ export default async function ResortsPage() {
                 description="Find the best resorts in Europe"
                 backgroundImage="/images/2.jpg"
             />
-
             <main>
                 <Suspense fallback={<Loading />}>
                     <ResortClientView allDestinations={destinations} />
                 </Suspense>
             </main>
-
-            <Footer />
         </>
-
     );
 }

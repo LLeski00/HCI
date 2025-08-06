@@ -1,30 +1,34 @@
-.carouselWrapper{
-    padding-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+.carouselWrapper {
+        padding-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
 }
 
 .swiperContainer {
-    flex-grow: 1; 
-    max-width: 90%;
+        flex-grow: 1;
+        max-width: 90%;
+
+        width: 100%;
+        min-height: 300px;
+        position: relative;
 }
 
-.carouselWrapper img{
-    height: 300px;
-    width: 500px;
+.carouselWrapper img {
+        height: 300px;
+        width: 500px;
 }
 
 .swiperBottun {
-    background-color: var(--blue-background);
-    color: var(--background);
-    border: none;
-    padding: 20px 15px;
-    font-size: 25px;
-    z-index: 10;
+        background-color: var(--blue-background);
+        color: var(--background);
+        border: none;
+        padding: 20px 15px;
+        font-size: 25px;
+        z-index: 10;
 }
 
-.swiperBottun:hover{
-    background-color: var(--dark);
+.swiperBottun:hover {
+        background-color: var(--dark);
 }

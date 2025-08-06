@@ -6,10 +6,20 @@ import style from "./carousel.module.css";
 import { useState } from "react";
 import ImageModal from "../image-modal/imageModal";
 import { ResortInfo } from "@/types/resort";
+import ResortCard from "../resort-card/ResortCard";
+import { useAuth } from "@/context/AuthContext";
+import ResortPreview from "../resort-preview/ResortPreview";
+import ResortDisplay from "../resort-display/ResortDisplay";
 
-export default function Carousel({ resort }: { resort: ResortInfo }) {
+interface CarouselProps {
+    data: ResortInfo | ResortInfo[];
+    mode: "images" | "resorts";
+}
+
+export default function Carousel({ data, mode }: CarouselProps) {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const { user } = useAuth();
 
     const openFullScreen = (index: number) => {
         setCurrentIndex(index);
@@ -37,15 +47,25 @@ export default function Carousel({ resort }: { resort: ResortInfo }) {
                             nextEl: ".swiper-button-next",
                         }}
                     >
-                        {resort.images?.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img
-                                    src={image}
-                                    alt={`Slide ${index}`}
-                                    onClick={() => openFullScreen(index)}
-                                />
-                            </SwiperSlide>
-                        ))}
+
+                        {mode == "images" ? (
+                            (data as ResortInfo).images?.map((image, index) => (
+                                <SwiperSlide key={index}>
+                                    <img
+                                        src={image}
+                                        alt={`Slide ${index}`}
+                                        onClick={() => openFullScreen(index)}
+                                    />
+                                </SwiperSlide>
+                            ))
+                        ) : (
+                            (data as ResortInfo[]).map((resort) => (
+                                <SwiperSlide key={resort.id}>
+                                    <ResortDisplay resort={resort} />
+                                </SwiperSlide>
+
+                            )))}
+
                     </Swiper>
                 </div>
 
@@ -56,7 +76,7 @@ export default function Carousel({ resort }: { resort: ResortInfo }) {
 
             <ImageModal
                 isOpen={isFullscreen}
-                images={resort.images || []}
+                images={(data as ResortInfo).images || []}
                 currentIndex={currentIndex}
                 onClose={closeFullscreen}
             />

@@ -6,7 +6,7 @@ import { resorts } from "@/db/schemas/ski-resorts";
 import { PlannerFormData } from "@/types/planner";
 import { ResortInfo } from "@/types/resort";
 import { calculateTotalCost } from "@/utils";
-import { asc, eq } from "drizzle-orm";
+import { asc, desc, eq } from "drizzle-orm";
 
 type PagingInfo = {
         _start?: number;
@@ -96,10 +96,25 @@ async function getResortsInsideBudget(
         }) as ResortInfo[];
 }
 
+async function getBestRatedResorts(): Promise<ResortInfo[]> {
+        const data = await db
+                .select(RESORT_INFO_SELECT)
+                .from(resorts)
+                .leftJoin(
+                        coordinates,
+                        eq(resorts.coordinatesId, coordinates.id)
+                )
+                .orderBy(desc(resorts.review))
+                .limit(6);
+
+        return data as ResortInfo[];
+}
+
 export {
         getAllResorts,
         getResorts,
         getResortById,
         getResortsByCountry,
         getResortsInsideBudget,
+        getBestRatedResorts,
 };
