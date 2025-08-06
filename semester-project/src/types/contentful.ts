@@ -1,0 +1,60 @@
+export interface HomePageContent {
+    homeSectionHeader: string;
+    homeSectionParagraph: string;
+    homeDestinationsSectionHeader: string;
+    plannerSectionHeader: string;
+    plannerSectionParagraph: string;
+    stepSectionHeader: string;
+    stepSectionHeader1: string;
+    stepSectionParagraph1: string;
+    stepSectionHeader2: string;
+    stepSectionParagraph2: string;
+    stepSectionHeader3: string;
+    stepSectionParagraph3: string;
+    reviewSectionHeader: string;
+    reviewSectionArticle: string;
+    reviewSectionParagraph1: string;
+    reviewSectionParagraph2: string;
+    reviewSectionParagraph3: string;
+}
+
+export interface GuidePageContent {
+    resortDecisionSectionHeader: string;
+    resortDecisionSectionParagraph: string;
+    skiLevelSectionHeader: string;
+    skiLevelSectionItem1: string;
+    skiLevelSectionItem2: string;
+    skiLevelSectionItem3: string;
+    gearSectionHeader: string;
+    gearSectionItem1: string;
+    gearSectionItem2: string;
+    gearSectionItem3: string;
+    gearSectionItem4: string;
+    gearSectionItem5: string;
+    gearSectionItem6: string;
+    gearSectionItem7: string;
+    safetySectionHeader: string;
+    safetySectionItem1: string;
+    safetySectionItem2: string;
+    safetySectionItem3: string;
+    safetySectionItem4: string;
+    safetySectionItem5: string;
+    learningSectionHeader: string;
+    learningSectionParagraph: string;
+    facilitiesSectionHeader: string;
+    facilitiesSectionParagraph: string;
+    weatherSectionHeader: string;
+    weatherSectionParagraph: string;
+    rulesSectionHeader: string;
+    rulesSectionItem1: string;
+    rulesSectionItem2: string;
+    rulesSectionItem3: string;
+    rulesSectionItem4: string;
+    faqSectionHeader: string;
+    faqSectionQuestion1: string;
+    faqSectionAnswer1: string;
+    faqSectionQuestion2: string;
+    faqSectionAnswer2: string;
+    faqSectionQuestion3: string;
+    faqSectionAnswer3: string;
+}
