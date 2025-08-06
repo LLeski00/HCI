@@ -1,0 +1,77 @@
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.resultContainer h3,
+.infoContent {
+  text-align: center;
+}
+.plannerResultsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  margin-bottom: 180px;
+}
+
+.itemLeft,
+.itemCenter,
+.itemRight {
+  opacity: 0;
+  animation: reveal 2s linear forwards;
+}
+
+.itemLeft {
+  transform: translateY(80px);
+  animation-delay: 2s;
+}
+
+.itemCenter {
+  transform: translateY(0px);
+  animation-delay: 3s;
+}
+
+.itemRight {
+  transform: translateY(100px);
+  animation-delay: 1s;
+}
+
+.infoContent {
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--blue-background);
+  box-shadow: 2px 2px 2px 0px rgba(17, 51, 102, 0.3);
+  background-color: var(--background);
+}
+
+.itemLeft::before,
+.itemCenter::before,
+.itemRight::before {
+  font-size: 2.5rem;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.itemCenter::before {
+  content: '🥇';
+}
+
+.itemLeft::before {
+  content: '🥈';
+}
+
+.itemRight::before {
+  content: '🥉';
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+  }
+}

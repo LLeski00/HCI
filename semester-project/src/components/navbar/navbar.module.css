@@ -1,9 +1,19 @@
 .navbar {
         display: flex;
-        justify-content: space-evenly;
         align-items: center;
+        justify-content: space-around;
         height: 10vh;
         width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+}
+
+.scrolled {
+        background-color: var(--dark);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -69,6 +79,7 @@
 
 .navBackground {
         background-color: var(--dark);
+        position: sticky;
 }
 
 .navbar svg {

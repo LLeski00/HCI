@@ -8,13 +8,14 @@
 
 .editForm {
         display: flex;
-        gap: 3rem;
+        gap: 2rem;
         width: 100%;
-        max-width: 55%;
+        max-width: 65%;
         background: var(--background);
         padding: 2rem;
         border-radius: 12px;
-        box-shadow: 3px 2px 2px 5px rgba(0, 0, 0, 0.1);
+        /*box-shadow: 3px 2px 2px 5px rgba(0, 0, 0, 0.1);*/
+        border: 1px solid var(--light-grey);
 }
 
 .profileImageContainer {
@@ -74,7 +75,7 @@
 }
 
 .input {
-        padding: 15px;
+        padding: 10px;
         border: 1px solid #ddd;
         border-radius: 5px;
         font-size: 1rem;
@@ -93,7 +94,7 @@
         font-weight: 600;
         cursor: pointer;
         transition: background-color 0.2s;
-        margin-top: 30px;
+        margin-top: 20px;
         width: 30%;
         align-self: self-end;
 }

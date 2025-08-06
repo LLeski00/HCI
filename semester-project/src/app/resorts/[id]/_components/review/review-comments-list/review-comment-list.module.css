@@ -1,0 +1,21 @@
+.commentsSection {
+        padding: 25px;
+        padding-left: 50px;
+}
+
+.commentText {
+        font-size: 16px;
+        padding-left: 20px;
+        text-align: left;
+        align-self: flex-start;
+}
+
+.commentContent {
+        border-bottom: 1px solid rgb(206, 206, 206);
+}
+
+.date {
+        font-size: 14px;
+        color: var(--dark);
+        text-align: right;
+}

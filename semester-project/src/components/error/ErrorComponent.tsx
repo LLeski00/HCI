@@ -1,4 +1,4 @@
-import { Button } from "../button/button";
+import { Button } from "../button/Button";
 import styles from "./errorComponent.module.css";
 
 const ErrorComponent = ({ error }: { error: Error }) => {

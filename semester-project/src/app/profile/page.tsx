@@ -1,16 +1,7 @@
-"use client";
-
-import { useAuth } from "@/context/AuthContext";
 import EditProfile from "./_components/edit-profile/EditProfile";
-import { Navbar } from "@/components/navbar/navbar";
+import './profile.css';
 
-export default function Profile() {
-    const { user } = useAuth();
+export default function ProfilePage() {
+    return <EditProfile />
 
-    return (
-        <div>
-            <Navbar />
-            <EditProfile />
-        </div>
-    );
 }

@@ -9,6 +9,8 @@ interface UserHeaderProps {
 }
 
 export default function UserHeader({ user }: UserHeaderProps) {
+    if (!user) return;
+
     return (
         <Link href="/profile"
             className={styles.userHeaderSection}>

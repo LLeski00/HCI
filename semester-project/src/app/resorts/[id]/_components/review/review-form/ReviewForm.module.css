@@ -1,0 +1,42 @@
+.reviewForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: var(--background);
+        width: 80%;
+        border-radius: 10px;
+        align-items: center;
+        padding: 15px;
+
+        border: 1px solid rgb(188, 188, 188);
+        /*box-shadow: 3px 2px 2px 5px rgba(0, 0, 0, 0.1);*/
+}
+
+.ratingLabel,
+.textLabel {
+        color: var(--dark);
+}
+
+.reviewForm > label {
+        display: flex;
+        flex-direction: column;
+}
+
+.textLabel > textarea {
+        height: 100px;
+        width: 500px;
+        border: 1px solid var(--dark);
+}
+
+.reviewForm > button {
+        height: 50px;
+}
+
+.ratingContent {
+        display: flex;
+        justify-self: start;
+}
+.star {
+        font-size: 30px;
+        color: var(--orange);
+}

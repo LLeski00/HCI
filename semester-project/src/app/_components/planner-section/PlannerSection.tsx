@@ -1,4 +1,4 @@
-import { Button } from "@/components/button/button";
+import { Button } from "@/components/button/Button";
 import { FC } from "react";
 
 interface PlannerSectionProps {
@@ -31,7 +31,7 @@ const PlannerSection: FC<PlannerSectionProps> = ({
                 <p>{paragraph}</p>
             </div>
 
-            <article>
+            <article className="planner-content">
                 <div className="steps-container">
                     <h2>{stepSectionHeader}</h2>
                     <div className="step-content">
@@ -56,7 +56,6 @@ const PlannerSection: FC<PlannerSectionProps> = ({
                 <div className="image-container">
                     <img
                         src="/images/snowboarding.jpg"
-                        className="image-content"
                     />
                 </div>
             </article>

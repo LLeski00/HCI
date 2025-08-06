@@ -1,8 +1,8 @@
-import { Footer } from "@/components/footer/footer";
-import HeroSection from "@/components/hero/hero";
 import Loading from "@/components/loading/Loading";
 import { Suspense } from "react";
 import GuidePageContent from "./_components/guide-page-content/GuidePageContent";
+import HeroSection from "@/components/hero/Hero";
+import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
     return (
