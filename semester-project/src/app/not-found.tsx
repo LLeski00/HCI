@@ -1,5 +1,5 @@
 import styles from "./not-found.module.css";
-import { Button } from "@/components/button/button";
+import { Button } from "@/components/button/Button";
 
 const NotFoundPage = () => {
     return (
