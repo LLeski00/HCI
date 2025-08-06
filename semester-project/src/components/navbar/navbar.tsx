@@ -37,9 +37,9 @@ export function Navbar() {
     const { user, isLoading } = useAuth();
     const pathname = usePathname();
     const navClass =
-        pathname === "/"
-            ? styles.navbar
-            : `${styles.navbar} ${styles.navBackground}`;
+        pathname === "/profile"
+            ? `${styles.navbar} ${styles.navBackground}`
+            : styles.navbar;
 
     return (
         <div className={navClass}>

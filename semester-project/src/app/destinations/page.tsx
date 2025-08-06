@@ -23,5 +23,6 @@ export default async function DestinationPage() {
 
             <Footer />
         </>
+
     );
 }
