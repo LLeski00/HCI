@@ -7,10 +7,7 @@ import { HomePageContent as HomePageContentType } from "@/types/contentful";
 import { getHomePageContent } from "@/app/api/contentful";
 
 const HomePageContent = async () => {
-    const content: HomePageContentType | null = await getHomePageContent();
-    if (!content) {
-        return <p>Error loading content.</p>;
-    }
+    const content: HomePageContentType = await getHomePageContent();
 
     return (
         <>
