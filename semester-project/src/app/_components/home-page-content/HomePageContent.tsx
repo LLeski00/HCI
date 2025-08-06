@@ -3,10 +3,8 @@ import HomeSection from "../home-section/HomeSection";
 import DestinationsSection from "../destinations-section/DestinationsSection";
 import PlannerSection from "../planner-section/PlannerSection";
 import ReviewsSection from "../reviews-section/ReviewsSection";
-import {
-    getHomePageContent,
-    HomePageContent as HomePageContentType,
-} from "@/lib/contentful/client";
+import { HomePageContent as HomePageContentType } from "@/types/contentful";
+import { getHomePageContent } from "@/app/api/contentful";
 
 const HomePageContent = async () => {
     const content: HomePageContentType = await getHomePageContent();

@@ -1,6 +1,7 @@
 "use client";
 
 import { getReviewCommentsByReviewId } from "@/app/api/review-comment";
+import Loading from "@/components/loading/Loading";
 import { Comment } from "@/types/comment";
 import { FC, useEffect, useState } from "react";
 
@@ -40,7 +41,7 @@ const ReviewCommentList: FC<ReviewCommentListProps> = ({ reviewId }) => {
                     <p>No comments available for this review.</p>
                 )
             ) : (
-                <p>Loading comments...</p>
+                <Loading />
             )}
         </div>
     );
