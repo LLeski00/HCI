@@ -9,34 +9,38 @@ import { getResortsInsideBudget } from "@/api/resort";
 export async function getPlannerResults(
     formData: PlannerFormData
 ): Promise<PlannerResults> {
-    const resortsInsideBudget: ResortInfo[] = await getResortsInsideBudget(
-        formData
-    );
+    try {
+        const resortsInsideBudget: ResortInfo[] = await getResortsInsideBudget(
+            formData
+        );
 
-    if (resortsInsideBudget.length === 0) return {} as PlannerResults;
+        if (resortsInsideBudget.length === 0) return {} as PlannerResults;
 
-    const scores: Record<string, number> = calculateResortScores(
-        resortsInsideBudget,
-        formData.currentLocation
-    );
-    const bestResort = getBestResort(resortsInsideBudget, scores);
-    const closestResort = getClosestResort(
-        resortsInsideBudget,
-        formData.currentLocation
-    );
-    const cheapestResort = getCheapestResort(resortsInsideBudget, formData);
-    const plannerResults: PlannerResults = formatPlannerResults(
-        bestResort,
-        closestResort,
-        cheapestResort,
-        formData
-    );
+        const scores: Record<string, number> = calculateResortScores(
+            resortsInsideBudget,
+            formData.currentLocation
+        );
+        const bestResort = getBestResort(resortsInsideBudget, scores);
+        const closestResort = getClosestResort(
+            resortsInsideBudget,
+            formData.currentLocation
+        );
+        const cheapestResort = getCheapestResort(resortsInsideBudget, formData);
+        const plannerResults: PlannerResults = formatPlannerResults(
+            bestResort,
+            closestResort,
+            cheapestResort,
+            formData
+        );
 
-    return {
-        bestMatch: plannerResults.bestMatch,
-        cheapest: plannerResults.cheapest,
-        closest: plannerResults.closest,
-    };
+        return {
+            bestMatch: plannerResults.bestMatch,
+            cheapest: plannerResults.cheapest,
+            closest: plannerResults.closest,
+        };
+    } catch (error) {
+        throw new Error("Failed to fetch planner results: " + error);
+    }
 }
 
 export function calculateResortScores(

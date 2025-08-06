@@ -13,11 +13,11 @@ export default function Planner() {
 
     useEffect(() => {
         if (results && !loading && resultsRef.current) {
-            resultsRef?.current?.scrollIntoView({
-                behavior: 'smooth'
-            })
+            const yOffset = -150;
+            const y = resultsRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
-    }, [results]);
+    }, [results, loading]);
 
     return (
         <div>
