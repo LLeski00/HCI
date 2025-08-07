@@ -6,6 +6,7 @@ import PlannerResults from "./_components/planner-results/PlannerResults";
 import { usePlanner } from "@/hooks/usePlanner";
 import Loading from "@/components/loading/Loading";
 import { useEffect, useRef } from "react";
+import PlannerSteps from "./_components/planner-steps/PlannerSteps";
 
 export default function Planner() {
     const { formData, setFormData, results, loading, error } = usePlanner();
@@ -23,10 +24,12 @@ export default function Planner() {
         <div>
             <HeroSection
                 description="Fill in the form and get best matches!"
-                titleBottom="Planner"
+                titleBottom="YOUR SKI PLANNER"
                 titleTop=""
                 backgroundImage="/images/2.jpg"
             />
+
+            <PlannerSteps />
             <PlannerForm setFormData={setFormData} />
             {formData && (
                 loading ? (

@@ -8,10 +8,10 @@ export default function Home() {
     return (
         <div>
             <HeroSection
-                titleTop="YOUR SKI"
-                titleBottom="ADVENTURE AWAITS!"
-                description="PLAN A SKI TRIP THAT FITS YOUR STYLE AND BUDGET"
-                backgroundImage="/images/4.jpg"
+                titleTop=""
+                titleBottom="YOUR OWN SKI GUIDE"
+                description="Find all skiing informations you will ever need"
+                backgroundImage="/images/2.jpg"
             />
             <h1>Guide for skiers</h1>
             <Suspense fallback={<Loading />}>

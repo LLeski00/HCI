@@ -1,4 +1,7 @@
-import { FC } from "react";
+
+"use client"
+import { FC, useState } from "react";
+import '@/app/guide/guide.css';
 
 interface FaqSectionProps {
     faqSectionHeader: string;
@@ -19,33 +22,42 @@ const FaqSection: FC<FaqSectionProps> = ({
     faqSectionQuestion3,
     faqSectionAnswer3,
 }) => {
+
+    const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+
+    const toggle = (index: number) => {
+        setOpenIndexes((prev) =>
+            prev.includes(index)
+                ? prev.filter((i) => i !== index)
+                : [...prev, index]
+        );
+    };
+
+    const faqs = [
+        { question: faqSectionQuestion1, answer: faqSectionAnswer1 },
+        { question: faqSectionQuestion2, answer: faqSectionAnswer2 },
+        { question: faqSectionQuestion3, answer: faqSectionAnswer3 },
+    ];
+
     return (
-        <section>
+        <section className="faq-section">
             <h2>{faqSectionHeader}</h2>
-            <p>
-                <strong>Q:</strong>
-                {faqSectionQuestion1}
-            </p>
-            <p>
-                <strong>A:</strong>
-                {faqSectionAnswer1}
-            </p>
-            <p>
-                <strong>Q:</strong>
-                {faqSectionQuestion2}
-            </p>
-            <p>
-                <strong>A:</strong>
-                {faqSectionAnswer2}
-            </p>
-            <p>
-                <strong>Q:</strong>
-                {faqSectionQuestion3}
-            </p>
-            <p>
-                <strong>A:</strong>
-                {faqSectionAnswer3}
-            </p>
+            {faqs.map((faq, index) => (
+                <div
+                    key={index}
+                    className={`faq-item ${openIndexes.includes(index) ? "open" : ""}`}
+                >
+                    <div
+                        className="faq-question"
+                        onClick={() => toggle(index)}
+                    >
+                        {faq.question}
+                    </div>
+                    {openIndexes.includes(index) && (
+                        <div className="faq-answer">{faq.answer}</div>
+                    )}
+                </div>
+            ))}
         </section>
     );
 };

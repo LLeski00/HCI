@@ -38,7 +38,7 @@
 
 .infoContent {
   margin-top: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid var(--blue-background);
   box-shadow: 2px 2px 2px 0px rgba(17, 51, 102, 0.3);
   background-color: var(--background);

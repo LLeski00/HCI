@@ -1,0 +1,39 @@
+/*=====faq section=====*/
+.faq-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--light-grey);
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.faq-question {
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: var(--orange);
+}
+
+.faq-answer {
+  margin-top: 5px;
+  font-size: 16px;
+  color: var(--dark);
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
