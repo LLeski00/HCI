@@ -17,16 +17,38 @@ const SafetySection: FC<SafetySectionProps> = ({
     safetySectionItem4,
     safetySectionItem5,
 }) => {
+    const safetyItems = [
+        safetySectionItem1,
+        safetySectionItem2,
+        safetySectionItem3,
+        safetySectionItem4,
+        safetySectionItem5,
+    ];
+
     return (
-        <section>
-            <h2>{safetySectionHeader}</h2>
-            <ul>
-                <li>{safetySectionItem1}</li>
-                <li>{safetySectionItem2}</li>
-                <li>{safetySectionItem3}</li>
-                <li>{safetySectionItem4}</li>
-                <li>{safetySectionItem5}</li>
-            </ul>
+        <section className="safety-section">
+            <h3>{safetySectionHeader}</h3>
+
+            <div className="content-wrapper">
+                <div className="image-container">
+                    <img src="/images/safety.jpg" />
+                </div>
+
+                <div>
+                    <ul className="safety-checklist list-content">
+                        {safetyItems.map((item, index) => (
+                            <li key={index} className="safety-item">
+                                <div className="check-icon">✓</div>
+                                <span>{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="safety-footer">
+                        Remember: Safety first on the slopes!
+                    </div>
+                </div>
+            </div>
         </section>
     );
 };

@@ -14,9 +14,9 @@ const SkiLevelSection: FC<SkiLevelSectionProps> = ({
     skiLevelSectionItem3,
 }) => {
     return (
-        <section>
-            <h2>{skiLevelSectionHeader}</h2>
-            <ul>
+        <section className="levels-section">
+            <h3>{skiLevelSectionHeader}</h3>
+            <ul className="levels-content">
                 <li>{skiLevelSectionItem1}</li>
                 <li>{skiLevelSectionItem2}</li>
                 <li>{skiLevelSectionItem3}</li>

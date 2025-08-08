@@ -17,7 +17,7 @@ const GuidePageContent = async () => {
     }
 
     return (
-        <article>
+        <article className="guide-page-container">
             <ResortDecisionSection
                 resortDecisionSectionHeader={
                     content.resortDecisionSectionHeader
