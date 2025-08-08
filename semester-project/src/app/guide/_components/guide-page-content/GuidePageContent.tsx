@@ -4,11 +4,10 @@ import ResortDecisionSection from "../resort-decision-section/ResortDecisionSect
 import SkiLevelSection from "../ski-levels-section/SkiLevelsSection";
 import GearSection from "../gear-section/GearSection";
 import SafetySection from "../safety-section/SafetySection";
-import LearningSection from "../learning-section/LearningSection";
-import FacilitiesSection from "../facilities-section/FacilitiesSection";
-import WeatherSection from "../weather-section/WeatherSection";
-import RulesSection from "../rules-section/RulesSection";
 import FaqSection from "../faq-section/FaqSection";
+import PassesSection from "../passes-section/PassesSection";
+import ActivitiesSection from "../activities-section/ActivitiesSection";
+import TimeSection from "../time-section/TimeSection";
 
 const GuidePageContent = async () => {
     const content: GuidePageContentType | null = await getGuidePageContent();
@@ -26,6 +25,13 @@ const GuidePageContent = async () => {
                     content.resortDecisionSectionParagraph
                 }
             />
+            <TimeSection
+                timeSectionHeader={content.timeSectionHeader}
+                timeSectionItem1={content.timeSectionItem1}
+                timeSectionItem2={content.timeSectionItem2}
+                timeSectionItem3={content.timeSectionItem3}
+            />
+
             <SkiLevelSection
                 skiLevelSectionHeader={content.skiLevelSectionHeader}
                 skiLevelSectionItem1={content.skiLevelSectionItem1}
@@ -42,6 +48,26 @@ const GuidePageContent = async () => {
                 gearSectionItem6={content.gearSectionItem6}
                 gearSectionItem7={content.gearSectionItem7}
             />
+            <PassesSection
+                passesSectionHeader={content.passesSectionHeader}
+                passesSectionItem1={content.passesSectionItem1}
+                passesSectionItem2={content.passesSectionItem2}
+                passesSectionItem3={content.passesSectionItem3}
+                passesSectionItem4={content.passesSectionItem4}
+            />
+            <ActivitiesSection
+                activitiesSectionHeader={content.activitiesSectionHeader}
+                activitiesSectionItem1={content.activitiesSectionItem1}
+                activitiesSectionItem2={content.activitiesSectionItem2}
+                activitiesSectionItem3={content.activitiesSectionItem3}
+                activitiesAction1={content.activitiesAction1}
+                activitiesAction2={content.activitiesAction2}
+                activitiesAction3={content.activitiesAction3}
+                activitiesAction4={content.activitiesAction4}
+                activitiesAction5={content.activitiesAction5}
+
+            />
+
             <SafetySection
                 safetySectionHeader={content.safetySectionHeader}
                 safetySectionItem1={content.safetySectionItem1}
@@ -50,25 +76,7 @@ const GuidePageContent = async () => {
                 safetySectionItem4={content.safetySectionItem4}
                 safetySectionItem5={content.safetySectionItem5}
             />
-            <LearningSection
-                learningSectionHeader={content.learningSectionHeader}
-                learningSectionParagraph={content.learningSectionParagraph}
-            />
-            <FacilitiesSection
-                facilitiesSectionHeader={content.facilitiesSectionHeader}
-                facilitiesSectionParagraph={content.facilitiesSectionParagraph}
-            />
-            <WeatherSection
-                weatherSectionHeader={content.weatherSectionHeader}
-                weatherSectionParagraph={content.weatherSectionParagraph}
-            />
-            <RulesSection
-                rulesSectionHeader={content.rulesSectionHeader}
-                rulesSectionItem1={content.rulesSectionItem1}
-                rulesSectionItem2={content.rulesSectionItem2}
-                rulesSectionItem3={content.rulesSectionItem3}
-                rulesSectionItem4={content.rulesSectionItem4}
-            />
+
             <FaqSection
                 faqSectionHeader={content.faqSectionHeader}
                 faqSectionQuestion1={content.faqSectionQuestion1}
@@ -77,6 +85,10 @@ const GuidePageContent = async () => {
                 faqSectionAnswer2={content.faqSectionAnswer2}
                 faqSectionQuestion3={content.faqSectionQuestion3}
                 faqSectionAnswer3={content.faqSectionAnswer3}
+                faqSectionQuestion4={content.faqSectionQuestion4}
+                faqSectionAnswer4={content.faqSectionAnswer4}
+                faqSectionQuestion5={content.faqSectionQuestion5}
+                faqSectionAnswer5={content.faqSectionAnswer5}
             />
         </article>
     );

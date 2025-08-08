@@ -26,16 +26,18 @@ const SafetySection: FC<SafetySectionProps> = ({
     ];
 
     return (
-        <section className="safety-section">
+        <section className="section-content">
             <h3>{safetySectionHeader}</h3>
+            <p>Stay safe on and off the slopes</p>
 
             <div className="content-wrapper">
+
                 <div className="image-container">
                     <img src="/images/safety.jpg" />
                 </div>
 
                 <div>
-                    <ul className="safety-checklist list-content">
+                    <ul className="list-content">
                         {safetyItems.map((item, index) => (
                             <li key={index} className="safety-item">
                                 <div className="check-icon">✓</div>
@@ -44,7 +46,7 @@ const SafetySection: FC<SafetySectionProps> = ({
                         ))}
                     </ul>
 
-                    <div className="safety-footer">
+                    <div className="section-footer">
                         Remember: Safety first on the slopes!
                     </div>
                 </div>

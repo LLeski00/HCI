@@ -11,6 +11,10 @@ interface FaqSectionProps {
     faqSectionAnswer2: string;
     faqSectionQuestion3: string;
     faqSectionAnswer3: string;
+    faqSectionQuestion4: string;
+    faqSectionAnswer4: string;
+    faqSectionQuestion5: string;
+    faqSectionAnswer5: string;
 }
 
 const FaqSection: FC<FaqSectionProps> = ({
@@ -21,6 +25,10 @@ const FaqSection: FC<FaqSectionProps> = ({
     faqSectionAnswer2,
     faqSectionQuestion3,
     faqSectionAnswer3,
+    faqSectionQuestion4,
+    faqSectionAnswer4,
+    faqSectionQuestion5,
+    faqSectionAnswer5,
 }) => {
 
     const [openIndexes, setOpenIndexes] = useState<number[]>([]);
@@ -37,27 +45,33 @@ const FaqSection: FC<FaqSectionProps> = ({
         { question: faqSectionQuestion1, answer: faqSectionAnswer1 },
         { question: faqSectionQuestion2, answer: faqSectionAnswer2 },
         { question: faqSectionQuestion3, answer: faqSectionAnswer3 },
+        { question: faqSectionQuestion4, answer: faqSectionAnswer4 },
+        { question: faqSectionQuestion5, answer: faqSectionAnswer5 },
     ];
 
     return (
-        <section className="faq-section">
-            <h2>{faqSectionHeader}</h2>
-            {faqs.map((faq, index) => (
-                <div
-                    key={index}
-                    className={`faq-item ${openIndexes.includes(index) ? "open" : ""}`}
-                >
+        <section className="section-content blue">
+            <h3>{faqSectionHeader}</h3>
+            <p>Most asked questions people ask</p>
+            <div className="questions-section">
+                {faqs.map((faq, index) => (
                     <div
-                        className="faq-question"
-                        onClick={() => toggle(index)}
+                        key={index}
+                        className={`faq-item ${openIndexes.includes(index) ? "open" : ""}`}
                     >
-                        {faq.question}
+                        <div
+                            className="faq-question"
+                            onClick={() => toggle(index)}
+                        >
+                            {faq.question}
+                        </div>
+                        {openIndexes.includes(index) && (
+                            <div className="faq-answer">{faq.answer}</div>
+                        )}
                     </div>
-                    {openIndexes.includes(index) && (
-                        <div className="faq-answer">{faq.answer}</div>
-                    )}
-                </div>
-            ))}
+                ))}
+            </div>
+
         </section>
     );
 };

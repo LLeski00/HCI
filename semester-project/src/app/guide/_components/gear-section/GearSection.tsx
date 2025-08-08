@@ -46,7 +46,7 @@ const GearSection: FC<GearSectionProps> = ({
     };
 
     return (
-        <section className="gear-section">
+        <section className="section-content blue">
 
             <div className="gear-section-header">
                 <h3>{gearSectionHeader}</h3>
@@ -58,7 +58,10 @@ const GearSection: FC<GearSectionProps> = ({
             <div className="content-wrapper">
                 <ul className="list-content">
                     {items.map((item, index) => (
-                        <li key={index}>☐ {item}</li>
+                        <li key={index}>
+                            <div className="check-icon">✓</div>
+                            <span>{item}</span>
+                        </li>
                     ))}
                 </ul>
                 <div className="image-container">

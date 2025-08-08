@@ -53,7 +53,7 @@ const PlannerSection: FC<PlannerSectionProps> = ({
                     </div>
                     <Button text="START TRIP" href="/planner" />
                 </div>
-                <div className="image-container">
+                <div className="home-image-container">
                     <img
                         src="/images/snowboarding.jpg"
                     />

@@ -13,14 +13,34 @@ const SkiLevelSection: FC<SkiLevelSectionProps> = ({
     skiLevelSectionItem2,
     skiLevelSectionItem3,
 }) => {
+    const items = [
+        skiLevelSectionItem1,
+        skiLevelSectionItem2,
+        skiLevelSectionItem3,
+    ]
     return (
-        <section className="levels-section">
+        <section className="section-content">
             <h3>{skiLevelSectionHeader}</h3>
-            <ul className="levels-content">
-                <li>{skiLevelSectionItem1}</li>
-                <li>{skiLevelSectionItem2}</li>
-                <li>{skiLevelSectionItem3}</li>
-            </ul>
+            <p>SnowFlow helps you filter resorts by difficulty – just filter the options!</p>
+
+            <div className="content-wrapper">
+
+                <div className="image-container">
+                    <img src="./images/slope.jpg" />
+                </div>
+
+                <ul className="list-content">
+                    {items.map((item, index) => (
+                        <li key={index}>
+                            <div className="check-icon apres">❯</div>
+                            <span>{item}</span>
+                        </li>
+
+                    ))}
+                </ul>
+
+            </div>
+
         </section>
     );
 };
