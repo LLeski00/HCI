@@ -16,7 +16,7 @@ export function Footer() {
                 </div>
             </div>
 
-            <div className={styles.content}>
+            <div className={`${styles.content} ${styles.mobileHidden}`}>
                 <h3>Informations</h3>
                 <ul>
                     <li>
