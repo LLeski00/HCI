@@ -11,7 +11,7 @@ const ResortDecisionSection: FC<ResortDecisionSectionProps> = ({
 }) => {
     return (
         <section className="section-content first">
-            <h2>{resortDecisionSectionHeader}</h2>
+            <h3>{resortDecisionSectionHeader}</h3>
             <p>Welcome to SnowFlow’s Guide to skiing in Europe!</p>
 
             <div className="content-wrapper">
