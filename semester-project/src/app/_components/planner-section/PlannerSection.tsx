@@ -27,7 +27,7 @@ const PlannerSection: FC<PlannerSectionProps> = ({
     return (
         <section className="planner-section">
             <div className="title-content">
-                <h1>{header}</h1>
+                <h2>{header}</h2>
                 <p>{paragraph}</p>
             </div>
 

@@ -42,6 +42,19 @@ export default function Carousel({ data, mode }: CarouselProps) {
                             prevEl: ".swiper-button-prev",
                             nextEl: ".swiper-button-next",
                         }}
+                        breakpoints={{
+                            0: {
+                                slidesPerView: 1,
+                            },
+                            640: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        }}
+                        grabCursor={true}
+                        style={{ width: "100%" }}
                     >
 
                         {mode == "images" ? (

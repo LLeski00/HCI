@@ -10,7 +10,7 @@ const HomeSection: FC<HomeSectionProps> = async ({ header, paragraph }) => {
     return (
         <section className="home-section">
             <div className="home-content">
-                <div className="text-content">
+                <div className="title-content start">
                     <h2>{header}</h2>
                     <p>{paragraph}</p>
                     <Button text="EXPLORE" href="/" />

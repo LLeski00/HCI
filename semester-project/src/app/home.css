@@ -14,13 +14,13 @@
   align-items: center;
 }
 
-.image-container {
+.home-image-container {
   width: 350px;
   height: 450px;
   margin: auto;
 }
 
-.image-container img {
+.home-image-container img {
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -61,6 +61,10 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
+}
+
+.title-content.start > button {
+  align-self: flex-start;
 }
 
 .steps-container {
@@ -142,70 +146,64 @@
   justify-content: space-between;
 }
 
-@media (max-width: 948px) {
-  .hero-section h1 {
-    font-size: 2em;
+@media (max-width: 768px) {
+  .home-destinations-section {
+    text-align: center;
   }
 
-  .hero-text {
-    margin: 0;
+  .destination-carousel {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-  }
-
-  .hero-text p {
-    display: none;
+    justify-content: center;
   }
 }
 
-@media (max-width: 414px) {
-  section {
-    padding-left: 20px;
-    padding-right: 20px;
+@media (max-width: 768px) {
+  .home-section,
+  .planner-section,
+  .review-section {
+    width: 90%;
+    padding: 20px;
+    overflow: hidden;
+  }
+
+  .title-content > h2,
+  .steps-container > h2,
+  .review-section > h2 {
+    font-size: 28px;
+  }
+
+  .review-section > article {
+    color: var(--dark);
+  }
+  .home-content {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+
+  .home-image-container {
+    display: none;
+  }
+
+  .title-content > p {
+    color: var(--dark);
+  }
+
+  .planner-content {
+    grid-template-columns: 1fr;
+  }
+
+  .step-number {
+    font-size: 22px;
+    padding: 5px 20px;
+    padding-right: 30px;
   }
 
   .reviews {
-    display: flex;
     flex-direction: column;
   }
 
   .review {
-    width: 80vw;
-  }
-
-  .home-section {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 10px;
-    text-align: start;
-  }
-
-  .text-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .text-content h2 {
-    font-size: 35px;
-    margin-bottom: 20px;
-  }
-
-  .home-section .image-container {
-    display: none;
-  }
-
-  .home-destinations {
-    flex-direction: column;
-  }
-
-  .planner-section article .image-container {
-    display: none;
-  }
-
-  .step-number {
-    width: 2em;
+    width: 300px;
   }
 }
