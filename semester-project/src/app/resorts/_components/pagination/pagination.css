@@ -40,3 +40,9 @@
   font-weight: 600;
   color: #2d3748;
 }
+
+@media (max-width: 768px) {
+  .pagination-container {
+    margin-right: 20px;
+  }
+}

@@ -77,33 +77,89 @@
   z-index: 1;
 }
 
-.navBackground {
-  background-color: var(--dark);
-  position: sticky;
-}
-
 .navbar svg {
   color: var(--background);
   font-size: 30px;
   margin-right: 20px;
 }
 
-@media (min-width: 949px) {
-  .navbar svg {
-    display: none;
-  }
+.desktopView {
+  display: flex;
 }
 
-@media (max-width: 948px) {
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1001;
+  padding-bottom: 10rem;
+  box-sizing: border-box;
+
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.mobileMenu.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobileMenu li {
+  font-size: 22px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 0.2rem;
+  font-size: 30px;
+  margin-right: 20px;
+  color: var(--background);
+  cursor: pointer;
+}
+
+.mobileMenu li {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1024px) {
   .navbar {
     justify-content: space-between;
+  }
+
+  .desktopView {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
   }
 
   .navList {
     display: none;
   }
 
-  .navbar button {
-    display: none;
+  .loginButton {
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  .mobileView {
+    margin-top: 20px;
   }
 }

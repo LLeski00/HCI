@@ -54,14 +54,28 @@ aside h3 {
   aside {
     position: static;
     height: auto;
-    border-right: none;
     border-bottom: 1px solid var(--blue-background);
     padding-bottom: 20px;
   }
 
   .ski-resorts-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 0;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ski-resorts-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ski-resorts-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 5vh 2vw;
   }
 }
