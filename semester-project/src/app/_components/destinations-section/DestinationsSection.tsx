@@ -18,7 +18,6 @@ const DestinationsSection: FC<DestinationsSectionProps> = ({ header }) => {
     useEffect(() => {
         async function fetchBestResorts() {
             const resorts = await getBestRatedResorts();
-            console.log("API response:", resorts);
             if (resorts) {
                 setBestResorts(resorts);
             }
