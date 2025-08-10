@@ -17,8 +17,4 @@ export const pages: Page[] = [
     title: 'GUIDE',
     path: '/guide',
   },
-  {
-    title: 'CONTACT US',
-    path: '/contact',
-  },
 ];
