@@ -45,3 +45,45 @@
   padding: 0;
   font-size: 18px;
 }
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--light-grey);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  .sidebar > nav {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar li {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .navLink {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .logout {
+    margin-left: 0;
+    font-size: 18px;
+  }
+}

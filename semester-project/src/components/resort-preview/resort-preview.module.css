@@ -48,3 +48,25 @@
 .starContent {
   align-self: flex-end;
 }
+
+@media (max-width: 768px) {
+  .resortContainer {
+    width: 100%;
+  }
+
+  .mutedBackground {
+    width: 100%;
+    height: 120px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .resortContainer {
+    width: 100%;
+  }
+
+  .mutedBackground {
+    width: 100%;
+    height: 140px;
+  }
+}
