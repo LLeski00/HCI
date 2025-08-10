@@ -4,7 +4,6 @@ import HeroSection from "@/components/hero/Hero";
 import { ResortInfo } from "@/types/resort";
 import { FC } from "react";
 import FavouriteResortSection from "../FavouriteResortSection";
-import TearEffect from "@/components/tearEffect/TearEffect";
 import { FaMountain, FaPersonSkiing } from "react-icons/fa6";
 import { TbAerialLift } from "react-icons/tb";
 import { GiTwoCoins } from "react-icons/gi";
@@ -29,6 +28,11 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
         return <Loading />;
     }
 
+    const easy = resort.easySlopes || 0;
+    const intermediate = resort.intermediateSlopes || 0;
+    const difficult = resort.difficultSlopes || 0;
+    const maxSlope = Math.max(easy, intermediate, difficult);
+
     return (
         <>
             <HeroSection
@@ -39,18 +43,21 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
             />
 
             <main>
+
+                <div className="info-description">
+                    <p>{resort.description || ""}</p>
+                </div>
                 <FavouriteResortSection
                     resortId={resort.id}
                     favouriteIds={favouriteIds}
                     user={user}
                 />
 
-                <div className="info-description">
-                    <p>{resort.description || ""}</p>
-                </div>
-
-                <TearEffect darkBackground={true} />
-                <div className="info-container">
+                {/*<TearEffect darkBackground={true} />*/}
+                <section
+                    className="info-container"
+                    style={{ backgroundImage: `url(${resort.images?.[1] || "/images/skiResort.avif"})` }}>
+                    <div className="overlay"></div>
                     <div className="info-content">
                         <div className="info-item">
                             <FaMountain />
@@ -72,19 +79,24 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                         <div className="info-item">
                             <FaPersonSkiing />
                             <h3>Slope length</h3>
-                            <div className="item-content table">
-                                <p>
-                                    easy slopes: {resort.easySlopes || 0}{" "}
-                                    km
-                                </p>
-                                <p>
-                                    intermediate slopes:{" "}
-                                    {resort.intermediateSlopes || 0} km
-                                </p>
-                                <p>
-                                    difficult slopes:{" "}
-                                    {resort.difficultSlopes || 0} km
-                                </p>
+                            <div className="item-content">
+
+                                <div className="item-content">
+                                    <p>easy slopes: {easy} km</p>
+                                    <div
+                                        className="meter-bar easy"
+                                        style={{ width: `${(easy / maxSlope) * 100}%` }}></div>
+
+                                    <p>intermediate slopes: {intermediate} km</p>
+                                    <div
+                                        className="meter-bar intermediate"
+                                        style={{ width: `${(intermediate / maxSlope) * 100}%` }}></div>
+
+                                    <p>difficult slopes: {difficult} km</p>
+                                    <div
+                                        className="meter-bar difficult"
+                                        style={{ width: `${(difficult / maxSlope) * 100}%` }}></div>
+                                </div>
                             </div>
                         </div>
                         <div className="info-item">
@@ -106,15 +118,21 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                             </div>
                         </div>
                     </div>
-                    <TearEffect />
-                </div>
+                    {/*<TearEffect />*/}
+                </section>
                 <div className="images-content">
                     <h2>Resort images</h2>
-                    <Carousel
-                        data={resort}
-                        mode="images" />
+                    {resort.images && resort.images.length > 0 ? (
+                        <Carousel
+                            data={resort}
+                            mode="images"
+                        />
+                    ) : (
+                        <p className="noImagesText">Still no images for this resort.</p>
+                    )}
                 </div>
-                <TearEffect darkBackground={true} />
+
+                {/*<TearEffect darkBackground={true} />*/}
                 <Reviews resort={resort} />
             </main>
         </>

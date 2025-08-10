@@ -8,6 +8,7 @@ import { ResortInfo } from "@/types/resort";
 import { useAuth } from "@/context/AuthContext";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Button } from "@/components/button/Button";
+import toast from "react-hot-toast";
 
 interface ReviewFormProps {
     resort: ResortInfo;
@@ -33,7 +34,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews }) => {
         const formData = new FormData(event.currentTarget);
         const text = formData.get("text");
 
-        if (!rating) return alert("Please select your rating!");
+        if (!rating) return toast.error("Please select your rating!");
 
         const newReview: ReviewReq = {
             userId: user!.id,
@@ -41,7 +42,16 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews }) => {
             rating,
             text: text ? String(text) : "",
         };
-        createReview(newReview);
+
+        try {
+            createReview(newReview);
+            toast.success("Successfully posted review!");
+
+            event.currentTarget.reset();
+            setRating(0);
+        } catch (error) {
+            toast.error("Failed to post review.");
+        }
     }
 
     return (

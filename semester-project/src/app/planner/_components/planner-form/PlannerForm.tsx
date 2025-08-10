@@ -84,9 +84,9 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
                 </div>
 
                 <div className={styles.gridItem}>
-                    <label> Country: </label>
+                    <label>Your Country: </label>
                     <select name="country" required>
-                        <option value="">Select a country</option>
+                        <option value="">Select starting country</option>
                         {countries.map((country) => (
                             <option key={country.code} value={country.name}>
                                 {country.name}
@@ -96,18 +96,18 @@ const PlannerForm: FC<PlannerFormProps> = ({ setFormData }) => {
                 </div>
 
                 <div className={styles.gridItem}>
-                    <label> City: </label>
+                    <label>Your City: </label>
                     <input
                         type="text"
                         name="city"
-                        placeholder="Enter your city"
+                        placeholder="Enter your starting city"
                         required
                     />
                 </div>
 
             </div>
             <div className={styles.buttonContainer}>
-                <Button text="Generate" type="submit" />
+                <Button text="Find resorts" type="submit" />
                 {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             </div>
         </form>

@@ -1,45 +1,81 @@
 .ski-resorts-page {
-        display: grid;
-        grid-template-areas:
-                "sidebar main"
-                "sidebar pagination";
-        grid-template-columns: 1fr 3fr;
-        gap: 10px;
-        margin-top: 50px;
+  display: grid;
+  grid-template-areas:
+    'sidebar main'
+    'sidebar pagination';
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+  margin-top: 50px;
 
-        min-height: 100vh;
+  min-height: 100vh;
 }
 
 .ski-resorts-list {
-        overflow-y: auto;
-        padding: 5vh 6vw;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 50px;
+  overflow-y: auto;
+  padding: 5vh 6vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
 }
 
 #ski-resorts {
-        scroll-margin-top: 10vh;
+  scroll-margin-top: 10vh;
 }
 
 .pagination {
-        grid-area: pagination;
+  grid-area: pagination;
 }
 
 aside {
-        border-right: 1px solid var(--blue-background);
+  border-right: 1px solid var(--blue-background);
 
-        grid-area: sidebar;
-        height: fit-content;
-        position: sticky;
-        height: 90vh;
-        top: 10vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  grid-area: sidebar;
+  height: fit-content;
+  position: sticky;
+  height: 90vh;
+  top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 aside h3 {
-        align-self: flex-start;
-        margin: 2vh 2vw;
+  align-self: flex-start;
+  margin: 2vh 2vw;
+}
+
+@media (max-width: 768px) {
+  .ski-resorts-page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  aside {
+    position: static;
+    height: auto;
+    border-bottom: 1px solid var(--blue-background);
+    padding-bottom: 20px;
+  }
+
+  .ski-resorts-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 0;
+    gap: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ski-resorts-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .ski-resorts-list {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 5vh 2vw;
+  }
 }

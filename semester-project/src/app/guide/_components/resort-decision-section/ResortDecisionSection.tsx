@@ -10,9 +10,18 @@ const ResortDecisionSection: FC<ResortDecisionSectionProps> = ({
     resortDecisionSectionParagraph,
 }) => {
     return (
-        <section>
-            <h2>{resortDecisionSectionHeader}</h2>
-            <p>{resortDecisionSectionParagraph}</p>
+        <section className="section-content first">
+            <h3>{resortDecisionSectionHeader}</h3>
+            <p>Welcome to SnowFlow’s Guide to skiing in Europe!</p>
+
+            <div className="content-wrapper">
+                <div className="image-container">
+                    <img
+                        src="./images/guide.jpg"
+                    />
+                </div>
+                <p className="guide-desc">{resortDecisionSectionParagraph}</p>
+            </div>
         </section>
     );
 };

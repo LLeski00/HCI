@@ -19,7 +19,7 @@ const ReviewsSection: FC<ReviewsSectionProps> = ({
 }) => {
     return (
         <section className="review-section">
-            <h3>{header}</h3>
+            <h2>{header}</h2>
             <article>{article}</article>
             <div className="reviews">
                 <div className="review">

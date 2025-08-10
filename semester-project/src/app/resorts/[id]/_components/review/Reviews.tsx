@@ -44,6 +44,10 @@ const Reviews: FC<ReviewsProps> = ({ resort }) => {
                 <p>See what other people think about the resort!</p>
             </div>
 
+            <div className={styles.reviewForm}>
+                {<ReviewForm resort={resort} reviews={reviews} />}
+            </div>
+
             <div className={styles.reviewsContent}>
                 <div className={styles.reviewsList}>
                     {reviews.length > 0 ? (
@@ -54,11 +58,7 @@ const Reviews: FC<ReviewsProps> = ({ resort }) => {
                         <p>There are currently no reviews for this resort.</p>
                     )}
                 </div>
-                <div className={styles.reviewForm}>
-                    {<ReviewForm resort={resort} reviews={reviews} />}
-                </div>
             </div>
-
         </div>
     );
 };

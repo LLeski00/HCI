@@ -1,105 +1,133 @@
 .auth-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: url("/images/signinBackground.jpg") center/cover no-repeat;
-        opacity: 0.8;
-        position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/images/signinBackground.jpg') center/cover no-repeat;
+  opacity: 0.8;
+  position: relative;
 }
 .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(12, 34, 58, 0.5);
-        z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(12, 34, 58, 0.5);
+  z-index: 1;
 }
 
 .auth-section {
-        position: relative;
-        display: flex;
-        z-index: 2;
-        width: 65%;
-        min-height: 75vh;
-        height: auto;
-        box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.7);
+  position: relative;
+  display: flex;
+  z-index: 2;
+  width: 65%;
+  min-height: 75vh;
+  height: auto;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.7);
 }
 
 .login h1 {
-        color: var(--background);
+  color: var(--background);
 }
 
 .auth-image {
-        flex: 1;
-        background: url("/images/signinBackground.jpg") center/cover no-repeat;
+  flex: 1;
+  background: url('/images/signinBackground.jpg') center/cover no-repeat;
 }
 
 .auth-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        padding: 30px 70px;
-        backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.1);
-        position: relative;
-        z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px 70px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .input-container,
 .button-container {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-        color: var(--background);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  color: var(--background);
 }
 
 .info-box {
-        margin-bottom: 10px;
-        width: 300px;
-        height: 40px;
-        border: none;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.586);
-        box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+  width: 300px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.586);
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.4);
 }
 
 .auth-button {
-        width: 300px;
-        height: 40px;
-        border: none;
-        color: var(--background);
-        background-color: var(--orange);
-        font-size: 1.2rem;
-        font-weight: bold;
-        box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.4);
+  width: 300px;
+  height: 40px;
+  border: none;
+  color: var(--background);
+  background-color: var(--orange);
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.4);
 }
 .button-container {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin-top: 40px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
 }
 .auth-text,
 .forgot-password {
-        font-size: 15px;
-        color: var(--background);
-        margin: 5px;
+  font-size: 15px;
+  color: var(--background);
+  margin: 5px;
 }
 
 .auth-text a {
-        color: var(--orange);
+  color: var(--orange);
 }
 
 .forgot-password {
-        text-align: right;
-        font-weight: 600;
-        cursor: pointer;
-        transition: color 0.2s ease;
+  text-align: right;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .forgot-password:hover {
-        color: var(--orange);
+  color: var(--orange);
+}
+
+@media screen and (max-width: 768px) {
+  .auth-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    box-shadow: none;
+  }
+
+  .auth-image {
+    display: none;
+  }
+
+  .auth-box {
+    width: 100%;
+    padding: 20px;
+    height: auto;
+    min-height: 69vh;
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.7);
+  }
+
+  .auth-text,
+  .forgot-password {
+    font-size: 14px;
+    text-align: center;
+  }
 }
