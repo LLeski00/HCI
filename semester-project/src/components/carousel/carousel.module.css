@@ -43,4 +43,9 @@
   .swiperContainer {
     max-width: 100%;
   }
+
+  .swiperBottun {
+    padding: 10px;
+    margin: 10px;
+  }
 }

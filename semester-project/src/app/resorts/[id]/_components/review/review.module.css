@@ -141,3 +141,25 @@
   width: 55px;
   height: 30px;
 }
+
+@media (max-width: 768px) {
+  .reviewsSection {
+    padding: 10px;
+  }
+
+  .reviewForm {
+    padding: 0;
+  }
+
+  .titleSection {
+    margin-bottom: 10px;
+  }
+
+  .reviewsList {
+    padding: 5px;
+  }
+
+  .reviewContainer {
+    width: 100%;
+  }
+}

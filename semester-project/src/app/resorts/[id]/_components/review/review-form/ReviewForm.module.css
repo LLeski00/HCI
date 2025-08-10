@@ -3,13 +3,13 @@
   flex-direction: column;
   gap: 1rem;
   background-color: var(--background);
-  width: 80%;
+  width: 100%;
+  max-width: 800px;
   border-radius: 5px;
   align-items: center;
   padding: 15px;
-
-  border: 1px solid rgb(188, 188, 188);
-  /*box-shadow: 3px 2px 2px 5px rgba(0, 0, 0, 0.1);*/
+  margin: 0 auto;
+  box-shadow: 3px 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ratingLabel,
@@ -20,12 +20,16 @@
 .reviewForm > label {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .textLabel > textarea {
   height: 100px;
-  width: 500px;
-  border: 1px solid var(--dark);
+  width: 100%;
+  max-width: 500px;
+  border: none;
+  box-shadow: 2px 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .reviewForm > button {
@@ -35,8 +39,24 @@
 .ratingContent {
   display: flex;
   justify-self: start;
+  justify-content: center;
 }
 .star {
   font-size: 30px;
   color: var(--orange);
+}
+
+@media (max-width: 768px) {
+  .reviewForm {
+    padding: 10px;
+    width: 95%;
+  }
+
+  .textLabel > textarea {
+    max-width: 100%;
+  }
+
+  .star {
+    font-size: 30px;
+  }
 }

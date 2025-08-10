@@ -101,3 +101,41 @@
   font-weight: 500;
   color: var(--dark);
 }
+
+@media (max-width: 768px) {
+  .info-container {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .overlay {
+    height: auto;
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    z-index: 2;
+  }
+
+  .info-item {
+    width: 90%;
+  }
+  .info-item:hover {
+    transform: none;
+  }
+
+  .images-content {
+    padding: 50px;
+  }
+
+  .images-content > h2 {
+    margin-bottom: -20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+}
