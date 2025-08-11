@@ -1,53 +1,36 @@
 "use client";
 
 import "./pagination.css";
-import { useState } from "react";
 
 type PaginationProps = {
-    initialPage: number;
-    pagesCount: number;
-    onChange: (page: number) => void;
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
 };
 
 export default function Pagination(pagination: PaginationProps) {
-    const { initialPage, pagesCount, onChange } = pagination;
-    const [currentPage, setCurrentPage] = useState(initialPage);
+    const { currentPage, totalPages, onPageChange } = pagination;
     const isFirstPage = currentPage === 1;
-    const isLastPage = currentPage === pagesCount;
-
-    const goToPage = (page: number) => {
-        if (page >= 1 && page <= pagesCount) {
-            setCurrentPage(page);
-            onChange(page);
-
-            const newUrl = page === 1 ? "/resorts" : `/resorts?page_${page}`;
-            window.history.pushState({}, "", newUrl);
-        }
-    }
+    const isLastPage = currentPage === totalPages;
 
     return (
         <div className="pagination-container">
             <button
-                onClick={() => goToPage(currentPage - 1)}
+                onClick={() => onPageChange(currentPage - 1)}
                 className={isFirstPage ? "disabled" : ""}
                 aria-disabled={isFirstPage}
+                disabled={isFirstPage}
             >
                 Previous
             </button>
             <p>
-                Page{" "}
-                <span>
-                    {currentPage}
-                </span>{" "}
-                of{" "}
-                <span>
-                    {pagesCount}
-                </span>
+                Page <span>{currentPage}</span> of <span>{totalPages}</span>
             </p>
             <button
-                onClick={() => goToPage(currentPage + 1)}
+                onClick={() => onPageChange(currentPage + 1)}
                 className={isLastPage ? "disabled" : ""}
                 aria-disabled={isLastPage}
+                disabled={isLastPage}
             >
                 Next
             </button>
