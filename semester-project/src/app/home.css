@@ -160,8 +160,7 @@
 
 @media (max-width: 768px) {
   .home-section,
-  .planner-section,
-  .review-section {
+  .planner-section {
     width: 90%;
     padding: 20px;
     overflow: hidden;

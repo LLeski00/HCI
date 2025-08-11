@@ -105,7 +105,6 @@
   align-items: center;
   text-align: center;
   z-index: 1001;
-  padding-bottom: 10rem;
   box-sizing: border-box;
 
   transform: translateY(-100%);
@@ -157,6 +156,8 @@
   .loginButton {
     width: 200px;
     margin-top: 20px;
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .mobileView {
