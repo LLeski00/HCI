@@ -85,10 +85,3 @@ button {
   color: var(--background);
   background-color: var(--orange);
 }
-
-@media (max-width: 768px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
-}

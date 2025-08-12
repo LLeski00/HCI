@@ -76,6 +76,10 @@
 }
 
 .country-item:hover,
+.country-item.active:hover {
+  transform: scale(1.1);
+}
+
 .country-item.active {
   background-color: var(--dark);
   color: var(--background);

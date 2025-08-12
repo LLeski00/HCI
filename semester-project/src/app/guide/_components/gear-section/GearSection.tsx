@@ -49,7 +49,10 @@ const GearSection: FC<GearSectionProps> = ({
         <section className="section-content blue">
 
             <div className="gear-section-header">
-                <h3>{gearSectionHeader}</h3>
+                <div>
+                    <h3>{gearSectionHeader}</h3>
+                    <p className="gear-text"> This checklist will help you prepare everything you need! </p>
+                </div>
                 <button onClick={downloadChecklist}>
                     Download Checklist
                 </button>
