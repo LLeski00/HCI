@@ -94,8 +94,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
 
             {showPopUp && (
                 <SigninPopup
-                    onClose={() => setShowPopUp(false)}
-                    signinUrl="/auth/signin" />
+                    onClose={() => setShowPopUp(false)} />
             )}
         </>
     );

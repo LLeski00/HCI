@@ -28,8 +28,8 @@
   align-items: center;
 }
 
-.popupButtons button,
-.popupButtons .signInLink {
+.popupButtons > button,
+.popupButtons > a {
   flex: 1;
   margin: 0 1rem;
   padding: 0.5rem 0;
@@ -41,10 +41,17 @@
   border-radius: 5px;
 }
 
-.popupButtons button {
+.popupButtons > button {
   padding: 0.7rem 0;
 }
 .popupButtons button:hover,
-.signInLink:hover {
+.popupButtons > a:hover {
   background-color: var(--dark);
+}
+
+@media (max-width: 768px) {
+  .popupContent {
+    max-width: 250px;
+    width: 90%;
+  }
 }

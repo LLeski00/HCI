@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./signin-popup.module.css";
+import Link from "next/link";
 
 interface SigninPopupProps {
     onClose: () => void;
-    signinUrl?: string;
 }
 
-const SigninPopup: React.FC<SigninPopupProps> = ({ onClose, signinUrl = "/signin" }) => {
+const SigninPopup: React.FC<SigninPopupProps> = ({ onClose }) => {
     return (
         <div className={styles.popupOverlay} onClick={onClose}>
             <div className={styles.popupContent} onClick={(e) => e.stopPropagation()}>
@@ -14,7 +14,7 @@ const SigninPopup: React.FC<SigninPopupProps> = ({ onClose, signinUrl = "/signin
                 <p>You need to be signed in to leave a review.</p>
                 <div className={styles.popupButtons}>
                     <button onClick={onClose}>Close</button>
-                    <a href={signinUrl} className={styles.signInLink}>Sign In</a>
+                    <Link href="/auth/signin">Sign In</Link>
                 </div>
             </div>
         </div>
