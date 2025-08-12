@@ -9,6 +9,7 @@ import { useAuth } from "@/context/AuthContext";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { Button } from "@/components/button/Button";
 import toast from "react-hot-toast";
+import SigninPopup from "@/components/signin-popup/SigninPopup";
 
 interface ReviewFormProps {
     resort: ResortInfo;
@@ -61,37 +62,41 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
 
     return (
         <>
-            <>
-                {/*!isReviewed() && (*/}
-                <form
-                    className={styles.reviewForm}
-                    onSubmit={handleSubmit}
-                >
-                    <h2>Leave a Review</h2>
+            {/*!isReviewed() && (*/}
+            <form
+                className={styles.reviewForm}
+                onSubmit={handleSubmit}
+            >
+                <h2>Leave a Review</h2>
 
 
-                    <label className={styles.ratingLabel}> Add your rating:
-                        <div className={styles.ratingContent}>
-                            {[1, 2, 3, 4, 5].map((star) => (
-                                <span
-                                    key={star}
-                                    onClick={() => setRating(star)}
-                                    className={styles.star}
-                                >
-                                    {star <= rating ? <FaStar /> : <FaRegStar />}
-                                </span>
-                            ))}
-                        </div>
-                    </label>
+                <label className={styles.ratingLabel}> Add your rating:
+                    <div className={styles.ratingContent}>
+                        {[1, 2, 3, 4, 5].map((star) => (
+                            <span
+                                key={star}
+                                onClick={() => setRating(star)}
+                                className={styles.star}
+                            >
+                                {star <= rating ? <FaStar /> : <FaRegStar />}
+                            </span>
+                        ))}
+                    </div>
+                </label>
 
-                    <label className={styles.textLabel}>
-                        Write your review:
-                        <textarea name="text" />
-                    </label>
-                    <Button text="Sumbit review" type="submit" />
-                </form>
-                {/*)}*/}
-            </>
+                <label className={styles.textLabel}>
+                    Write your review:
+                    <textarea name="text" />
+                </label>
+                <Button text="Sumbit review" type="submit" />
+            </form>
+            {/*)}*/}
+
+            {showPopUp && (
+                <SigninPopup
+                    onClose={() => setShowPopUp(false)}
+                    signinUrl="/auth/signin" />
+            )}
         </>
     );
 };
