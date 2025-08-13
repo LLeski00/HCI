@@ -61,15 +61,15 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
     }
 
     return (
-        <>
+        <div className={styles.formSection}>
             {/*!isReviewed() && (*/}
+            <h2>Leave a Review</h2>
+
             <form
                 className={styles.reviewForm}
                 onSubmit={handleSubmit}
             >
-                <h2>Leave a Review</h2>
-
-
+                <h4>Write for resort {resort.name}</h4>
                 <label className={styles.ratingLabel}> Add your rating:
                     <div className={styles.ratingContent}>
                         {[1, 2, 3, 4, 5].map((star) => (
@@ -96,7 +96,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
                 <SigninPopup
                     onClose={() => setShowPopUp(false)} />
             )}
-        </>
+        </div>
     );
 };
 

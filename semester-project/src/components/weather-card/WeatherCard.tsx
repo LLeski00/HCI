@@ -22,10 +22,11 @@ export default function WeatherCard({
     weatherCode,
     currentTemp,
 }: WeatherCardProps) {
+    const cardType = currentTemp ? styles.currentCard : styles.forecastCard;
     const bigIcon = currentTemp !== undefined ? styles.bigIcon : "";
 
     return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${cardType}`}>
             <div className={styles.cardHeader}>
                 <h3>{title}</h3>
 

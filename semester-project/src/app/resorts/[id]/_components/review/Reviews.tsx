@@ -42,17 +42,16 @@ const Reviews: FC<ReviewsProps> = ({ resort }) => {
 
     return (
         <div className={styles.reviewsSection}>
-
-            <div className={styles.titleSection}>
-                <h2>Reviews</h2>
-                <p>See what other people think about the resort!</p>
-            </div>
-
             <div className={styles.reviewForm}>
                 {<ReviewForm
                     resort={resort}
                     reviews={reviews}
                     handleNewReview={handleNewReview} />}
+            </div>
+
+            <div className={styles.titleSection}>
+                <h2>Reviews</h2>
+                <p>See what other people think about the resort!</p>
             </div>
 
             <div className={styles.reviewsContent}>

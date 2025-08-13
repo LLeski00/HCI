@@ -35,7 +35,7 @@
 
 .resortName {
   font-size: 1.25rem;
-  color: white;
+  color: var(--card-background);
   font-weight: 700;
 }
 

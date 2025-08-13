@@ -23,7 +23,7 @@
 .stepContent {
   flex: 1;
   min-width: 250px;
-  background: white;
+  background: var(--card-background);
   padding: 1.5rem;
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@
   width: 40px;
   height: 40px;
   background: var(--orange);
-  color: white;
+  color: var(--card-background);
   border-radius: 50%;
   display: flex;
   align-items: center;

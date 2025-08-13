@@ -1,21 +1,21 @@
 .notFoundPage {
-    background-image: url("/images/signinBackground1.jpg");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background-image: url('/images/signinBackground1.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .notFoundPage > h1,
 .notFoundPage > p {
-    color: white;
-    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  color: var(--card-background);
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .notFoundPage > button {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }

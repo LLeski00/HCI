@@ -41,7 +41,14 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+
   .forecastDays {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }

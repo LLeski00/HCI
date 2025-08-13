@@ -13,7 +13,7 @@ const HomeSection: FC<HomeSectionProps> = async ({ header, paragraph }) => {
                 <div className="title-content start">
                     <h2>{header}</h2>
                     <p>{paragraph}</p>
-                    <Button text="EXPLORE" href="/" />
+                    <Button text="EXPLORE" href="/guide" />
                 </div>
                 <div className="home-image-container">
                     <img src="/images/skiing.jpg" alt="Skiing" />

@@ -1,5 +1,5 @@
 .card {
-  background: white;
+  background: var(--card-background);
   border-radius: 5px;
   padding: 25px;
   text-align: center;
@@ -79,4 +79,37 @@
 .snowDepth {
   font-size: 0.7rem;
   color: var(--dark);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 10px 0;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .forecastCard {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .forecastCard .cardHeader {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .forecastCard .weatherDetails {
+    align-items: flex-end;
+    padding-top: 0;
+  }
+
+  .forecastCard .snowInfo {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 0;
+    margin: 0 15px;
+  }
 }

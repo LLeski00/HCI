@@ -12,6 +12,7 @@
   --dark: #5e748e;
   --orange: #f7a260;
   --light-grey: rgb(191, 191, 191);
+  --card-background: rgb(245, 251, 255);
 }
 
 @media (prefers-color-scheme: dark) {
