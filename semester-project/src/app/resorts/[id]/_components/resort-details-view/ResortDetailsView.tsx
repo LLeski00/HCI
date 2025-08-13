@@ -122,7 +122,9 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                     {/*<TearEffect />*/}
                 </section>
 
-                <WeatherData lat={resort.coordinates.latitude} lon={resort.coordinates.longitude} />
+                <WeatherData
+                    lat={resort.coordinates.latitude}
+                    lon={resort.coordinates.longitude} />
 
                 <div className="images-content">
                     <h2>Resort images</h2>

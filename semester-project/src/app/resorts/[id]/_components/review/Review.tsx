@@ -13,6 +13,7 @@ import {
     deleteReviewReaction,
 } from "@/app/api/review-reaction";
 import UserHeader from "@/components/user/userHeader";
+import SigninPopup from "@/components/signin-popup/SigninPopup";
 
 interface ReviewProps {
     review: ReviewInfo;
@@ -27,6 +28,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
     const snippet: string = review.text ? review.text.slice(0, 140) + "..." : "";
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [userReaction, setUserReaction] = useState<Reaction | null>(null);
+    const [showSigninPopup, setShowSigninPopup] = useState<boolean>(false);
     const { user } = useAuth();
     const reactions: ReactionCount = getReactionCount();
 
@@ -40,6 +42,11 @@ const Review: FC<ReviewProps> = ({ review }) => {
     }, [review.reactions, user]);
 
     function handleReaction(reaction: Reaction) {
+        if (!user) {
+            setShowSigninPopup(true);
+            return;
+        }
+
         const reactionReq: ReactionReq = {
             userId: user!.id,
             reviewId: review.id,
@@ -127,6 +134,12 @@ const Review: FC<ReviewProps> = ({ review }) => {
                 className={styles.moreButton}>
                 {isExpanded ? "Show less" : "Show more"}
             </button>
+
+            {showSigninPopup && (
+                <SigninPopup
+                    onClose={() => setShowSigninPopup(false)}
+                />
+            )}
         </div>
     );
 };
