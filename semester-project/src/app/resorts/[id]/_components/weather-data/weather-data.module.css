@@ -1,0 +1,47 @@
+.container {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.container > h2 {
+  margin-bottom: 20px;
+}
+
+.weatherContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.currentDayContainer {
+  max-width: 400px;
+  width: 100%;
+}
+
+.forecastContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.forecastTitle {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.forecastDays {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  .forecastDays {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
