@@ -15,6 +15,7 @@ import {
 import UserHeader from "@/components/user/userHeader";
 import SigninPopup from "@/components/signin-popup/SigninPopup";
 import toast from "react-hot-toast";
+import { useSnippetLength } from "@/utils/snippetLenght";
 
 interface ReviewProps {
     review: ReviewInfo;
@@ -26,7 +27,10 @@ interface ReactionCount {
 }
 
 const Review: FC<ReviewProps> = ({ review }) => {
-    const snippet: string = review.text ? review.text.slice(0, 140) + "..." : "";
+    const snippetLengths = useSnippetLength(140, 300);
+    const snippet = review.text
+        ? review.text.slice(0, snippetLengths) + (review.text.length > snippetLengths ? "..." : "")
+        : "";
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [userReaction, setUserReaction] = useState<Reaction | null>(null);
     const [showSigninPopup, setShowSigninPopup] = useState<boolean>(false);
