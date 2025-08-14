@@ -1,5 +1,6 @@
 "use client";
 import { FC } from "react";
+import toast from "react-hot-toast";
 
 interface GearSectionProps {
     gearSectionHeader: string;
@@ -43,6 +44,7 @@ const GearSection: FC<GearSectionProps> = ({
         a.click();
 
         URL.revokeObjectURL(url);
+        toast.success("Checklist downloaded successfully!");
     };
 
     return (

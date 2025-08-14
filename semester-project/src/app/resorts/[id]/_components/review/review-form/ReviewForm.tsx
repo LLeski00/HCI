@@ -10,6 +10,7 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import { Button } from "@/components/button/Button";
 import toast from "react-hot-toast";
 import SigninPopup from "@/components/signin-popup/SigninPopup";
+import Loading from "@/components/loading/Loading";
 
 interface ReviewFormProps {
     resort: ResortInfo;
@@ -21,6 +22,7 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
     const { user } = useAuth();
     const [rating, setRating] = useState<number>(0);
     const [showPopUp, setShowPopUp] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
     function isReviewed(): boolean {
         return reviews.some((review) => review.user.id === user!.id);
@@ -48,15 +50,18 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
         };
 
         try {
+            setLoading(true);
             await createReview(newReview);
             const latestReview = await getLatestReviewByUserId(newReview.userId);
-            toast.success("Successfully posted review!");
 
+            toast.success("Successfully posted review!");
             handleNewReview(latestReview!);
             form.reset();
             setRating(0);
         } catch (error) {
             toast.error("Failed to post review.");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -88,7 +93,8 @@ const ReviewForm: FC<ReviewFormProps> = ({ resort, reviews, handleNewReview }) =
                     Write your review:
                     <textarea name="text" />
                 </label>
-                <Button text="Sumbit review" type="submit" />
+                <Button text={loading ? "Submitting..." : "Submit review"}
+                    type="submit" />
             </form>
             {/*)}*/}
 

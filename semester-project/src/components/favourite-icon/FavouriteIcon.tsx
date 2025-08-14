@@ -4,6 +4,7 @@ import { handleFavouriteResort } from "@/app/api/favourite-resort";
 import { FC, useEffect, useState } from "react";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import styles from './favourite-icon.module.css';
+import toast from "react-hot-toast";
 
 interface FavouriteIconProps {
     initialIsFavourite: boolean;
@@ -25,8 +26,12 @@ const FavouriteIcon: FC<FavouriteIconProps> = ({
     const handleHeartClick = async (event: React.MouseEvent<SVGElement>) => {
         event.preventDefault();
         event.stopPropagation();
-        setIsFavourite(!isFavourite);
+
+        const newState = !isFavourite;
+        setIsFavourite(newState);
+
         handleFavouriteResort({ userId, resortId });
+        newState ? toast.success("Resort liked!") : toast.success("Resort unliked!");
     };
 
     return (
