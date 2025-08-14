@@ -65,10 +65,15 @@
   border-radius: 5px;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+  align-self: flex-end;
 }
 
 .gear-section-header > button:hover {
   background-color: var(--dark);
+}
+
+.gear-text {
+  color: var(--dark);
 }
 
 .content-wrapper {
@@ -164,6 +169,11 @@
   border-bottom: none;
 }
 
+.section-content:not(.blue) > h3,
+.section-content:not(.blue) > p {
+  text-align: center;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -175,7 +185,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .guide-page-container {
     padding: 0;
   }

@@ -29,6 +29,7 @@
 
   .favoritesSection > h2 {
     align-self: center;
+    padding-left: 0;
     margin: 40px 0px;
   }
 }
@@ -44,8 +45,10 @@
   .favoritesSection {
     margin-bottom: 40px;
   }
+
   .favoritesSection > h2 {
     align-self: center;
+    padding-left: 0;
     margin: 40px 0px;
   }
 }

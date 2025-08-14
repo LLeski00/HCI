@@ -1,5 +1,6 @@
 "use client";
 import { FC } from "react";
+import toast from "react-hot-toast";
 
 interface GearSectionProps {
     gearSectionHeader: string;
@@ -43,13 +44,17 @@ const GearSection: FC<GearSectionProps> = ({
         a.click();
 
         URL.revokeObjectURL(url);
+        toast.success("Checklist downloaded successfully!");
     };
 
     return (
         <section className="section-content blue">
 
             <div className="gear-section-header">
-                <h3>{gearSectionHeader}</h3>
+                <div>
+                    <h3>{gearSectionHeader}</h3>
+                    <p className="gear-text"> This checklist will help you prepare everything you need! </p>
+                </div>
                 <button onClick={downloadChecklist}>
                     Download Checklist
                 </button>

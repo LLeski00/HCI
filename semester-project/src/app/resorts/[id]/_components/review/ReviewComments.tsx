@@ -3,9 +3,10 @@
 import { FC, useState } from "react";
 import ReviewCommentList from "./review-comments-list/ReviewCommentList";
 import { createComment } from "@/app/api/review-comment";
-import { CommentReq } from "@/types/comment";
+import { CommentReq, Comment } from "@/types/comment";
 import { useAuth } from "@/context/AuthContext";
 import styles from './review.module.css';
+import toast from "react-hot-toast";
 
 interface ReviewCommentsProps {
     reviewId: string;
@@ -13,6 +14,9 @@ interface ReviewCommentsProps {
 
 const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const [newComment, setNewComment] = useState<Comment>();
+    const [loading, setLoading] = useState(false);
+
     const { user } = useAuth();
 
     async function handleSubmitComment(e: React.FormEvent<HTMLFormElement>) {
@@ -25,13 +29,26 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
             reviewId,
             text,
         };
-        await createComment(newComment);
-        form.reset();
+
+        try {
+            setLoading(true);
+            const createdComment: Comment = await createComment(newComment);
+            setNewComment(createdComment);
+            toast.success("Comment successfully posted!");
+            form.reset();
+        } catch (err) {
+            toast.error("Failed to post a comment!");
+        }
+        finally {
+            setLoading(false);
+        }
     }
 
     return (
         <div>
-            {isExpanded && <ReviewCommentList reviewId={reviewId} />}
+            {isExpanded && <ReviewCommentList
+                reviewId={reviewId}
+                newComment={newComment} />}
             <button onClick={() => setIsExpanded((prev) => !prev)}
                 className={styles.moreButton}>
                 {isExpanded ? "Hide Comments" : "Show Comments"}
@@ -47,7 +64,7 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
                             required
                             className={styles.commentTextarea}
                         ></textarea>
-                        <button type="submit">Post</button>
+                        <button type="submit">{loading ? "Posting..." : "Post"}</button>
                     </form>
                 </div>
             )}

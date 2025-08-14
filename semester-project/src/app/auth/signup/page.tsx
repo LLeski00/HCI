@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AuthFormButton, AuthFormInput, AuthLayout } from "../components";
 import { useAuth } from '@/context/AuthContext';
+import toast from 'react-hot-toast';
+import Loading from '@/components/loading/Loading';
 
 export default function SignUp() {
     const [name, setName] = useState("");
@@ -20,16 +22,17 @@ export default function SignUp() {
         setLoading(true);
 
         if (password !== confirmPassword) {
-            alert("Passwords do not match");
+            toast.error("Passwords do not match");
             setLoading(false);
             return;
         }
 
         try {
             await signUp(name, email, password);
+            toast.success("Signup success!");
             router.push("/");
         } catch (error) {
-            alert("Signup failed: " + (error as Error).message);
+            toast.error("Signup failed: " + (error as Error).message);
         } finally {
             setLoading(false);
         }

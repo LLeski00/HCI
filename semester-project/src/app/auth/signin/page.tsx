@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AuthFormButton, AuthFormInput, AuthLayout } from "../components";
 import { useAuth } from '@/context/AuthContext';
+import toast from 'react-hot-toast';
+import Loading from '@/components/loading/Loading';
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -19,9 +21,10 @@ export default function SignIn() {
 
     try {
       await signIn(email, password);
+      toast.success("Signin success!");
       router.push("/");
     } catch (error) {
-      alert("Signin failed: " + (error as Error).message);
+      toast.error("Signin failed: " + (error as Error).message);
     } finally {
       setLoading(false);
     }

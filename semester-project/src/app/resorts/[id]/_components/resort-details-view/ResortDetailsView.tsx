@@ -13,6 +13,7 @@ import Reviews from "../review/Reviews";
 import { useAuth } from "@/context/AuthContext";
 import { useFavourites } from "@/hooks/useFavourites";
 import "../resort.css";
+import WeatherData from "../weather-data/WeatherData";
 
 interface ResortDetailsViewProps {
     resort: ResortInfo;
@@ -120,6 +121,11 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                     </div>
                     {/*<TearEffect />*/}
                 </section>
+
+                <WeatherData
+                    lat={resort.coordinates.latitude}
+                    lon={resort.coordinates.longitude} />
+
                 <div className="images-content">
                     <h2>Resort images</h2>
                     {resort.images && resort.images.length > 0 ? (

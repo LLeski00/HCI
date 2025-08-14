@@ -146,7 +146,7 @@
   justify-content: space-between;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .home-destinations-section {
     text-align: center;
   }
@@ -158,13 +158,35 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .home-section,
-  .planner-section,
-  .review-section {
+  .planner-section {
     width: 90%;
+    box-sizing: border-box;
     padding: 20px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-content,
+  .planner-content {
+    width: 100%;
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 20px;
+  }
+
+  .title-content.start {
+    align-items: center;
+  }
+
+  .title-content.start > button,
+  .steps-container > button {
+    align-self: center;
   }
 
   .title-content > h2,
@@ -176,10 +198,6 @@
   .review-section > article {
     color: var(--dark);
   }
-  .home-content {
-    width: 90%;
-    grid-template-columns: 1fr;
-  }
 
   .home-image-container {
     display: none;
@@ -189,14 +207,13 @@
     color: var(--dark);
   }
 
-  .planner-content {
-    grid-template-columns: 1fr;
-  }
-
   .step-number {
     font-size: 22px;
-    padding: 5px 20px;
+    padding: 2px 20px;
     padding-right: 30px;
+    margin: 5px auto;
+    margin-top: 20px;
+    width: auto;
   }
 
   .reviews {

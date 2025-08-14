@@ -4,7 +4,7 @@ import ResortCard from "../../../components/resort-card/ResortCard";
 import { FilterProps } from "../types/filter";
 import { getTotalDistance, parseDistanceRange } from "@/utils/getDistance";
 import Pagination from "./pagination/pagination";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ResortInfo } from "@/types/resort";
 import { User } from "@/types/user";
 
@@ -25,22 +25,12 @@ export default function SkiResortsList({
 }: ResortsListProps) {
     const [currentPage, setCurrentPage] = useState(1);
 
-    const handleScroll = (page: number) => {
-        setCurrentPage(page);
-        document.getElementById("ski-resorts")?.scrollIntoView({
-            behavior: "smooth",
-        });
-    };
-    //const pagesCount = Math.ceil(destinations.length / PAGE_SIZE);
-
-    const filterResorts = () => {
+    const filteredResorts = useMemo(() => {
         let resortsToDisplay = [...destinations];
 
         if (filterData.resortFilter) {
             resortsToDisplay = resortsToDisplay.filter((resort) =>
-                resort.name
-                    .toLowerCase()
-                    .includes(filterData.resortFilter.toLowerCase())
+                resort.name.toLowerCase().includes(filterData.resortFilter.toLowerCase())
             );
         }
 
@@ -64,33 +54,44 @@ export default function SkiResortsList({
 
         switch (filterData.sortFilter) {
             case "price-asc":
-                resortsToDisplay.sort(
-                    (a, b) => Number(a.adultPrice) - Number(b.adultPrice)
-                );
+                resortsToDisplay.sort((a, b) => Number(a.adultPrice) - Number(b.adultPrice));
                 break;
             case "price-desc":
-                resortsToDisplay.sort(
-                    (a, b) => Number(b.adultPrice) - Number(a.adultPrice)
-                );
+                resortsToDisplay.sort((a, b) => Number(b.adultPrice) - Number(a.adultPrice));
                 break;
-            case "review-asc":
-                resortsToDisplay.sort(
-                    (a, b) => Number(a.review) - Number(b.review)
-                );
+            case "rating-asc":
+                resortsToDisplay.sort((a, b) => Number(a.review) - Number(b.review));
                 break;
-            case "review-desc":
-                resortsToDisplay.sort(
-                    (a, b) => Number(b.review) - Number(a.review)
-                );
+            case "rating-desc":
+                resortsToDisplay.sort((a, b) => Number(b.review) - Number(a.review));
                 break;
             default:
                 break;
         }
 
         return resortsToDisplay;
+    }, [destinations, filterData]);
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        document.getElementById("ski-resorts")?.scrollIntoView({
+            behavior: "smooth",
+        });
     };
 
-    const filteredResorts = filterResorts();
+    useEffect(() => {
+        const params = new URLSearchParams();
+        if (currentPage !== 1) params.set("page", currentPage.toString());
+
+        const newUrl = params.toString()
+            ? `/resorts?${params.toString()}`
+            : "/resorts";
+        window.history.pushState({}, "", newUrl);
+    }, [filterData, currentPage]);
+
+    useEffect(() => setCurrentPage(1), [filterData]);
+
+    //const filteredResorts = filterResorts();
     const pagesCount = Math.ceil(filteredResorts.length / PAGE_SIZE);
 
     const startIndex = (currentPage - 1) * PAGE_SIZE;
@@ -115,9 +116,9 @@ export default function SkiResortsList({
             </ul>
             <div className="pagination">
                 <Pagination
-                    initialPage={currentPage}
-                    pagesCount={pagesCount}
-                    onChange={handleScroll}
+                    currentPage={currentPage}
+                    totalPages={pagesCount}
+                    onPageChange={handlePageChange}
                 />
             </div>
         </>

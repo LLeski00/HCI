@@ -13,6 +13,8 @@ import {
     deleteReviewReaction,
 } from "@/app/api/review-reaction";
 import UserHeader from "@/components/user/userHeader";
+import SigninPopup from "@/components/signin-popup/SigninPopup";
+import toast from "react-hot-toast";
 
 interface ReviewProps {
     review: ReviewInfo;
@@ -27,6 +29,7 @@ const Review: FC<ReviewProps> = ({ review }) => {
     const snippet: string = review.text ? review.text.slice(0, 140) + "..." : "";
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [userReaction, setUserReaction] = useState<Reaction | null>(null);
+    const [showSigninPopup, setShowSigninPopup] = useState<boolean>(false);
     const { user } = useAuth();
     const reactions: ReactionCount = getReactionCount();
 
@@ -40,6 +43,11 @@ const Review: FC<ReviewProps> = ({ review }) => {
     }, [review.reactions, user]);
 
     function handleReaction(reaction: Reaction) {
+        if (!user) {
+            setShowSigninPopup(true);
+            return;
+        }
+
         const reactionReq: ReactionReq = {
             userId: user!.id,
             reviewId: review.id,
@@ -49,11 +57,14 @@ const Review: FC<ReviewProps> = ({ review }) => {
         if (userReaction === reaction) {
             setUserReaction(null);
             deleteReviewReaction(reactionReq);
+            reaction === Reaction.Like ? toast.success("Like removed") : toast.success("Unlike removed!");
+
             return;
         }
 
         createReviewReaction(reactionReq);
         setUserReaction(reaction);
+        reaction === Reaction.Like ? toast.success("Liked review!") : toast.success("Unliked review!")
     }
 
     function getReactionCount(): ReactionCount {
@@ -127,6 +138,12 @@ const Review: FC<ReviewProps> = ({ review }) => {
                 className={styles.moreButton}>
                 {isExpanded ? "Show less" : "Show more"}
             </button>
+
+            {showSigninPopup && (
+                <SigninPopup
+                    onClose={() => setShowSigninPopup(false)}
+                />
+            )}
         </div>
     );
 };

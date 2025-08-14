@@ -16,25 +16,26 @@
   height: 150px;
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: flex-end;
-  border-radius: 1opx;
+  /*display: flex;
+  align-items: flex-end;*/
+  border-radius: 5px;
 }
 
 .overlay {
   width: 100%;
   height: 100%;
+  padding: 16px;
   background: rgba(0, 0, 0, 0.23);
   display: flex;
-  padding: 16px;
-  border-radius: 12px;
+  border-radius: 5px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .resortName {
   font-size: 1.25rem;
-  color: white;
+  color: var(--card-background);
   font-weight: 700;
 }
 
@@ -56,7 +57,7 @@
 
   .mutedBackground {
     width: 100%;
-    height: 120px;
+    height: 140px;
   }
 }
 

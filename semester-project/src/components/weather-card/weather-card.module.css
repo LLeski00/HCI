@@ -1,0 +1,115 @@
+.card {
+  background: var(--card-background);
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.date {
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.dateNumber {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.bigIcon {
+  font-size: 60px;
+}
+
+.currentTemp {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.weatherDetails,
+.snowInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 14px;
+  padding-top: 10px;
+  color: var(--dark);
+}
+
+.minTemp {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.maxTemp {
+  font-weight: 600;
+  color: #dc2626;
+}
+
+.snowfall {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+}
+
+.snowDepth {
+  font-size: 0.7rem;
+  color: var(--dark);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 10px 0;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .forecastCard {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .forecastCard .cardHeader {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  .forecastCard .weatherDetails {
+    align-items: flex-end;
+    padding-top: 0;
+  }
+
+  .forecastCard .snowInfo {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 0;
+    margin: 0 15px;
+  }
+}

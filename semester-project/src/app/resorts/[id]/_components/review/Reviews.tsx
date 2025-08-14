@@ -32,20 +32,26 @@ const Reviews: FC<ReviewsProps> = ({ resort }) => {
         fetchReviews();
     }, [resort.id]);
 
+    function handleNewReview(newReview: ReviewInfo) {
+        setReviews((prevReviews) => [newReview, ...prevReviews]);
+    }
+
     if (isLoading) {
         return <Loading />;
     }
 
     return (
         <div className={styles.reviewsSection}>
+            <div className={styles.reviewForm}>
+                {<ReviewForm
+                    resort={resort}
+                    reviews={reviews}
+                    handleNewReview={handleNewReview} />}
+            </div>
 
             <div className={styles.titleSection}>
                 <h2>Reviews</h2>
                 <p>See what other people think about the resort!</p>
-            </div>
-
-            <div className={styles.reviewForm}>
-                {<ReviewForm resort={resort} reviews={reviews} />}
             </div>
 
             <div className={styles.reviewsContent}>
