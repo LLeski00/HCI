@@ -33,16 +33,24 @@ export async function getReviewCommentsByReviewId(
   }
 }
 
-export async function createComment(comment: CommentReq): Promise<void> {
+export async function createComment(comment: CommentReq): Promise<Comment> {
   try {
-    await db.insert(reviewComments).values({
+    const newComment: Comment = {
       id: crypto.randomUUID(),
+      user: await getUserById(comment.userId),
+      text: comment.text,
+      createdAt: new Date(),
+    };
+
+    await db.insert(reviewComments).values({
+      id: newComment.id,
       user_id: comment.userId,
       review_id: comment.reviewId,
       text: comment.text,
     });
 
-    revalidatePath('/destinations/[id]');
+    revalidatePath('/resorts/[id]');
+    return newComment;
   } catch (error) {
     throw new Error('There was an error creating the comment: ' + error);
   }

@@ -9,9 +9,10 @@ import UserHeader from "@/components/user/userHeader";
 
 interface ReviewCommentListProps {
     reviewId: string;
+    newComment?: Comment;
 }
 
-const ReviewCommentList: FC<ReviewCommentListProps> = ({ reviewId }) => {
+const ReviewCommentList: FC<ReviewCommentListProps> = ({ reviewId, newComment }) => {
     const [comments, setComments] = useState<Comment[] | null>(null);
 
     useEffect(() => {
@@ -21,6 +22,12 @@ const ReviewCommentList: FC<ReviewCommentListProps> = ({ reviewId }) => {
         }
         fetchComments();
     }, [reviewId]);
+
+    useEffect(() => {
+        if (newComment) {
+            setComments((prevComment) => prevComment ? [newComment, ...prevComment] : [newComment]);
+        }
+    }, [newComment]);
 
     return (
         <div className={styles.commentsSection}>

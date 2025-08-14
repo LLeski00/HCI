@@ -3,7 +3,7 @@
 import { FC, useState } from "react";
 import ReviewCommentList from "./review-comments-list/ReviewCommentList";
 import { createComment } from "@/app/api/review-comment";
-import { CommentReq } from "@/types/comment";
+import { CommentReq, Comment } from "@/types/comment";
 import { useAuth } from "@/context/AuthContext";
 import styles from './review.module.css';
 
@@ -13,6 +13,7 @@ interface ReviewCommentsProps {
 
 const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const [newComment, setNewComment] = useState<Comment>();
     const { user } = useAuth();
 
     async function handleSubmitComment(e: React.FormEvent<HTMLFormElement>) {
@@ -25,13 +26,16 @@ const ReviewComments: FC<ReviewCommentsProps> = ({ reviewId }) => {
             reviewId,
             text,
         };
-        await createComment(newComment);
+        const createdComment: Comment = await createComment(newComment);
+        setNewComment(createdComment);
         form.reset();
     }
 
     return (
         <div>
-            {isExpanded && <ReviewCommentList reviewId={reviewId} />}
+            {isExpanded && <ReviewCommentList
+                reviewId={reviewId}
+                newComment={newComment} />}
             <button onClick={() => setIsExpanded((prev) => !prev)}
                 className={styles.moreButton}>
                 {isExpanded ? "Hide Comments" : "Show Comments"}
