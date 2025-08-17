@@ -44,6 +44,17 @@ aside h3 {
   margin: 2vh 2vw;
 }
 
+.no-resorts {
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  font-size: 1.5rem;
+  color: var(--dark);
+}
+
 @media (max-width: 768px) {
   .ski-resorts-page {
     display: flex;
