@@ -18,7 +18,7 @@
 
 ### Semester Project
 
-- Link to your production version: [**Production Version**](URL_TO_PRODUCTION_VERSION) <!-- Replace with actual URL -->
+- Link to your production version: [**Production Version**](https://snowflow-one.vercel.app) <!-- Replace with actual URL -->
 - Link to your final report: [**Final Report**](https://www.notion.so/SnowFlow-Final-report-25293b09250880189c94c9dece9c8bf9?source=copy_link) <!-- Replace with actual URL -->
 <!-- Add more as necessary -->
 
