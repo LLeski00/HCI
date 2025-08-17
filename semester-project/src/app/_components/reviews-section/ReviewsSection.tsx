@@ -1,5 +1,6 @@
 import { Button } from '@/components/button/Button';
 import { Rating } from '@/components/rating/Rating';
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface ReviewsSectionProps {
@@ -23,7 +24,9 @@ const ReviewsSection: FC<ReviewsSectionProps> = ({
       <article>{article}</article>
       <div className="reviews">
         <div className="review">
-          <img src="/images/User2.jpeg" alt="User2" />
+          <div className="review-image-container">
+            <Image src="/images/User2.jpeg" alt="User2" fill />
+          </div>
           <p>
             <strong>Chamonix, France</strong>: &quot;{paragraph1}
             &quot;
@@ -34,7 +37,9 @@ const ReviewsSection: FC<ReviewsSectionProps> = ({
           </div>
         </div>
         <div className="review">
-          <img src="/images/User3.jpeg" alt="User3" />
+          <div className="review-image-container">
+            <Image src="/images/User3.jpeg" alt="User3" fill />
+          </div>
           <p>
             <strong>St. Anton, Austria</strong>: &quot;{paragraph2}
             &quot;
@@ -45,7 +50,9 @@ const ReviewsSection: FC<ReviewsSectionProps> = ({
           </div>
         </div>
         <div className="review">
-          <img src="/images/User1.jpeg" alt="User1" />
+          <div className="review-image-container">
+            <Image src="/images/User1.jpeg" alt="User1" fill />
+          </div>
           <p>
             <strong>Zermatt, Switzerland</strong>: &quot;
             {paragraph3}&quot;

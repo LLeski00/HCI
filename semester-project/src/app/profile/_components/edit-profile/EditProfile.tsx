@@ -9,6 +9,7 @@ import { useAuth } from '@/context/AuthContext';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import styles from './editProfile.module.css';
 import toast from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function EditProfile() {
   const { user } = useAuth();
@@ -78,10 +79,11 @@ export default function EditProfile() {
       <form onSubmit={handleUpdateProfile} className={styles.editForm}>
         <div className={styles.profileImageContainer}>
           <div className={styles.imageContent} onClick={handleImageClick}>
-            <img
+            <Image
               src={profileImage}
               alt="Profile picture"
               className={styles.profileImage}
+              fill
             />
             <div className={styles.imageOverlay}>Change Photo</div>
           </div>

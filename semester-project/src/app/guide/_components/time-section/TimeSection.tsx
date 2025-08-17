@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface TimeSectionProps {
@@ -40,7 +41,7 @@ const TimeSection: FC<TimeSectionProps> = ({
         </div>
 
         <div className="image-container">
-          <img src="/images/season.jpg" alt="season" />
+          <Image src="/images/season.jpg" alt="season" fill />
         </div>
       </div>
     </section>

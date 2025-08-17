@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { FC } from 'react';
 import toast from 'react-hot-toast';
 
@@ -70,7 +71,7 @@ const GearSection: FC<GearSectionProps> = ({
           ))}
         </ul>
         <div className="image-container">
-          <img src="./images/skiGear1.jpg" alt="ski gear" />
+          <Image src="/images/skiGear1.jpg" alt="ski gear" fill />
         </div>
       </div>
     </section>

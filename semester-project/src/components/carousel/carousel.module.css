@@ -14,6 +14,19 @@
   position: relative;
 }
 
+.carouselImageContainer {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.carouselImageContainer :global(img) {
+  object-fit: cover !important;
+}
+
 .carouselWrapper img {
   height: 300px;
   width: 500px;

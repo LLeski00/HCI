@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface ActivitiesSectionProps {
@@ -58,7 +59,7 @@ const ActivitiesSection: FC<ActivitiesSectionProps> = ({
           </div>
         </ul>
         <div className="image-container">
-          <img src="./images/apresSki.jpg" alt="apres ski" />
+          <Image src="/images/apresSki.jpg" alt="apres ski" fill />
         </div>
       </div>
     </section>

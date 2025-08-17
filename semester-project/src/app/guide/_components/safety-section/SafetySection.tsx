@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface SafetySectionProps {
@@ -32,7 +33,7 @@ const SafetySection: FC<SafetySectionProps> = ({
 
       <div className="content-wrapper">
         <div className="image-container">
-          <img src="/images/safety.jpg" alt="safety" />
+          <Image src="/images/safety.jpg" alt="safety" fill />
         </div>
 
         <div>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface ResortDecisionSectionProps {
@@ -16,7 +17,7 @@ const ResortDecisionSection: FC<ResortDecisionSectionProps> = ({
 
       <div className="content-wrapper">
         <div className="image-container">
-          <img src="./images/guide.jpg" alt="guide" />
+          <Image src="/images/guide.jpg" alt="guide" fill />
         </div>
         <p className="guide-desc">{resortDecisionSectionParagraph}</p>
       </div>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface SkiLevelSectionProps {
@@ -28,7 +29,7 @@ const SkiLevelSection: FC<SkiLevelSectionProps> = ({
 
       <div className="content-wrapper">
         <div className="image-container">
-          <img src="./images/slope.jpg" alt="slope" />
+          <Image src="/images/slope.jpg" alt="slope" fill />
         </div>
 
         <ul className="list-content">

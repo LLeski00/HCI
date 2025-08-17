@@ -1,4 +1,5 @@
 import { Button } from '@/components/button/Button';
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface PlannerSectionProps {
@@ -54,7 +55,7 @@ const PlannerSection: FC<PlannerSectionProps> = ({
           <Button text="START TRIP" href="/planner" />
         </div>
         <div className="home-image-container">
-          <img src="/images/snowboarding.jpg" alt="snowboarding" />
+          <Image src="/images/snowboarding.jpg" alt="snowboarding" fill />
         </div>
       </article>
     </section>

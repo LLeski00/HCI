@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 interface PassesSectionProps {
@@ -29,7 +30,7 @@ const PassesSection: FC<PassesSectionProps> = ({
 
       <div className="content-wrapper">
         <div className="image-container">
-          <img src="./images/skiPass.jpg" alt="Ski Pass" />
+          <Image src="/images/skiPass.jpg" alt="Ski Pass" fill />
         </div>
 
         <ul className="list-content">
