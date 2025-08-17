@@ -1,25 +1,24 @@
-"use client"
+'use client';
 
-import { User } from "@/types/user";
+import { User } from '@/types/user';
 import styles from './userHeader.module.css';
-import Link from "next/link";
+import Link from 'next/link';
 
 interface UserHeaderProps {
-    user: User;
+  user: User;
 }
 
 export default function UserHeader({ user }: UserHeaderProps) {
-    if (!user) return;
+  if (!user) return;
 
-    return (
-        <Link href="/profile"
-            className={styles.userHeaderSection}>
-            <img
-                src={user.profile_image || "/images/profile.png"}
-                alt={`${user.name}'s profile picture`}
-                className={styles.userImage}
-            />
-            <p>{user.name}</p>
-        </Link>
-    );
+  return (
+    <Link href="/profile" className={styles.userHeaderSection}>
+      <img
+        src={user.profile_image || '/images/profile.png'}
+        alt="Profile picture"
+        className={styles.userImage}
+      />
+      <p>{user.name}</p>
+    </Link>
+  );
 }
