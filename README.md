@@ -19,17 +19,17 @@
 ### Semester Project
 
 - Link to your production version: [**Production Version**](URL_TO_PRODUCTION_VERSION) <!-- Replace with actual URL -->
-- Link to your final report: [**Final Report**](URL_TO_FINAL_REPORT) <!-- Replace with actual URL -->
+- Link to your final report: [**Final Report**](https://www.notion.so/SnowFlow-Final-report-25293b09250880189c94c9dece9c8bf9?source=copy_link) <!-- Replace with actual URL -->
 <!-- Add more as necessary -->
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1**](./assignments/assignment-1/Figma-web.mkv) 
-- Link to Assignment 2: [**Assignment 2**](./assignments/assignment-2) 
-- Link to Assignment 3: [**Assignment 3**](https://snowflow-one.vercel.app) 
+- Link to Assignment 1: [**Assignment 1**](./assignments/assignment-1/Figma-web.mkv)
+- Link to Assignment 2: [**Assignment 2**](./assignments/assignment-2)
+- Link to Assignment 3: [**Assignment 3**](https://snowflow-one.vercel.app)
 - Link to Assignment 4: [**Assignment 4**](./assignments/assignment-4/SnowflowHome.png)
-- Link to Assignment 5: [**Assignment 5**](https://snowflow-one.vercel.app) 
-- Link to Assignment 6: [**Assignment 6**](https://snowflow-one.vercel.app) 
+- Link to Assignment 5: [**Assignment 5**](https://snowflow-one.vercel.app)
+- Link to Assignment 6: [**Assignment 6**](https://snowflow-one.vercel.app)
 <!-- Add more assignments as necessary -->
 
 ## Project Requirements
