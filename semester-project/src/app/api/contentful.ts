@@ -1,7 +1,7 @@
 import { contentfulClient } from '@/lib/contentful/client';
 import { GuidePageContent, HomePageContent } from '@/types/contentful';
 
-export async function getHomePageContent(): Promise<HomePageContent | null> {
+export async function getHomePageContent() {
   const entry = await contentfulClient.getEntry(
     process.env.CONTENTFUL_HOMEPAGE_CONTENT_ID!
   );
