@@ -112,7 +112,7 @@
 
 .moreButton {
   border: none;
-  background-color: var(--background);
+  background-color: var(--card-background);
   color: var(--orange);
   font-size: 14px;
   font-weight: 600;
