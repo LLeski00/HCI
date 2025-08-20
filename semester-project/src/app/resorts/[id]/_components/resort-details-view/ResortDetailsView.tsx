@@ -54,7 +54,6 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                     user={user}
                 />
 
-                {/*<TearEffect darkBackground={true} />*/}
                 <section
                     className="info-container"
                     style={{ backgroundImage: `url(${resort.images?.[1] || "/images/skiResort.avif"})` }}>
@@ -63,26 +62,22 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                         <div className="info-item">
                             <FaMountain />
                             <h3>Elevation</h3>
-                            <div className="item-content">
-                                <p>
-                                    {resort.elevation ||
-                                        "No elevation info"}
-                                </p>
+                            <div>
+                                <p>{resort.elevation || "No elevation info"}</p>
                             </div>
                         </div>
                         <div className="info-item">
                             <TbAerialLift className="lift" />
                             <h3>Ski lifts</h3>
-                            <div className="item-content">
-                                <p>Total lifts: {resort.skiLift || 0}</p>
+                            <div>
+                                <p>Total: {resort.skiLift || 0}</p>
                             </div>
                         </div>
                         <div className="info-item">
                             <FaPersonSkiing />
                             <h3>Slope length</h3>
-                            <div className="item-content">
-
-                                <div className="item-content">
+                            <div>
+                                <div>
                                     <p>easy slopes: {easy} km</p>
                                     <div
                                         className="meter-bar easy"
@@ -103,7 +98,7 @@ const ResortDetailsView: FC<ResortDetailsViewProps> = ({
                         <div className="info-item">
                             <GiTwoCoins />
                             <h3>Price</h3>
-                            <div className="item-content table">
+                            <div className="table">
                                 <p>
                                     Adults:{" "}
                                     {resort.adultPrice ||

@@ -42,7 +42,13 @@ export default function ImageModal({
           ❮{' '}
         </button>
         <div className={styles.fullscreenContent}>
-          <Image src={images[slideIndex]} alt={`Slide ${slideIndex}`} fill />
+          <Image
+            src={images[slideIndex]}
+            alt={`Slide ${slideIndex}`}
+            fill
+            className={styles.fullscreenImage}
+            sizes="70vw"
+          />
         </div>
         <button className={styles.arrowButton} onClick={goToNextSlide}>
           {' '}

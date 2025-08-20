@@ -21,6 +21,7 @@
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 .carouselImageContainer :global(img) {
