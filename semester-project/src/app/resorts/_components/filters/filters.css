@@ -17,11 +17,10 @@
   height: 40px;
   border-radius: 5px;
   border: none;
-  box-shadow: 5px 5px 15px 5px rgba(17, 51, 102, 0.2);
+  box-shadow: 1px 1px 5px 1px rgba(17, 51, 102, 0.2);
   box-sizing: border-box;
   padding: 0 10px;
   background-color: var(--background);
-  border: 1px solid var(--blue-background);
 }
 
 .resort-list {
@@ -65,7 +64,6 @@
   margin: 8px;
   height: 40px;
   flex-shrink: 0;
-  border: 1px solid var(--blue-background);
   display: flex;
   justify-content: center;
   align-items: center;
