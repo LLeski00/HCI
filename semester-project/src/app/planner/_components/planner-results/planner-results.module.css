@@ -17,6 +17,10 @@
   margin-bottom: 180px;
 }
 
+.plannerResultsContainer > div {
+  width: 300px;
+}
+
 .itemLeft,
 .itemCenter,
 .itemRight {
