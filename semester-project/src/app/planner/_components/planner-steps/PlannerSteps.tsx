@@ -12,8 +12,9 @@ export default function PlannerSteps() {
         },
         {
             title: "Step 3: Choose Your Favorite Option",
-            description: "Review personalized recommendations showing you the best balance of proximity, value, and quality for your ski vacation.",
-        },
+            description: "Review personalized recommendations with total trip costs calculated for your whole group across all days (including lodging, travel, and ski passes).",
+        }
+
     ];
 
     return (
